@@ -1,9 +1,8 @@
 # Tello_waypoint
 A desktop app that let user create waypoint missions for Tello drone 
 
-# Prerequisites
-Install Easytello package:
-https://github.com/Virodroid/easyTello/blob/d8de60ccb06d0c5bb3304e9a9c9054318f54bbda/easytello/tello.py#L33
+# Requirements
+Install Easytello package: follow instructions here [here](https://github.com/Virodroid/easyTello)
 
 # Documentations
 Tello SDKs: <br>
