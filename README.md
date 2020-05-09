@@ -2,7 +2,7 @@
 Goal: We aim to create an app that let user create waypoint missions for Tello drone 
 
 # Control Tello
-You can control the drone by connecting through Wi-Fi UDP Port. There are 3 channels, each with a different UDP port (See Tello SDKs ([Version 2.0](https://dl-cdn.ryzerobotics.com/downloads/Tello/Tello%20SDK%202.0%20User%20Guide.pdf) or [Version 1.3.0.0](https://dl-cdn.ryzerobotics.com/downloads/tello/20180910/Tello%20SDK%20Documentation%20EN_1.3.pdf) ) for more information):
+You can control the drone by connecting through Wi-Fi UDP Port. There are 3 channels, each with a different UDP port (See Tello SDKs [Version 2.0](https://dl-cdn.ryzerobotics.com/downloads/Tello/Tello%20SDK%202.0%20User%20Guide.pdf) or [Version 1.3.0.0](https://dl-cdn.ryzerobotics.com/downloads/tello/20180910/Tello%20SDK%20Documentation%20EN_1.3.pdf) ) for more information):
 <br><br>Command Channel:<br>
 - Tello IP: 192.168.10.1 UDP PORT:8889 <<- ->> PC/Mac/Mobile
 
@@ -36,7 +36,7 @@ There's no x, y, z position coordinates. This [paper]() mentions about using yaw
 We can send commands, read drone's status, and receive video streams by using Python library [socket](https://docs.python.org/3/library/socket.html) for low level networking interface and [threading](https://docs.python.org/3/library/threading.html) for higher-level threading interface.
 
 ## Indoor Waypoint
-In this [thread](<br>https://forum.dji.com/forum.php?mod=viewthread&tid=210540), someone has an interesting comment on indoor waypoint:
+In this [thread](https://forum.dji.com/forum.php?mod=viewthread&tid=210540), someone has an interesting comment on indoor waypoint:
 
 "...the only usual way any GPS drone have to navigate in the horizontal plane is by means of GPS fix. Height control on the other hand can be achieved both with barometric & VPS sensors.
 
@@ -46,7 +46,7 @@ So for this to work you at least need a software able to out from a map format g
 
 
 ## Drone Swarm
-This [thread](https://tellopilots.com/threads/tello-drone-swarm.288/) suggesting using additional usb wifi adapter for drone swarming. Someone in the thread suggests using 5 wifi usb adapters to do swarm on 5 tello drones. 
+This [thread](https://tellopilots.com/threads/tello-drone-swarm.288/) suggests using additional usb wifi adapter for drone swarming. Someone in the thread commented he/she to use 5 wifi usb adapters to do swarm on 5 tello drones. 
 
 
 
