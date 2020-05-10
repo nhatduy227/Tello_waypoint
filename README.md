@@ -35,7 +35,7 @@ There's no x, y, z position coordinates. This [paper]() mentions about using yaw
 
 We can send commands, read drone's status, and receive video streams by using Python library [socket](https://docs.python.org/3/library/socket.html) for low level networking interface and [threading](https://docs.python.org/3/library/threading.html) for higher-level threading interface.
 
-## Indoor Waypoint
+## Indoor Waypoints
 In this [thread](https://forum.dji.com/forum.php?mod=viewthread&tid=210540), someone has an interesting comment on indoor waypoint:
 
 "...the only usual way any GPS drone have to navigate in the horizontal plane is by means of GPS fix. Height control on the other hand can be achieved both with barometric & VPS sensors.
