@@ -1,69 +1,54 @@
-# Tello_waypoint
-A desktop app that let user create waypoint missions for Tello drone 
+# Tellow Waypoint
+Goal: We aim to create an app that let user create waypoint missions for Tello drone 
 
-# Prerequisites
-Install Easytello package:
-https://github.com/Virodroid/easyTello/blob/d8de60ccb06d0c5bb3304e9a9c9054318f54bbda/easytello/tello.py#L33
+# Control Tello
+You can control the drone by connecting through Wi-Fi UDP Port. There are 3 channels, each with a different UDP port (See Tello SDKs [Version 2.0](https://dl-cdn.ryzerobotics.com/downloads/Tello/Tello%20SDK%202.0%20User%20Guide.pdf) or [Version 1.3.0.0](https://dl-cdn.ryzerobotics.com/downloads/tello/20180910/Tello%20SDK%20Documentation%20EN_1.3.pdf) ) for more information):
+<br><br>Command Channel:<br>
+- Tello IP: 192.168.10.1 UDP PORT:8889 <<- ->> PC/Mac/Mobile
 
-# Documentations
-Tello SDKs: <br>
-https://dl-cdn.ryzerobotics.com/downloads/Tello/Tello%20SDK%202.0%20User%20Guide.pdf <br>
-https://dl-cdn.ryzerobotics.com/downloads/tello/20180910/Tello%20SDK%20Documentation%20EN_1.3.pdf <br>
-Data Received From Tello Read Commands: <br>
-+ Battery <br>
-```python
-from easytello import tello 
+State channel:<br>
+- Tello IP: 192.168.10.1 ->> PC/Mac/Mobile UDP Server: 0.0.0.0 UDP PORT:8890
 
-# initialize a tello object 
-tello_object = tello.Tello()
-tello_object.get_battery()
-```
-Return the remaining battery of the drone in scale of 100%. Possible response x: 0 - 100
-+ Speed <br>
-```python
-tello_object.get_speed()
-```
-Return the current speed of the drone (cm/s). Possible response x: 10 - 100
-+ Flight time <br>
-```python
-tello_object.get_time()
-```
-Return the flight time of the drone in second (s)
-+ Height <br>
-```python
-tello_object.get_height()
-```
-Return the height of the drone in cm. Possible response x: 0-3000
-+ Temperature
-```python
-tello_object.get_temp()
-```
-Return the current temperature of the drone in Celsius (C)
-+ Attitude
-```python
-tello_object.get_attitude()
-```
-Return a list of current Inertial measurement unit (IMU) attitude data: pitch, roll and yaw of the drone (x,y,z) <br>
-Learn more about drone attitude ratings at: https://www.novatel.com/solutions/attitude/
-+ Barometer reading
-```python
-tello_object.get_baro()
-```
-Return the barometer measurement in m
-Learn more about barometer readings at: 
-+ Acceleration 
-```python
-tello_object.get_acceleration()
-```
-Return a list of Inertial measurement unit (IMU) angular acceleration data (x,y,z)
-+ Time of Flight (TOF)
-```python
-tello_object.get_tof()
-```
-Return the TOF in cm <br>
-+ Wifi Signal to Noise Ratio (SNR)
-```python
-tello_object.get_wifi()
-```
-Return the SNR of the drone to computer connection in dB. <br>
-Learn more about SNR at: https://www.packet6.com/what-is-snr-signal-to-noise-ratio/
+Stream channel<br>
+- Tello IP: 192.168.10.1 ->> PC/Mac/Mobile UDP Server: 0.0.0.0 UDP PORT:11111
+
+### Three basic command types.
+Control Commands (xxx)
+- "ok": executed successfully
+- “error” / an informative result code: if unsuccessful
+
+Read Commands (xxx?)
+- current value of the sub-parameter(s).
+
+Set Command (xxx a) will attempt to set a new sub-parameter value(s)
+- “ok”: executed successfully
+- “error”/ or an informative result code: if unsuccessful
+
+### Tello State
+“pitch:%d;roll:%d;yaw:%d;vgx:%d;vgy%d;vgz:%d;templ:%d;temph:%d;tof:%d;h:%d;bat:%d;baro:%.2f; time:%d;agx:%.2f;agy:%.2f;agz:%.2f;\r\n”
+
+There's no x, y, z position coordinates. This [paper]() mentions about using yaw and speed to caculate (x, y, z) coordinates. 
+
+## Projects that have been done on controlling and swarming Tello: 
+- [easyTello](https://github.com/damiafuentes/DJITelloPy): drone communication 
+- [DJITelloPy](https://github.com/Virodroid/easyTello): drone communication, swarming
+
+We can send commands, read drone's status, and receive video streams by using Python library [socket](https://docs.python.org/3/library/socket.html) for low level networking interface and [threading](https://docs.python.org/3/library/threading.html) for higher-level threading interface.
+
+## Indoor Waypoints
+In this [thread](https://forum.dji.com/forum.php?mod=viewthread&tid=210540), someone has an interesting comment on indoor waypoint:
+
+"...the only usual way any GPS drone have to navigate in the horizontal plane is by means of GPS fix. Height control on the other hand can be achieved both with barometric & VPS sensors.
+
+Even though if it existed some software that you could "parameter program" a track ... like "thrust level X" in "compass direction Y" "during Z seconds" the drone needs hardware to measure the success of each of those commands ... then even more complicated that each of these commands should be self generated out from a map.
+
+So for this to work you at least need a software able to out from a map format generate drone instructions ... & then most probably additional hardware in the drone to interpret the instructions to thrust, direction & time plus something to verify that the instructions have been fulfilled..." 
+
+
+## Drone Swarm
+This [thread](https://tellopilots.com/threads/tello-drone-swarm.288/) suggests using additional usb wifi adapter for drone swarming. Someone in the thread commented he/she to use 5 wifi usb adapters to do swarm on 5 tello drones. 
+
+
+
+
+
