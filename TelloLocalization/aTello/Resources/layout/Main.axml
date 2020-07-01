@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:minWidth="25px"
+    android:minHeight="25px"
+    android:id="@+id/relativeLayout1"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@android:color/black">
+    <aTello.DecoderView
+        android:id="@+id/DecoderView"
+        android:layout_width="960dp"
+        android:layout_height="720dp"
+        android:layout_centerHorizontal="true"
+        android:visibility="visible" />
+    <LinearLayout
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:id="@+id/SBSLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_width="640dp"
+        android:layout_height="320dp"
+        android:visibility="gone">
+        <aTello.DecoderView
+            android:id="@+id/decoderViewL"
+            android:layout_width="0dp"
+            android:layout_weight=".50"
+            android:layout_height="match_parent" />
+        <aTello.DecoderView
+            android:id="@+id/decoderViewR"
+            android:layout_width="0dp"
+            android:layout_weight=".50"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+    <aTello.JoystickView
+        android:id="@+id/joystickViewL"
+        android:layout_width="220dp"
+        android:layout_height="220dp"
+        android:layout_alignParentBottom="true" />
+    <aTello.JoystickView
+        android:id="@+id/joystickViewR"
+        android:layout_width="220dp"
+        android:layout_height="220dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true" />
+    <Button
+        android:id="@+id/connectButton"
+        android:text="@string/connect_status"
+        android:layout_width="fill_parent"
+        android:layout_height="30dp"
+        android:layout_centerHorizontal="true"
+        android:textSize="15dp"
+        style="@android:style/Widget.Holo.Button.Borderless"
+        android:textColor="@android:color/black"
+        android:background="#55ff3333" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:id="@+id/statusLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#8888"
+        android:layout_below="@id/connectButton">
+        <TextView
+            android:text="FM:00"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:id="@+id/modeTextView"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.15" />
+        <TextView
+            android:text="HS:00"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:id="@+id/hSpeedTextView"
+            android:gravity="center"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="0.25"
+            android:shadowColor="#00000000" />
+        <TextView
+            android:text="VS:00"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:id="@+id/vSpeedTextView"
+            android:gravity="center"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="0.25" />
+        <TextView
+            android:text="H:100"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:id="@+id/heiTextView"
+            android:gravity="center"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="0.25" />
+        <TextView
+            android:text="Bat:000"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:id="@+id/batTextView"
+            android:gravity="center"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="0.25" />
+        <TextView
+            android:text="Wifi:000"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:id="@+id/wifiTextView"
+            android:gravity="center"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="0.25" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:id="@+id/linearLayoutRight"
+        android:layout_width="50dp"
+        android:layout_height="fill_parent"
+        android:layout_marginLeft="5dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/statusLayout"
+        android:layout_marginTop="10dp">
+        <ImageButton
+            android:src="@drawable/camera"
+            android:id="@+id/pictureButton"
+            android:adjustViewBounds="true"
+            android:scaleType="centerInside"
+            android:background="@android:drawable/screen_background_light_transparent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:tint="#00000000" />
+        <ImageButton
+            android:src="@drawable/photogallery"
+            android:id="@+id/galleryButton"
+            android:adjustViewBounds="true"
+            android:scaleType="centerInside"
+            android:background="@android:drawable/screen_background_light_transparent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:tint="#620078c8"
+            android:alpha="0.5"
+            android:visibility="gone" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:id="@+id/linearLayoutLeft"
+        android:layout_width="50dp"
+        android:layout_height="fill_parent"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/statusLayout">
+        <ImageButton
+            android:src="@drawable/takeoff"
+            android:id="@+id/takeoffButton"
+            android:adjustViewBounds="true"
+            android:scaleType="centerInside"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:tint="#00000000"
+            android:background="@android:drawable/screen_background_light_transparent" />
+        <ImageButton
+            android:src="@drawable/handlaunch"
+            android:id="@+id/throwTakeoffButton"
+            android:adjustViewBounds="true"
+            android:scaleType="centerInside"
+            android:layout_width="wrap_content"
+            android:background="@android:drawable/screen_background_light_transparent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:tint="#00000000" />
+    </LinearLayout>
+    <ImageButton
+        android:src="@drawable/placeholder"
+        android:id="@+id/rthButton"
+        android:adjustViewBounds="true"
+        android:scaleType="centerInside"
+        android:tint="#00000000"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="false"
+        android:layout_below="@id/statusLayout"
+        android:layout_toRightOf="@id/linearLayoutLeft"
+        android:layout_marginLeft="25dp"
+        android:layout_alignTop="@id/linearLayoutLeft"
+        android:background="@android:drawable/screen_background_light_transparent" />
+    <ImageButton
+        android:src="@drawable/eye"
+        android:id="@+id/lookAtButton"
+        android:adjustViewBounds="true"
+        android:scaleType="centerInside"
+        android:tint="#00000000"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="false"
+        android:layout_below="@id/statusLayout"
+        android:layout_toRightOf="@id/rthButton"
+        android:layout_marginLeft="25dp"
+        android:layout_alignTop="@id/linearLayoutLeft"
+        android:background="@android:drawable/screen_background_light_transparent" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout1"
+        android:layout_toLeftOf="@id/linearLayoutRight"
+        android:layout_below="@id/connectButton"
+        android:layout_marginRight="10dp"
+        android:layout_alignTop="@id/lookAtButton">
+        <RadioButton
+            android:text="Rec:00:00:00"
+            android:id="@+id/recLightButton"
+            android:checked="true"
+            android:buttonTint="#ffff0000"
+            android:layout_width="wrap_content"
+            android:layout_height="26dp"
+            android:layout_marginRight="5dp"
+            android:textSize="12dp" />
+        <ImageButton
+            android:src="@drawable/rec"
+            android:id="@+id/recordButton"
+            android:adjustViewBounds="true"
+            android:background="@android:drawable/screen_background_light_transparent"
+            android:tint="#00000000"
+            android:scaleType="centerInside"
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
+    </LinearLayout>
+    <TextView
+        android:text="Vbr:0k"
+        android:id="@+id/vbrTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:textSize="13dp"
+        android:layout_alignParentBottom="true" />
+    <TextView
+        android:id="@+id/joystick_state"
+        android:text="Connect Joystick"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" />
+    <ImageButton
+        android:src="@drawable/settings_gear"
+        android:id="@+id/settingsButton"
+        android:adjustViewBounds="true"
+        android:scaleType="centerInside"
+        android:background="@android:drawable/screen_background_light_transparent"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentRight="true" />
+</RelativeLayout>

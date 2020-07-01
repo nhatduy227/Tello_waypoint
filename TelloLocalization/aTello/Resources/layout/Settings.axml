@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minWidth="25px"
+    android:minHeight="25px">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView1"
+        android:minWidth="25px"
+        android:minHeight="25px">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/linearLayout3">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/joyLayout"
+                android:layout_marginTop="15dp">
+                <TextView
+                    android:text="Joystick Type"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textSize="20dp" />
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/space1"
+                    android:layout_weight="1" />
+                <Spinner
+                    android:id="@+id/joystickTypeSpinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+            <Switch
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/onScreenJoySwitch"
+                android:text="Always show onscreen joystick"
+                android:showText="true"
+                android:textOff="Off"
+                android:textOn="On"
+                android:textSize="20dp"
+                android:layout_marginTop="10dp" />
+            <Switch
+                android:layout_width="match_parent"
+                android:id="@+id/photoQualitySwitch"
+                android:text="Photo Quality"
+                android:showText="true"
+                android:textOff="Low"
+                android:textOn="High"
+                android:textSize="20dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp" />
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/picLayout"
+                android:layout_marginTop="10dp">
+                <TextView
+                    android:text="Exposure"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textSize="20dp" />
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/space1"
+                    android:layout_weight="1" />
+                <Spinner
+                    android:id="@+id/exposureSpinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+            <Switch
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/cacheVideoSwitch"
+                android:text="Cache Video"
+                android:showText="true"
+                android:textOff="Off"
+                android:textOn="On"
+                android:textSize="20dp"
+                android:layout_marginTop="10dp" />
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/picLayout"
+                android:layout_marginTop="10dp">
+                <TextView
+                    android:text="Video bit rate"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textSize="20dp" />
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/space1"
+                    android:layout_weight="1" />
+                <Spinner
+                    android:id="@+id/vbrSpinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:id="@+id/picLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+                <TextView
+                    android:text="Video iFrame rate"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textSize="20dp" />
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/space1"
+                    android:layout_weight="1" />
+                <Spinner
+                    android:id="@+id/iframeRateSpinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/joyLayout"
+                android:layout_marginTop="10dp"
+                android:visibility="gone">
+                <TextView
+                    android:text="Axis   "
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+                <TextView
+                    android:text="Lx"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/textView1"
+                    android:layout_marginLeft="20dp" />
+                <Spinner
+                    android:id="@+id/lxSpinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+                <TextView
+                    android:text="Ly"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:id="@+id/textView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp" />
+                <Spinner
+                    android:id="@+id/lySpinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:id="@+id/joyLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:text="Rx"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:id="@+id/textView1"
+                        android:layout_marginLeft="20dp" />
+                    <Spinner
+                        android:id="@+id/rxSpinner"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent" />
+                    <TextView
+                        android:text="Ry"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:id="@+id/textView1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="20dp" />
+                    <Spinner
+                        android:id="@+id/rySpinner"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent" />
+                </LinearLayout>
+            </LinearLayout>
+            <Button
+                android:text="Share Photo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/sharePhotoButton" />
+            <Button
+                android:text="Convert ALL Video"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/convertAllVideoButton" />
+            <Button
+                android:text="Convert Single Video"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/convertVideoButton" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

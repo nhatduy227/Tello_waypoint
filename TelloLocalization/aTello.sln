@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelloLib", "TelloLib\TelloLib.csproj", "{FC69241F-8C76-45DE-A2D4-B2A5CD984014}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FFMpeg.Xamarin", "xamarin-android-ffmpeg\FFMpeg.Xamarin\FFMpeg.Xamarin.csproj", "{1049745B-3D4C-4DFF-AD8B-DC46F460B5D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatConToCsv", "DatConToCsv\DatConToCsv.csproj", "{36BFE91E-3F05-4A45-BF96-F5C00A907CA0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelloLogParser", "TelloLogParser\TelloLogParser.csproj", "{107DB5E3-F4F9-4C28-A16B-0DDEC8CCF801}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3D_Visualize", "3D_Visualize\3D_Visualize.csproj", "{64769927-7D91-4BBC-8D9C-817B8F17D5BE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Basic_GUI", "Basic_GUI\Basic_GUI.csproj", "{9AB67D3D-A11B-468A-828F-D95D8403C9BD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FC69241F-8C76-45DE-A2D4-B2A5CD984014}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC69241F-8C76-45DE-A2D4-B2A5CD984014}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC69241F-8C76-45DE-A2D4-B2A5CD984014}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC69241F-8C76-45DE-A2D4-B2A5CD984014}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1049745B-3D4C-4DFF-AD8B-DC46F460B5D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1049745B-3D4C-4DFF-AD8B-DC46F460B5D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1049745B-3D4C-4DFF-AD8B-DC46F460B5D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1049745B-3D4C-4DFF-AD8B-DC46F460B5D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36BFE91E-3F05-4A45-BF96-F5C00A907CA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36BFE91E-3F05-4A45-BF96-F5C00A907CA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36BFE91E-3F05-4A45-BF96-F5C00A907CA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36BFE91E-3F05-4A45-BF96-F5C00A907CA0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{107DB5E3-F4F9-4C28-A16B-0DDEC8CCF801}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{107DB5E3-F4F9-4C28-A16B-0DDEC8CCF801}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{107DB5E3-F4F9-4C28-A16B-0DDEC8CCF801}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{107DB5E3-F4F9-4C28-A16B-0DDEC8CCF801}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64769927-7D91-4BBC-8D9C-817B8F17D5BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64769927-7D91-4BBC-8D9C-817B8F17D5BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64769927-7D91-4BBC-8D9C-817B8F17D5BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64769927-7D91-4BBC-8D9C-817B8F17D5BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9AB67D3D-A11B-468A-828F-D95D8403C9BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9AB67D3D-A11B-468A-828F-D95D8403C9BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9AB67D3D-A11B-468A-828F-D95D8403C9BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9AB67D3D-A11B-468A-828F-D95D8403C9BD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {30C3D4AB-41AD-4804-8728-3689204C2FB6}
+	EndGlobalSection
+EndGlobal
