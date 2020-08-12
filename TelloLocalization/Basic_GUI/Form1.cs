@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using Newtonsoft.Json;
 using System.Linq;
-using System.IO;
+using System.Drawing;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using TelloLib;
 
@@ -12,8 +11,11 @@ namespace Basic_GUI
     
     public partial class Form1 : Form
     {
+        List<Panel> listPanel = new List<Panel>();
+        int index = 0;
         public Form1()
         {
+            this.KeyPreview = true;
             InitializeComponent();
             //subscribe to Tello connection events
             Tello.onConnection += (Tello.ConnectionState newState) =>
@@ -34,10 +36,6 @@ namespace Basic_GUI
             {
                 if (cmdId == 86)//ac update
                 {
-                    //Console.WriteLine(Tello.state.posX.ToString());
-                    //Console.WriteLine(Tello.state.posY.ToString());
-                    //Console.WriteLine(Tello.state.posZ.ToString());
-                    // write positioning data to csv file.
                     string filepath = @"C:\Users\nomie\Desktop\Linear Algebra\3D visualization\test.dat";
                     writeCSV(Tello.state.posX.ToString(), Tello.state.posY.ToString(), Tello.state.posZ.ToString(), filepath);
                 }
@@ -79,24 +77,10 @@ namespace Basic_GUI
 
             }
         }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            // create a respone for land button
-            
-            if (Tello.connected && Tello.state.flying)
-                Tello.land();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            // create a respone for take off button
-            if (Tello.connected && !Tello.state.flying)
-                Tello.takeOff();
-        }
-
+        // Update positions 
         private void button3_Click(object sender, EventArgs e)
         {
+            // Update positioning 
             label4.Text = Tello.state.posX.ToString();
             label5.Text = Tello.state.posY.ToString();
             label6.Text = Tello.state.posZ.ToString();
@@ -104,38 +88,161 @@ namespace Basic_GUI
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            button3.PerformClick();
+            GetPos.PerformClick();
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        // Keyboard events
+        private void Form1_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
-            // create a respone forward button
-            if (Tello.connected && Tello.state.flying)
-                Tello.forward();
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            // create a respone for clockwise button
-            if (Tello.connected && Tello.state.flying)
-                Tello.clockwise();
-        }
-
-        private void Rectangle_Click(object sender, EventArgs e)
-        {
-            // fly in rectangle function
-            moveRectangle();
-        }
-        void moveRectangle()
-        {
-            for (int i = 0; i < 4; i++)
+            if (e.KeyCode == Keys.T)
             {
-                if (Tello.connected && Tello.state.flying) 
-                {
-                    Tello.forward();
-                    Tello.clockwise();
-                }
+                Takeoff.BackColor = Color.Green;
+                Takeoff.ForeColor = Color.White;
+                // Instrutions to the drone
+                Tello.takeOff();
             }
+
+            if (e.KeyCode == Keys.Y)
+            {
+                Land.BackColor = Color.Green;
+                Land.ForeColor = Color.White;
+                // Instrutions to the drone
+                Tello.land();
+            }
+
+            if (e.KeyCode == Keys.Space)
+            {
+                Hover.BackColor = Color.Green;
+                Hover.ForeColor = Color.White;
+                // Instrutions to the drone
+                Tello.hover();
+            }
+
+            // Keyboard controls 
+            float lx = 0f;
+            float ly = 0f;
+            float rx = 0f;
+            float ry = 0f;
+
+            if (e.KeyCode == Keys.W)
+            {
+                Forward.BackColor = Color.Green;
+                Forward.ForeColor = Color.White;
+                // Instrutions to the drone
+                ry = 1;
+            }
+
+            if (e.KeyCode == Keys.S)
+            {
+                Backward.BackColor = Color.Green;
+                Backward.ForeColor = Color.White;
+                // Instrutions to the drone
+                ry = -1;
+
+            }
+
+            if (e.KeyCode == Keys.A)
+            {
+                Right.BackColor = Color.Green;
+                Right.ForeColor = Color.White;
+                // Instrutions to the drone
+                rx = -1;
+            }
+
+            if (e.KeyCode == Keys.D)
+            {
+                Left.BackColor = Color.Green;
+                Left.ForeColor = Color.White;
+                // Instrutions to the drone
+                rx = 1;
+            }
+
+            if (e.KeyCode == Keys.I)
+            {
+                Upward.BackColor = Color.Green;
+                Upward.ForeColor = Color.White;
+                // Instrutions to the drone
+                // Instrutions to the drone
+                ly = 1;
+            }
+
+            if (e.KeyCode == Keys.K)
+            {
+                Downward.BackColor = Color.Green;
+                Downward.ForeColor = Color.White;
+                // Instrutions to the drone
+                ly = -1;
+            }
+
+            if (e.KeyCode == Keys.J)
+            {
+                Counter.BackColor = Color.Green;
+                Counter.ForeColor = Color.White;
+                // Instrutions to the drone
+                lx = -1;
+            }
+
+            if (e.KeyCode == Keys.L)
+            {
+                Clockwise.BackColor = Color.Green;
+                Clockwise.ForeColor = Color.White;
+                // Instrutions to the drone
+                lx = 1;
+            }
+            Tello.controllerState.setSpeedMode(10);
+            Tello.controllerState.setAxis(lx, ly, rx, ry);
+        }
+
+        private void Form1_KeyUp(object sender, KeyEventArgs e)
+        {   
+            // Change buttons color to default settings
+            Forward.BackColor = Color.White;
+            Forward.ForeColor = Color.Black;
+            Backward.BackColor = Color.White;
+            Backward.ForeColor = Color.Black;
+            Right.BackColor = Color.White;
+            Right.ForeColor = Color.Black;
+            Left.BackColor = Color.White;
+            Left.ForeColor = Color.Black;
+            Upward.BackColor = Color.White;
+            Upward.ForeColor = Color.Black;
+            Downward.BackColor = Color.White;
+            Downward.ForeColor = Color.Black;
+            Counter.BackColor = Color.White;
+            Counter.ForeColor = Color.Black;
+            Clockwise.BackColor = Color.White;
+            Clockwise.ForeColor = Color.Black;
+            Takeoff.BackColor = Color.White;
+            Takeoff.ForeColor = Color.Black;
+            Land.BackColor = Color.White;
+            Land.ForeColor = Color.Black;
+            Hover.BackColor = Color.White;
+            Hover.ForeColor = Color.Black;
+        }
+
+        // Waypoint planner mode
+        private void WaypointMode_Click(object sender, EventArgs e)
+        {
+            if (index < listPanel.Count - 1)
+                listPanel[++index].BringToFront();
+            // Unfocus once button is pressed 
+            this.ActiveControl = null;
+        }
+
+        private void Apply_Click(object sender, EventArgs e)
+        {
+            if (index > 0 )
+                listPanel[--index].BringToFront();
+            // Unfocus once button is pressed 
+            this.ActiveControl = null;
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            listPanel.Add(panel1);
+            listPanel.Add(panel2);
+            listPanel[index].BringToFront();
         }
     }
 }
+

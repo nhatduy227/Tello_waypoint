@@ -54,16 +54,12 @@ namespace TelloLib
             client.Send(packet);
         }
 
-        public static void forward()
+        public static void hover()
         {
-            string message = "forward 100";
+            string message = "stop";
             client.Send(message);
         }
-        public static void clockwise()
-        {
-            string message = "cw 90";
-            client.Send(message);
-        }
+
 
         public static void throwTakeOff()
         {
