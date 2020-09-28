@@ -32,6 +32,7 @@ namespace Basic_GUI
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             this.Takeoff = new System.Windows.Forms.Button();
             this.Land = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -53,11 +54,19 @@ namespace Basic_GUI
             this.Hover = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.WaypointMode = new System.Windows.Forms.Button();
+            this.Run = new System.Windows.Forms.Button();
+            this.Ybox = new System.Windows.Forms.TextBox();
+            this.Xbox = new System.Windows.Forms.TextBox();
+            this.SetY = new System.Windows.Forms.Label();
+            this.SetX = new System.Windows.Forms.Label();
+            this.PlaceWaypoint = new System.Windows.Forms.Button();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.Apply = new System.Windows.Forms.Button();
             this.WaypointLabel = new System.Windows.Forms.Label();
+            this.WaypointMode = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
             // Takeoff
@@ -275,20 +284,112 @@ namespace Basic_GUI
             this.panel1.Controls.Add(this.Takeoff);
             this.panel1.Location = new System.Drawing.Point(12, 25);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1134, 450);
+            this.panel1.Size = new System.Drawing.Size(1430, 583);
             this.panel1.TabIndex = 21;
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.Run);
+            this.panel2.Controls.Add(this.Ybox);
+            this.panel2.Controls.Add(this.Xbox);
+            this.panel2.Controls.Add(this.SetY);
+            this.panel2.Controls.Add(this.SetX);
+            this.panel2.Controls.Add(this.PlaceWaypoint);
+            this.panel2.Controls.Add(this.chart1);
+            this.panel2.Controls.Add(this.Apply);
             this.panel2.Controls.Add(this.WaypointLabel);
-            this.panel2.Location = new System.Drawing.Point(12, 25);
+            this.panel2.Location = new System.Drawing.Point(9, 25);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1134, 450);
+            this.panel2.Size = new System.Drawing.Size(1430, 580);
             this.panel2.TabIndex = 22;
+            // 
+            // Run
+            // 
+            this.Run.Location = new System.Drawing.Point(1325, 463);
+            this.Run.Name = "Run";
+            this.Run.Size = new System.Drawing.Size(91, 43);
+            this.Run.TabIndex = 31;
+            this.Run.TabStop = false;
+            this.Run.Text = "Run Flight Plan";
+            this.Run.UseVisualStyleBackColor = true;
+            this.Run.Click += new System.EventHandler(this.Run_Click);
+            // 
+            // Ybox
+            // 
+            this.Ybox.Location = new System.Drawing.Point(1324, 367);
+            this.Ybox.Name = "Ybox";
+            this.Ybox.Size = new System.Drawing.Size(92, 22);
+            this.Ybox.TabIndex = 30;
+            // 
+            // Xbox
+            // 
+            this.Xbox.Location = new System.Drawing.Point(1323, 312);
+            this.Xbox.Name = "Xbox";
+            this.Xbox.Size = new System.Drawing.Size(93, 22);
+            this.Xbox.TabIndex = 29;
+            // 
+            // SetY
+            // 
+            this.SetY.AutoSize = true;
+            this.SetY.Location = new System.Drawing.Point(1321, 341);
+            this.SetY.Name = "SetY";
+            this.SetY.Size = new System.Drawing.Size(42, 17);
+            this.SetY.TabIndex = 28;
+            this.SetY.Text = "Set Y";
+            // 
+            // SetX
+            // 
+            this.SetX.AutoSize = true;
+            this.SetX.Location = new System.Drawing.Point(1322, 286);
+            this.SetX.Name = "SetX";
+            this.SetX.Size = new System.Drawing.Size(42, 17);
+            this.SetX.TabIndex = 27;
+            this.SetX.Text = "Set X";
+            // 
+            // PlaceWaypoint
+            // 
+            this.PlaceWaypoint.Location = new System.Drawing.Point(1325, 404);
+            this.PlaceWaypoint.Name = "PlaceWaypoint";
+            this.PlaceWaypoint.Size = new System.Drawing.Size(91, 43);
+            this.PlaceWaypoint.TabIndex = 26;
+            this.PlaceWaypoint.TabStop = false;
+            this.PlaceWaypoint.Text = "Place New Waypoint";
+            this.PlaceWaypoint.UseVisualStyleBackColor = true;
+            this.PlaceWaypoint.Click += new System.EventHandler(this.PlaceWaypoint_Click);
+            // 
+            // chart1
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            this.chart1.Location = new System.Drawing.Point(3, 41);
+            this.chart1.Name = "chart1";
+            this.chart1.Size = new System.Drawing.Size(1312, 525);
+            this.chart1.TabIndex = 25;
+            this.chart1.Text = "chart1";
+            // 
+            // Apply
+            // 
+            this.Apply.Location = new System.Drawing.Point(1325, 523);
+            this.Apply.Name = "Apply";
+            this.Apply.Size = new System.Drawing.Size(91, 43);
+            this.Apply.TabIndex = 23;
+            this.Apply.TabStop = false;
+            this.Apply.Text = "Return ";
+            this.Apply.UseVisualStyleBackColor = true;
+            this.Apply.Click += new System.EventHandler(this.Apply_Click);
+            // 
+            // WaypointLabel
+            // 
+            this.WaypointLabel.AutoSize = true;
+            this.WaypointLabel.Location = new System.Drawing.Point(427, 11);
+            this.WaypointLabel.Name = "WaypointLabel";
+            this.WaypointLabel.Size = new System.Drawing.Size(120, 17);
+            this.WaypointLabel.TabIndex = 24;
+            this.WaypointLabel.Text = "Waypoint Planner";
             // 
             // WaypointMode
             // 
-            this.WaypointMode.Location = new System.Drawing.Point(311, 537);
+            this.WaypointMode.Location = new System.Drawing.Point(94, 614);
             this.WaypointMode.Name = "WaypointMode";
             this.WaypointMode.Size = new System.Drawing.Size(183, 43);
             this.WaypointMode.TabIndex = 22;
@@ -297,33 +398,12 @@ namespace Basic_GUI
             this.WaypointMode.UseVisualStyleBackColor = true;
             this.WaypointMode.Click += new System.EventHandler(this.WaypointMode_Click);
             // 
-            // Apply
-            // 
-            this.Apply.Location = new System.Drawing.Point(558, 537);
-            this.Apply.Name = "Apply";
-            this.Apply.Size = new System.Drawing.Size(183, 43);
-            this.Apply.TabIndex = 23;
-            this.Apply.TabStop = false;
-            this.Apply.Text = "Apply Flight Plan";
-            this.Apply.UseVisualStyleBackColor = true;
-            this.Apply.Click += new System.EventHandler(this.Apply_Click);
-            // 
-            // WaypointLabel
-            // 
-            this.WaypointLabel.AutoSize = true;
-            this.WaypointLabel.Location = new System.Drawing.Point(100, 44);
-            this.WaypointLabel.Name = "WaypointLabel";
-            this.WaypointLabel.Size = new System.Drawing.Size(184, 17);
-            this.WaypointLabel.TabIndex = 24;
-            this.WaypointLabel.Text = "This is the waypoint planner";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1465, 676);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.Apply);
             this.Controls.Add(this.WaypointMode);
             this.Controls.Add(this.panel1);
             this.Name = "Form1";
@@ -335,6 +415,7 @@ namespace Basic_GUI
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -365,6 +446,13 @@ namespace Basic_GUI
         private System.Windows.Forms.Label WaypointLabel;
         private System.Windows.Forms.Button WaypointMode;
         private System.Windows.Forms.Button Apply;
+        private Chart chart1;
+        private System.Windows.Forms.Button PlaceWaypoint;
+        private System.Windows.Forms.Label SetX;
+        private System.Windows.Forms.TextBox Xbox;
+        private System.Windows.Forms.Label SetY;
+        private System.Windows.Forms.TextBox Ybox;
+        private System.Windows.Forms.Button Run;
     }
 }
 

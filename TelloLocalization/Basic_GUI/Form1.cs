@@ -3,8 +3,9 @@ using System.Linq;
 using System.Drawing;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 using TelloLib;
-
+using System.Threading;
 
 namespace Basic_GUI
 {
@@ -91,7 +92,7 @@ namespace Basic_GUI
             GetPos.PerformClick();
         }
 
-        // Keyboard events
+        // Keyboard Controls
         private void Form1_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
             if (e.KeyCode == Keys.T)
@@ -129,7 +130,7 @@ namespace Basic_GUI
                 Forward.BackColor = Color.Green;
                 Forward.ForeColor = Color.White;
                 // Instrutions to the drone
-                ry = 1;
+                ry = 0.5f;
             }
 
             if (e.KeyCode == Keys.S)
@@ -137,7 +138,7 @@ namespace Basic_GUI
                 Backward.BackColor = Color.Green;
                 Backward.ForeColor = Color.White;
                 // Instrutions to the drone
-                ry = -1;
+                ry = -0.5f;
 
             }
 
@@ -146,7 +147,7 @@ namespace Basic_GUI
                 Right.BackColor = Color.Green;
                 Right.ForeColor = Color.White;
                 // Instrutions to the drone
-                rx = -1;
+                rx = -0.5f;
             }
 
             if (e.KeyCode == Keys.D)
@@ -154,7 +155,7 @@ namespace Basic_GUI
                 Left.BackColor = Color.Green;
                 Left.ForeColor = Color.White;
                 // Instrutions to the drone
-                rx = 1;
+                rx = 0.5f;
             }
 
             if (e.KeyCode == Keys.I)
@@ -163,7 +164,7 @@ namespace Basic_GUI
                 Upward.ForeColor = Color.White;
                 // Instrutions to the drone
                 // Instrutions to the drone
-                ly = 1;
+                ly = 0.5f;
             }
 
             if (e.KeyCode == Keys.K)
@@ -171,7 +172,7 @@ namespace Basic_GUI
                 Downward.BackColor = Color.Green;
                 Downward.ForeColor = Color.White;
                 // Instrutions to the drone
-                ly = -1;
+                ly = -0.5f;
             }
 
             if (e.KeyCode == Keys.J)
@@ -179,7 +180,7 @@ namespace Basic_GUI
                 Counter.BackColor = Color.Green;
                 Counter.ForeColor = Color.White;
                 // Instrutions to the drone
-                lx = -1;
+                lx = -0.5f;
             }
 
             if (e.KeyCode == Keys.L)
@@ -187,9 +188,8 @@ namespace Basic_GUI
                 Clockwise.BackColor = Color.Green;
                 Clockwise.ForeColor = Color.White;
                 // Instrutions to the drone
-                lx = 1;
+                lx = 0.5f;
             }
-            Tello.controllerState.setSpeedMode(10);
             Tello.controllerState.setAxis(lx, ly, rx, ry);
         }
 
@@ -242,6 +242,64 @@ namespace Basic_GUI
             listPanel.Add(panel1);
             listPanel.Add(panel2);
             listPanel[index].BringToFront();
+        }
+
+        // Place Waypoint Function 
+        int Waypoint_Numb = 1;
+        int Drone_Numb = 1; 
+        private void PlaceWaypoint_Click(object sender, EventArgs e)
+        {
+            // Getting points
+            float x = float.Parse(Xbox.Text);
+            float y = float.Parse(Ybox.Text);
+
+            // Create chart
+            var chart = chart1.ChartAreas[0];
+            chart.AxisX.LabelStyle.Format = "";
+            chart.AxisY.LabelStyle.Format = "";
+
+            chart.AxisX.Minimum = 0;
+            chart.AxisX.Maximum = 100;
+            chart.AxisY.Minimum = 0;
+            chart.AxisY.Maximum = 100;
+            chart.AxisX.Interval = 10;
+            chart.AxisY.Interval = 10;
+
+            
+            if (Waypoint_Numb != 0) {
+                // Add data points 
+                string Waypoint_Name = Waypoint_Numb.ToString();
+                chart1.Series.Add(Waypoint_Name);
+                chart1.Series[Waypoint_Name].ChartType = SeriesChartType.Point;
+                chart1.Series[Waypoint_Name].Color = Color.Blue;
+                chart1.Series[Waypoint_Name].MarkerStyle = MarkerStyle.Circle;
+                chart1.Series[Waypoint_Name].MarkerSize = 15;
+                chart1.Series[Waypoint_Name].Points.AddXY(x, y);
+                chart1.Series[Waypoint_Name].SetCustomProperty("X_val", x.ToString());
+                chart1.Series[Waypoint_Name].SetCustomProperty("Y_val", y.ToString());
+
+                // Operation for next way point 
+                Waypoint_Numb += 1;
+            }  
+        }
+
+        private void Run_Click(object sender, EventArgs e)
+        {
+            
+            for (int i = 1; i  <  Waypoint_Numb; i++) {
+                string Drone = "Drone " + Drone_Numb.ToString();
+                chart1.Series.Add(Drone);
+                chart1.Series[Drone].MarkerImage = "C:/Users/nomie/Desktop/Tello Project/Tello_waypoint/TelloLocalization/img/drone.png";
+                float current_x = float.Parse(chart1.Series[i.ToString()].GetCustomProperty("X_val"));
+                float current_y = float.Parse(chart1.Series[i.ToString()].GetCustomProperty("Y_val"));
+                chart1.Series[Drone].Points.AddXY(current_x, current_y);
+                if (Drone_Numb - 1 != 0) {
+                    string Past_Drone = "Drone " + (Drone_Numb - 1).ToString();
+                    chart1.Series.Remove(chart1.Series[Past_Drone]);
+                }
+                
+                Drone_Numb += 1;
+            }
         }
     }
 }
