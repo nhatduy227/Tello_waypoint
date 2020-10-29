@@ -2,6 +2,7 @@
 using System.Linq;
 using System.IO;
 using System.Drawing;
+using System.Xml;
 using System.Windows.Forms;
 using TelloLib;
 
@@ -78,17 +79,20 @@ namespace Basic_GUI
             label5.Text = Tello.state.posY.ToString();
             label6.Text = Tello.state.posZ.ToString();
 
-            
-            Data.PosX = Tello.state.posX.ToString();
-            Data.PosY = Tello.state.posY.ToString();
-            Data.PosZ = Tello.state.posZ.ToString();
+            // Saving to XML
+            Data.PosX = Math.Floor(Tello.state.posX).ToString();
+            Data.PosY = Math.Floor(Tello.state.posY).ToString();
+            Data.PosZ = Math.Floor(Tello.state.posZ).ToString();
+            Data.FlightTime = Tello.state.flyTime.ToString();
             Data.TimeStamp = System.DateTime.Now.ToString();
-            Data.AddRecordToXML(Data.TimeStamp,Data.PosX,Data.PosY,Data.PosZ, run);
+            Data.AddRecordToXML(Data.FlightTime,Data.TimeStamp,Data.PosX,Data.PosY,Data.PosZ, run);
+
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            GetPos.PerformClick();
+            //if (Tello.state.flying) 
+                GetPos.PerformClick();
         }
 
         // Keyboard Controls
@@ -217,6 +221,58 @@ namespace Basic_GUI
             Hover.BackColor = Color.White;
             Hover.ForeColor = Color.Black;
         }
+
+        private void Compare_Click(object sender, EventArgs e)
+        {
+            string inputRun = textBox1.Text;
+            string inputRun2 = textBox2.Text;
+            // Plotting for comparation 
+            XmlTextReader xtr = new XmlTextReader(@"C:/Users/nomie/Desktop/Tello_waypoint/XML-positioning/" + inputRun.ToString() + ".xml");
+            while (xtr.Read())
+            {
+                string s1 = "";
+                string s2 = "";
+                string s3 = "";
+                string s4 = "";
+                if (xtr.NodeType == XmlNodeType.Element && xtr.Name == "FlightTime")
+                {
+                    s1 = xtr.ReadElementString();
+                }
+                if (xtr.NodeType == XmlNodeType.Element && xtr.Name == "PosX")
+                {
+                    s2 = xtr.ReadElementString();
+                }
+                if (xtr.NodeType == XmlNodeType.Element && xtr.Name == "PosY")
+                {
+                    s3 = xtr.ReadElementString();
+                }
+                if (xtr.NodeType == XmlNodeType.Element && xtr.Name == "PosZ")
+                {
+                    s4 = xtr.ReadElementString();
+                }
+                if (s2 != "") {
+                    chart1.Series["Position X"].Points.AddXY(s1, s2);
+
+                }
+
+                if (s3 != "")
+                {
+                    chart1.Series["Position Y"].Points.AddXY(s1, s3);
+
+                }
+                if (s4 != "")
+                {
+                    chart1.Series["Position Z"].Points.AddXY(s1, s4);
+                }
+            }
+            chart1.Visible = true;
+        }
+
+        private void Back_Click(object sender, EventArgs e)
+        {
+            chart1.Visible = false;
+        }
+
     }
 }
 

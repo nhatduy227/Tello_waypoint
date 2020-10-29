@@ -1,4 +1,5 @@
-﻿using System.Xml;
+﻿using System;
+using System.Xml;
 
 namespace Basic_GUI
 {
@@ -8,6 +9,7 @@ namespace Basic_GUI
         private string txtdata2;
         private string txtdata3;
         private string txtdata4;
+        private string txtdata5;
         string path = "C:/Users/nomie/Desktop/Tello_waypoint/XML-positioning/Run";
 
         public string PosX {
@@ -33,8 +35,13 @@ namespace Basic_GUI
             set { txtdata4 = value; }
         }
 
+        public string FlightTime
+        {
+            get { return txtdata5; }
+            set { txtdata5 = value; }
+        }
 
-        public void AddRecordToXML(string TimeStamp, string PosX, string PosY, string PosZ, int run) {
+        public void AddRecordToXML(string FlightTime, string TimeStamp, string PosX, string PosY, string PosZ, int run) {
             XmlDocument doc = new XmlDocument();
             doc.Load(@path + run.ToString()+".xml");
             XmlNode root = doc.SelectSingleNode("WAYPOINTS");
@@ -44,6 +51,10 @@ namespace Basic_GUI
             XmlAttribute id = doc.CreateAttribute("id");
             id.Value = doc.SelectNodes("WAYPOINTS/POINT").Count.ToString();
             point.Attributes.Append(id);
+
+            XmlElement flightTime = doc.CreateElement("FlightTime");
+            flightTime.InnerText = FlightTime;
+            point.AppendChild(flightTime);
 
             XmlElement timeStamp = doc.CreateElement("TimeStamp");
             timeStamp.InnerText = TimeStamp;

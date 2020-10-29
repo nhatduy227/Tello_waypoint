@@ -1,17 +1,93 @@
 <WAYPOINTS>
   <POINT id="1">
+    <FlightTime>0</FlightTime>
+    <TimeStamp>10/28/2020 3:32:24 PM</TimeStamp>
     <PosX>0</PosX>
     <PosY>0</PosY>
     <PosZ>0</PosZ>
   </POINT>
   <POINT id="2">
-    <PosX>0</PosX>
+    <FlightTime>8</FlightTime>
+    <TimeStamp>10/28/2020 3:32:26 PM</TimeStamp>
+    <PosX>-1</PosX>
     <PosY>0</PosY>
-    <PosZ>0</PosZ>
+    <PosZ>-1</PosZ>
   </POINT>
   <POINT id="3">
+    <FlightTime>28</FlightTime>
+    <TimeStamp>10/28/2020 3:32:28 PM</TimeStamp>
+    <PosX>-10</PosX>
+    <PosY>7</PosY>
+    <PosZ>-16</PosZ>
+  </POINT>
+  <POINT id="4">
+    <FlightTime>48</FlightTime>
+    <TimeStamp>10/28/2020 3:32:30 PM</TimeStamp>
+    <PosX>-10</PosX>
+    <PosY>7</PosY>
+    <PosZ>-16</PosZ>
+  </POINT>
+  <POINT id="5">
+    <FlightTime>68</FlightTime>
+    <TimeStamp>10/28/2020 3:32:32 PM</TimeStamp>
+    <PosX>-10</PosX>
+    <PosY>7</PosY>
+    <PosZ>-16</PosZ>
+  </POINT>
+  <POINT id="6">
+    <FlightTime>88</FlightTime>
+    <TimeStamp>10/28/2020 3:32:34 PM</TimeStamp>
+    <PosX>-10</PosX>
+    <PosY>7</PosY>
+    <PosZ>-16</PosZ>
+  </POINT>
+  <POINT id="7">
+    <FlightTime>108</FlightTime>
+    <TimeStamp>10/28/2020 3:32:36 PM</TimeStamp>
+    <PosX>-10</PosX>
+    <PosY>7</PosY>
+    <PosZ>-16</PosZ>
+  </POINT>
+  <POINT id="8">
+    <FlightTime>128</FlightTime>
+    <TimeStamp>10/28/2020 3:32:38 PM</TimeStamp>
+    <PosX>-10</PosX>
+    <PosY>7</PosY>
+    <PosZ>-16</PosZ>
+  </POINT>
+  <POINT id="9">
+    <FlightTime>148</FlightTime>
+    <TimeStamp>10/28/2020 3:32:40 PM</TimeStamp>
+    <PosX>-9</PosX>
+    <PosY>8</PosY>
+    <PosZ>-16</PosZ>
+  </POINT>
+  <POINT id="10">
+    <FlightTime>168</FlightTime>
+    <TimeStamp>10/28/2020 3:32:42 PM</TimeStamp>
     <PosX>0</PosX>
     <PosY>0</PosY>
-    <PosZ>0</PosZ>
+    <PosZ>-1</PosZ>
+  </POINT>
+  <POINT id="11">
+    <FlightTime>178</FlightTime>
+    <TimeStamp>10/28/2020 3:32:44 PM</TimeStamp>
+    <PosX>0</PosX>
+    <PosY>0</PosY>
+    <PosZ>-1</PosZ>
+  </POINT>
+  <POINT id="12">
+    <FlightTime>178</FlightTime>
+    <TimeStamp>10/28/2020 3:32:46 PM</TimeStamp>
+    <PosX>0</PosX>
+    <PosY>0</PosY>
+    <PosZ>-1</PosZ>
+  </POINT>
+  <POINT id="13">
+    <FlightTime>178</FlightTime>
+    <TimeStamp>10/28/2020 3:32:48 PM</TimeStamp>
+    <PosX>0</PosX>
+    <PosY>0</PosY>
+    <PosZ>-1</PosZ>
   </POINT>
 </WAYPOINTS>
