@@ -78,11 +78,12 @@ namespace Basic_GUI
             label4.Text = Tello.state.posX.ToString();
             label5.Text = Tello.state.posY.ToString();
             label6.Text = Tello.state.posZ.ToString();
+            label8.Text = Tello.state.height.ToString();
 
             // Saving to XML
-            Data.PosX = Math.Floor(Tello.state.posX).ToString();
-            Data.PosY = Math.Floor(Tello.state.posY).ToString();
-            Data.PosZ = Math.Floor(Tello.state.posZ).ToString();
+            Data.PosX = Tello.state.posX.ToString();
+            Data.PosY = Tello.state.posY.ToString();
+            Data.PosZ = Tello.state.posZ.ToString();
             Data.FlightTime = Tello.state.flyTime.ToString();
             Data.TimeStamp = System.DateTime.Now.ToString();
             Data.AddRecordToXML(Data.FlightTime,Data.TimeStamp,Data.PosX,Data.PosY,Data.PosZ, run);
@@ -91,7 +92,7 @@ namespace Basic_GUI
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            //if (Tello.state.flying) 
+            //if (Tello.state.flying)
                 GetPos.PerformClick();
         }
 
@@ -104,6 +105,7 @@ namespace Basic_GUI
                 Takeoff.ForeColor = Color.White;
                 // Instrutions to the drone
                 Tello.takeOff();
+                Data.CreateXMLFile(run);
             }
 
             if (e.KeyCode == Keys.Y)
@@ -225,7 +227,6 @@ namespace Basic_GUI
         private void Compare_Click(object sender, EventArgs e)
         {
             string inputRun = textBox1.Text;
-            string inputRun2 = textBox2.Text;
             // Plotting for comparation 
             XmlTextReader xtr = new XmlTextReader(@"C:/Users/nomie/Desktop/Tello_waypoint/XML-positioning/" + inputRun.ToString() + ".xml");
             while (xtr.Read())
@@ -272,7 +273,6 @@ namespace Basic_GUI
         {
             chart1.Visible = false;
         }
-
     }
 }
 

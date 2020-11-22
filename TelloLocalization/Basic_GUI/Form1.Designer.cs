@@ -33,11 +33,11 @@ namespace Basic_GUI
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.Hover = new System.Windows.Forms.Button();
             this.Clockwise = new System.Windows.Forms.Button();
@@ -62,14 +62,15 @@ namespace Basic_GUI
             this.Back = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
             // timer1
             // 
             this.timer1.Enabled = true;
-            this.timer1.Interval = 2000;
+            this.timer1.Interval = 500;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Hover
@@ -174,7 +175,7 @@ namespace Basic_GUI
             // GetPos
             // 
             this.GetPos.BackColor = System.Drawing.Color.White;
-            this.GetPos.Location = new System.Drawing.Point(20, 118);
+            this.GetPos.Location = new System.Drawing.Point(20, 144);
             this.GetPos.Name = "GetPos";
             this.GetPos.Size = new System.Drawing.Size(116, 35);
             this.GetPos.TabIndex = 29;
@@ -261,27 +262,27 @@ namespace Basic_GUI
             // 
             // chart1
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
-            this.chart1.Location = new System.Drawing.Point(1, 2);
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
+            this.chart1.Location = new System.Drawing.Point(93, 488);
             this.chart1.Name = "chart1";
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series4.Legend = "Legend1";
-            series4.Name = "Position X";
-            series5.ChartArea = "ChartArea1";
-            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series5.Legend = "Legend1";
-            series5.Name = "Position Y";
-            series6.ChartArea = "ChartArea1";
-            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series6.Legend = "Legend1";
-            series6.Name = "Position Z";
-            this.chart1.Series.Add(series4);
-            this.chart1.Series.Add(series5);
-            this.chart1.Series.Add(series6);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series1.Legend = "Legend1";
+            series1.Name = "Position X";
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.Legend = "Legend1";
+            series2.Name = "Position Y";
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series3.Legend = "Legend1";
+            series3.Name = "Position Z";
+            this.chart1.Series.Add(series1);
+            this.chart1.Series.Add(series2);
+            this.chart1.Series.Add(series3);
             this.chart1.Size = new System.Drawing.Size(1133, 604);
             this.chart1.TabIndex = 39;
             this.chart1.Text = "chart1";
@@ -289,18 +290,18 @@ namespace Basic_GUI
             // 
             // Compare
             // 
-            this.Compare.Location = new System.Drawing.Point(1143, 171);
+            this.Compare.Location = new System.Drawing.Point(1143, 133);
             this.Compare.Name = "Compare";
             this.Compare.Size = new System.Drawing.Size(149, 46);
             this.Compare.TabIndex = 40;
             this.Compare.TabStop = false;
-            this.Compare.Text = "Compare";
+            this.Compare.Text = "Show Graph";
             this.Compare.UseVisualStyleBackColor = true;
             this.Compare.Click += new System.EventHandler(this.Compare_Click);
             // 
             // Back
             // 
-            this.Back.Location = new System.Drawing.Point(1143, 242);
+            this.Back.Location = new System.Drawing.Point(1143, 204);
             this.Back.Name = "Back";
             this.Back.Size = new System.Drawing.Size(149, 46);
             this.Back.TabIndex = 41;
@@ -326,20 +327,31 @@ namespace Basic_GUI
             this.textBox1.TabIndex = 43;
             this.textBox1.TabStop = false;
             // 
-            // textBox2
+            // label8
             // 
-            this.textBox2.Location = new System.Drawing.Point(1143, 124);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(165, 22);
-            this.textBox2.TabIndex = 44;
-            this.textBox2.TabStop = false;
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(90, 114);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(46, 17);
+            this.label8.TabIndex = 44;
+            this.label8.Text = "label8";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(24, 114);
+            this.label9.Name = "Height";
+            this.label9.Size = new System.Drawing.Size(46, 17);
+            this.label9.TabIndex = 45;
+            this.label9.Text = "Height";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1465, 676);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.Back);
@@ -398,7 +410,8 @@ namespace Basic_GUI
         private System.Windows.Forms.Button Back;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
     }
 }
 
