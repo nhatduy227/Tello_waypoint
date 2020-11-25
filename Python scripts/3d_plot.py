@@ -4,4 +4,4 @@ import matplotlib.pyplot as plt
 
 fig = plt.figure()
 ax = plt.axes(projection='3d')
-Tam = 1
+Tam = 3
