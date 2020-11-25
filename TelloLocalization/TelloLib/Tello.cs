@@ -60,7 +60,6 @@ namespace TelloLib
             client.Send(message);
         }
 
-
         public static void throwTakeOff()
         {
             var packet = new byte[] { 0xcc, 0x58, 0x00, 0x7c, 0x48, 0x5d, 0x00, 0xe4, 0x01, 0xc2, 0x16 };

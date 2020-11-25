@@ -1,0 +1,975 @@
+<WAYPOINTS>
+  <POINT id="1">
+    <FlightTime>61</FlightTime>
+    <TimeStamp>11/22/2020 3:39:24 PM</TimeStamp>
+    <PosX>-0.002403259</PosX>
+    <PosY>0.005197525</PosY>
+    <PosZ>10</PosZ>
+  </POINT>
+  <POINT id="2">
+    <FlightTime>66</FlightTime>
+    <TimeStamp>11/22/2020 3:39:25 PM</TimeStamp>
+    <PosX>-0.005195618</PosX>
+    <PosY>0.005823135</PosY>
+    <PosZ>10</PosZ>
+  </POINT>
+  <POINT id="3">
+    <FlightTime>71</FlightTime>
+    <TimeStamp>11/22/2020 3:39:25 PM</TimeStamp>
+    <PosX>-0.004753113</PosX>
+    <PosY>0.009078979</PosY>
+    <PosZ>10</PosZ>
+  </POINT>
+  <POINT id="4">
+    <FlightTime>76</FlightTime>
+    <TimeStamp>11/22/2020 3:39:26 PM</TimeStamp>
+    <PosX>-0.007019043</PosX>
+    <PosY>0.01429939</PosY>
+    <PosZ>10</PosZ>
+  </POINT>
+  <POINT id="5">
+    <FlightTime>81</FlightTime>
+    <TimeStamp>11/22/2020 3:39:26 PM</TimeStamp>
+    <PosX>-0.0144577</PosX>
+    <PosY>0.01999664</PosY>
+    <PosZ>10</PosZ>
+  </POINT>
+  <POINT id="6">
+    <FlightTime>86</FlightTime>
+    <TimeStamp>11/22/2020 3:39:27 PM</TimeStamp>
+    <PosX>-0.01589966</PosX>
+    <PosY>0.02191544</PosY>
+    <PosZ>10</PosZ>
+  </POINT>
+  <POINT id="7">
+    <FlightTime>90</FlightTime>
+    <TimeStamp>11/22/2020 3:39:27 PM</TimeStamp>
+    <PosX>-0.01882172</PosX>
+    <PosY>0.02486229</PosY>
+    <PosZ>10</PosZ>
+  </POINT>
+  <POINT id="8">
+    <FlightTime>96</FlightTime>
+    <TimeStamp>11/22/2020 3:39:28 PM</TimeStamp>
+    <PosX>-0.02310944</PosX>
+    <PosY>0.03042603</PosY>
+    <PosZ>10</PosZ>
+  </POINT>
+  <POINT id="9">
+    <FlightTime>101</FlightTime>
+    <TimeStamp>11/22/2020 3:39:28 PM</TimeStamp>
+    <PosX>-0.03083801</PosX>
+    <PosY>0.03364182</PosY>
+    <PosZ>10</PosZ>
+  </POINT>
+  <POINT id="10">
+    <FlightTime>106</FlightTime>
+    <TimeStamp>11/22/2020 3:39:29 PM</TimeStamp>
+    <PosX>-0.04478455</PosX>
+    <PosY>0.03701782</PosY>
+    <PosZ>10</PosZ>
+  </POINT>
+  <POINT id="11">
+    <FlightTime>111</FlightTime>
+    <TimeStamp>11/22/2020 3:39:29 PM</TimeStamp>
+    <PosX>-0.05096436</PosX>
+    <PosY>0.03758621</PosY>
+    <PosZ>10</PosZ>
+  </POINT>
+  <POINT id="12">
+    <FlightTime>116</FlightTime>
+    <TimeStamp>11/22/2020 3:39:30 PM</TimeStamp>
+    <PosX>-0.04837799</PosX>
+    <PosY>0.03694534</PosY>
+    <PosZ>10</PosZ>
+  </POINT>
+  <POINT id="13">
+    <FlightTime>121</FlightTime>
+    <TimeStamp>11/22/2020 3:39:30 PM</TimeStamp>
+    <PosX>-0.04585266</PosX>
+    <PosY>0.03372955</PosY>
+    <PosZ>10</PosZ>
+  </POINT>
+  <POINT id="14">
+    <FlightTime>126</FlightTime>
+    <TimeStamp>11/22/2020 3:39:31 PM</TimeStamp>
+    <PosX>-0.05028534</PosX>
+    <PosY>0.02866936</PosY>
+    <PosZ>10</PosZ>
+  </POINT>
+  <POINT id="15">
+    <FlightTime>131</FlightTime>
+    <TimeStamp>11/22/2020 3:39:31 PM</TimeStamp>
+    <PosX>-0.1983566</PosX>
+    <PosY>-0.06628418</PosY>
+    <PosZ>10</PosZ>
+  </POINT>
+  <POINT id="16">
+    <FlightTime>136</FlightTime>
+    <TimeStamp>11/22/2020 3:39:32 PM</TimeStamp>
+    <PosX>-0.4281082</PosX>
+    <PosY>-0.216156</PosY>
+    <PosZ>10</PosZ>
+  </POINT>
+  <POINT id="17">
+    <FlightTime>141</FlightTime>
+    <TimeStamp>11/22/2020 3:39:32 PM</TimeStamp>
+    <PosX>-0.6919556</PosX>
+    <PosY>-0.3869419</PosY>
+    <PosZ>10</PosZ>
+  </POINT>
+  <POINT id="18">
+    <FlightTime>146</FlightTime>
+    <TimeStamp>11/22/2020 3:39:33 PM</TimeStamp>
+    <PosX>-0.9491043</PosX>
+    <PosY>-0.515934</PosY>
+    <PosZ>10</PosZ>
+  </POINT>
+  <POINT id="19">
+    <FlightTime>151</FlightTime>
+    <TimeStamp>11/22/2020 3:39:33 PM</TimeStamp>
+    <PosX>-1.090675</PosX>
+    <PosY>-0.5645466</PosY>
+    <PosZ>10</PosZ>
+  </POINT>
+  <POINT id="20">
+    <FlightTime>156</FlightTime>
+    <TimeStamp>11/22/2020 3:39:34 PM</TimeStamp>
+    <PosX>-1.139015</PosX>
+    <PosY>-0.5559635</PosY>
+    <PosZ>10</PosZ>
+  </POINT>
+  <POINT id="21">
+    <FlightTime>161</FlightTime>
+    <TimeStamp>11/22/2020 3:39:34 PM</TimeStamp>
+    <PosX>-1.153336</PosX>
+    <PosY>-0.5425892</PosY>
+    <PosZ>10</PosZ>
+  </POINT>
+  <POINT id="22">
+    <FlightTime>166</FlightTime>
+    <TimeStamp>11/22/2020 3:39:35 PM</TimeStamp>
+    <PosX>-1.148712</PosX>
+    <PosY>-0.5181026</PosY>
+    <PosZ>10</PosZ>
+  </POINT>
+  <POINT id="23">
+    <FlightTime>171</FlightTime>
+    <TimeStamp>11/22/2020 3:39:35 PM</TimeStamp>
+    <PosX>-1.140518</PosX>
+    <PosY>-0.5089283</PosY>
+    <PosZ>10</PosZ>
+  </POINT>
+  <POINT id="24">
+    <FlightTime>176</FlightTime>
+    <TimeStamp>11/22/2020 3:39:36 PM</TimeStamp>
+    <PosX>-1.119896</PosX>
+    <PosY>-0.5015564</PosY>
+    <PosZ>10</PosZ>
+  </POINT>
+  <POINT id="25">
+    <FlightTime>181</FlightTime>
+    <TimeStamp>11/22/2020 3:39:36 PM</TimeStamp>
+    <PosX>-1.116646</PosX>
+    <PosY>-0.4996796</PosY>
+    <PosZ>11</PosZ>
+  </POINT>
+  <POINT id="26">
+    <FlightTime>186</FlightTime>
+    <TimeStamp>11/22/2020 3:39:37 PM</TimeStamp>
+    <PosX>-1.137543</PosX>
+    <PosY>-0.5158138</PosY>
+    <PosZ>11</PosZ>
+  </POINT>
+  <POINT id="27">
+    <FlightTime>191</FlightTime>
+    <TimeStamp>11/22/2020 3:39:37 PM</TimeStamp>
+    <PosX>-1.149307</PosX>
+    <PosY>-0.5360107</PosY>
+    <PosZ>10</PosZ>
+  </POINT>
+  <POINT id="28">
+    <FlightTime>196</FlightTime>
+    <TimeStamp>11/22/2020 3:39:38 PM</TimeStamp>
+    <PosX>-1.165359</PosX>
+    <PosY>-0.5515518</PosY>
+    <PosZ>10</PosZ>
+  </POINT>
+  <POINT id="29">
+    <FlightTime>201</FlightTime>
+    <TimeStamp>11/22/2020 3:39:38 PM</TimeStamp>
+    <PosX>-1.170319</PosX>
+    <PosY>-0.5795765</PosY>
+    <PosZ>10</PosZ>
+  </POINT>
+  <POINT id="30">
+    <FlightTime>206</FlightTime>
+    <TimeStamp>11/22/2020 3:39:39 PM</TimeStamp>
+    <PosX>-1.170563</PosX>
+    <PosY>-0.6158028</PosY>
+    <PosZ>10</PosZ>
+  </POINT>
+  <POINT id="31">
+    <FlightTime>211</FlightTime>
+    <TimeStamp>11/22/2020 3:39:39 PM</TimeStamp>
+    <PosX>-1.171005</PosX>
+    <PosY>-0.630434</PosY>
+    <PosZ>10</PosZ>
+  </POINT>
+  <POINT id="32">
+    <FlightTime>216</FlightTime>
+    <TimeStamp>11/22/2020 3:39:40 PM</TimeStamp>
+    <PosX>-1.165337</PosX>
+    <PosY>-0.6461716</PosY>
+    <PosZ>10</PosZ>
+  </POINT>
+  <POINT id="33">
+    <FlightTime>221</FlightTime>
+    <TimeStamp>11/22/2020 3:39:40 PM</TimeStamp>
+    <PosX>-1.135788</PosX>
+    <PosY>-0.711132</PosY>
+    <PosZ>10</PosZ>
+  </POINT>
+  <POINT id="34">
+    <FlightTime>226</FlightTime>
+    <TimeStamp>11/22/2020 3:39:41 PM</TimeStamp>
+    <PosX>-0.9907227</PosX>
+    <PosY>-1.029152</PosY>
+    <PosZ>10</PosZ>
+  </POINT>
+  <POINT id="35">
+    <FlightTime>231</FlightTime>
+    <TimeStamp>11/22/2020 3:39:41 PM</TimeStamp>
+    <PosX>-0.8583984</PosX>
+    <PosY>-1.311712</PosY>
+    <PosZ>10</PosZ>
+  </POINT>
+  <POINT id="36">
+    <FlightTime>236</FlightTime>
+    <TimeStamp>11/22/2020 3:39:42 PM</TimeStamp>
+    <PosX>-0.6572418</PosX>
+    <PosY>-1.742016</PosY>
+    <PosZ>10</PosZ>
+  </POINT>
+  <POINT id="37">
+    <FlightTime>241</FlightTime>
+    <TimeStamp>11/22/2020 3:39:42 PM</TimeStamp>
+    <PosX>-0.5236816</PosX>
+    <PosY>-2.060173</PosY>
+    <PosZ>10</PosZ>
+  </POINT>
+  <POINT id="38">
+    <FlightTime>246</FlightTime>
+    <TimeStamp>11/22/2020 3:39:43 PM</TimeStamp>
+    <PosX>-0.3903122</PosX>
+    <PosY>-2.423935</PosY>
+    <PosZ>10</PosZ>
+  </POINT>
+  <POINT id="39">
+    <FlightTime>251</FlightTime>
+    <TimeStamp>11/22/2020 3:39:43 PM</TimeStamp>
+    <PosX>-0.3391876</PosX>
+    <PosY>-2.568771</PosY>
+    <PosZ>11</PosZ>
+  </POINT>
+  <POINT id="40">
+    <FlightTime>256</FlightTime>
+    <TimeStamp>11/22/2020 3:39:44 PM</TimeStamp>
+    <PosX>-0.3169861</PosX>
+    <PosY>-2.687551</PosY>
+    <PosZ>11</PosZ>
+  </POINT>
+  <POINT id="41">
+    <FlightTime>261</FlightTime>
+    <TimeStamp>11/22/2020 3:39:44 PM</TimeStamp>
+    <PosX>114.4876</PosX>
+    <PosY>-26.82187</PosY>
+    <PosZ>11</PosZ>
+  </POINT>
+  <POINT id="42">
+    <FlightTime>266</FlightTime>
+    <TimeStamp>11/22/2020 3:39:45 PM</TimeStamp>
+    <PosX>-0.336113</PosX>
+    <PosY>-2.680002</PosY>
+    <PosZ>11</PosZ>
+  </POINT>
+  <POINT id="43">
+    <FlightTime>271</FlightTime>
+    <TimeStamp>11/22/2020 3:39:45 PM</TimeStamp>
+    <PosX>-0.3723984</PosX>
+    <PosY>-2.680019</PosY>
+    <PosZ>11</PosZ>
+  </POINT>
+  <POINT id="44">
+    <FlightTime>276</FlightTime>
+    <TimeStamp>11/22/2020 3:39:46 PM</TimeStamp>
+    <PosX>-0.3896255</PosX>
+    <PosY>-2.692806</PosY>
+    <PosZ>10</PosZ>
+  </POINT>
+  <POINT id="45">
+    <FlightTime>281</FlightTime>
+    <TimeStamp>11/22/2020 3:39:46 PM</TimeStamp>
+    <PosX>114.4871</PosX>
+    <PosY>-26.80302</PosY>
+    <PosZ>10</PosZ>
+  </POINT>
+  <POINT id="46">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:39:47 PM</TimeStamp>
+    <PosX>114.4868</PosX>
+    <PosY>-26.80236</PosY>
+    <PosZ>11</PosZ>
+  </POINT>
+  <POINT id="47">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:39:47 PM</TimeStamp>
+    <PosX>114.4796</PosX>
+    <PosY>-26.8263</PosY>
+    <PosZ>-1</PosZ>
+  </POINT>
+  <POINT id="48">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:39:48 PM</TimeStamp>
+    <PosX>114.4504</PosX>
+    <PosY>-26.80672</PosY>
+    <PosZ>-24</PosZ>
+  </POINT>
+  <POINT id="49">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:39:48 PM</TimeStamp>
+    <PosX>114.4525</PosX>
+    <PosY>-26.8016</PosY>
+    <PosZ>-45</PosZ>
+  </POINT>
+  <POINT id="50">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:39:49 PM</TimeStamp>
+    <PosX>114.4526</PosX>
+    <PosY>-26.80134</PosY>
+    <PosZ>-59</PosZ>
+  </POINT>
+  <POINT id="51">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:39:49 PM</TimeStamp>
+    <PosX>114.4529</PosX>
+    <PosY>-26.80181</PosY>
+    <PosZ>-58</PosZ>
+  </POINT>
+  <POINT id="52">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:39:50 PM</TimeStamp>
+    <PosX>114.4519</PosX>
+    <PosY>-26.80354</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="53">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:39:50 PM</TimeStamp>
+    <PosX>114.4515</PosX>
+    <PosY>-26.80444</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="54">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:39:51 PM</TimeStamp>
+    <PosX>114.4511</PosX>
+    <PosY>-26.80544</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="55">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:39:51 PM</TimeStamp>
+    <PosX>114.4509</PosX>
+    <PosY>-26.80593</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="56">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:39:52 PM</TimeStamp>
+    <PosX>114.4507</PosX>
+    <PosY>-26.80646</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="57">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:39:52 PM</TimeStamp>
+    <PosX>114.4506</PosX>
+    <PosY>-26.80682</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="58">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:39:53 PM</TimeStamp>
+    <PosX>114.4505</PosX>
+    <PosY>-26.80699</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="59">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:39:53 PM</TimeStamp>
+    <PosX>114.4505</PosX>
+    <PosY>-26.80712</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="60">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:39:54 PM</TimeStamp>
+    <PosX>114.4504</PosX>
+    <PosY>-26.80726</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="61">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:39:54 PM</TimeStamp>
+    <PosX>114.4504</PosX>
+    <PosY>-26.80736</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="62">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:39:55 PM</TimeStamp>
+    <PosX>114.4504</PosX>
+    <PosY>-26.8074</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="63">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:39:55 PM</TimeStamp>
+    <PosX>114.4504</PosX>
+    <PosY>-26.80743</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="64">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:39:56 PM</TimeStamp>
+    <PosX>114.4504</PosX>
+    <PosY>-26.80746</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="65">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:39:56 PM</TimeStamp>
+    <PosX>114.4504</PosX>
+    <PosY>-26.80748</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="66">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:39:57 PM</TimeStamp>
+    <PosX>114.4504</PosX>
+    <PosY>-26.80749</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="67">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:39:57 PM</TimeStamp>
+    <PosX>114.4504</PosX>
+    <PosY>-26.8075</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="68">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:39:58 PM</TimeStamp>
+    <PosX>114.4504</PosX>
+    <PosY>-26.8075</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="69">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:39:58 PM</TimeStamp>
+    <PosX>114.4504</PosX>
+    <PosY>-26.80751</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="70">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:39:59 PM</TimeStamp>
+    <PosX>114.4504</PosX>
+    <PosY>-26.80751</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="71">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:39:59 PM</TimeStamp>
+    <PosX>114.4504</PosX>
+    <PosY>-26.8075</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="72">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:40:00 PM</TimeStamp>
+    <PosX>114.4504</PosX>
+    <PosY>-26.8075</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="73">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:40:00 PM</TimeStamp>
+    <PosX>114.4508</PosX>
+    <PosY>-26.8056</PosY>
+    <PosZ>1</PosZ>
+  </POINT>
+  <POINT id="74">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:40:01 PM</TimeStamp>
+    <PosX>114.4511</PosX>
+    <PosY>-26.81343</PosY>
+    <PosZ>11</PosZ>
+  </POINT>
+  <POINT id="75">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:40:01 PM</TimeStamp>
+    <PosX>114.4686</PosX>
+    <PosY>-26.81774</PosY>
+    <PosZ>13</PosZ>
+  </POINT>
+  <POINT id="76">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:40:02 PM</TimeStamp>
+    <PosX>114.4689</PosX>
+    <PosY>-26.82259</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="77">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:40:02 PM</TimeStamp>
+    <PosX>114.4715</PosX>
+    <PosY>-26.82379</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="78">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:40:03 PM</TimeStamp>
+    <PosX>114.4665</PosX>
+    <PosY>-26.82592</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="79">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:40:03 PM</TimeStamp>
+    <PosX>114.4734</PosX>
+    <PosY>-26.82542</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="80">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:40:04 PM</TimeStamp>
+    <PosX>114.4787</PosX>
+    <PosY>-26.8177</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="81">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:40:04 PM</TimeStamp>
+    <PosX>114.4713</PosX>
+    <PosY>-26.80843</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="82">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:40:05 PM</TimeStamp>
+    <PosX>114.4595</PosX>
+    <PosY>-26.81275</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="83">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:40:05 PM</TimeStamp>
+    <PosX>114.4663</PosX>
+    <PosY>-26.80943</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="84">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:40:06 PM</TimeStamp>
+    <PosX>114.4656</PosX>
+    <PosY>-26.81575</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="85">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:40:06 PM</TimeStamp>
+    <PosX>114.4834</PosX>
+    <PosY>-26.8097</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="86">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:40:07 PM</TimeStamp>
+    <PosX>114.4831</PosX>
+    <PosY>-26.80572</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="87">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:40:07 PM</TimeStamp>
+    <PosX>114.4794</PosX>
+    <PosY>-26.80244</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="88">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:40:08 PM</TimeStamp>
+    <PosX>114.4782</PosX>
+    <PosY>-26.81166</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="89">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:40:08 PM</TimeStamp>
+    <PosX>114.4701</PosX>
+    <PosY>-26.82486</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="90">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:40:09 PM</TimeStamp>
+    <PosX>114.4735</PosX>
+    <PosY>-26.82824</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="91">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:40:09 PM</TimeStamp>
+    <PosX>114.4744</PosX>
+    <PosY>-26.83152</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="92">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:40:10 PM</TimeStamp>
+    <PosX>114.4762</PosX>
+    <PosY>-26.83179</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="93">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:40:10 PM</TimeStamp>
+    <PosX>114.4762</PosX>
+    <PosY>-26.83179</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="94">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:40:11 PM</TimeStamp>
+    <PosX>114.4762</PosX>
+    <PosY>-26.83179</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="95">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:40:11 PM</TimeStamp>
+    <PosX>114.4762</PosX>
+    <PosY>-26.83179</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="96">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:40:12 PM</TimeStamp>
+    <PosX>114.4762</PosX>
+    <PosY>-26.83179</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="97">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:40:12 PM</TimeStamp>
+    <PosX>114.4762</PosX>
+    <PosY>-26.83179</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="98">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:40:13 PM</TimeStamp>
+    <PosX>114.4762</PosX>
+    <PosY>-26.83178</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="99">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:40:13 PM</TimeStamp>
+    <PosX>114.4762</PosX>
+    <PosY>-26.83178</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="100">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:40:14 PM</TimeStamp>
+    <PosX>114.4762</PosX>
+    <PosY>-26.83178</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="101">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:40:14 PM</TimeStamp>
+    <PosX>114.4762</PosX>
+    <PosY>-26.83178</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="102">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:40:15 PM</TimeStamp>
+    <PosX>114.4762</PosX>
+    <PosY>-26.83178</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="103">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:40:15 PM</TimeStamp>
+    <PosX>114.4762</PosX>
+    <PosY>-26.83178</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="104">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:40:16 PM</TimeStamp>
+    <PosX>114.4762</PosX>
+    <PosY>-26.83177</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="105">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:40:16 PM</TimeStamp>
+    <PosX>114.4762</PosX>
+    <PosY>-26.83177</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="106">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:40:17 PM</TimeStamp>
+    <PosX>114.4762</PosX>
+    <PosY>-26.83177</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="107">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:40:17 PM</TimeStamp>
+    <PosX>114.4762</PosX>
+    <PosY>-26.83177</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="108">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:40:18 PM</TimeStamp>
+    <PosX>114.4762</PosX>
+    <PosY>-26.83177</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="109">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:40:18 PM</TimeStamp>
+    <PosX>114.4762</PosX>
+    <PosY>-26.83176</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="110">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:40:19 PM</TimeStamp>
+    <PosX>114.4762</PosX>
+    <PosY>-26.83176</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="111">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:40:19 PM</TimeStamp>
+    <PosX>114.4762</PosX>
+    <PosY>-26.83176</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="112">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:40:20 PM</TimeStamp>
+    <PosX>114.4762</PosX>
+    <PosY>-26.83176</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="113">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:40:20 PM</TimeStamp>
+    <PosX>114.4762</PosX>
+    <PosY>-26.83176</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="114">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:40:21 PM</TimeStamp>
+    <PosX>114.4762</PosX>
+    <PosY>-26.83176</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="115">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:40:21 PM</TimeStamp>
+    <PosX>114.4762</PosX>
+    <PosY>-26.83176</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="116">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:40:22 PM</TimeStamp>
+    <PosX>114.4762</PosX>
+    <PosY>-26.83176</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="117">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:40:22 PM</TimeStamp>
+    <PosX>114.4762</PosX>
+    <PosY>-26.83176</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="118">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:40:23 PM</TimeStamp>
+    <PosX>114.4762</PosX>
+    <PosY>-26.83175</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="119">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:40:23 PM</TimeStamp>
+    <PosX>114.4762</PosX>
+    <PosY>-26.83175</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="120">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:40:24 PM</TimeStamp>
+    <PosX>114.4762</PosX>
+    <PosY>-26.83175</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="121">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:40:24 PM</TimeStamp>
+    <PosX>114.4762</PosX>
+    <PosY>-26.83175</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="122">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:40:25 PM</TimeStamp>
+    <PosX>114.4762</PosX>
+    <PosY>-26.83175</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="123">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:40:25 PM</TimeStamp>
+    <PosX>114.4762</PosX>
+    <PosY>-26.83175</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="124">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:40:26 PM</TimeStamp>
+    <PosX>114.4762</PosX>
+    <PosY>-26.83175</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="125">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:40:26 PM</TimeStamp>
+    <PosX>114.4762</PosX>
+    <PosY>-26.83175</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="126">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:40:27 PM</TimeStamp>
+    <PosX>114.4762</PosX>
+    <PosY>-26.83175</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="127">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:40:27 PM</TimeStamp>
+    <PosX>114.4762</PosX>
+    <PosY>-26.83175</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="128">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:40:28 PM</TimeStamp>
+    <PosX>114.4762</PosX>
+    <PosY>-26.83175</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="129">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:40:28 PM</TimeStamp>
+    <PosX>114.4762</PosX>
+    <PosY>-26.83175</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="130">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:40:29 PM</TimeStamp>
+    <PosX>114.4762</PosX>
+    <PosY>-26.83175</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="131">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:40:29 PM</TimeStamp>
+    <PosX>114.4762</PosX>
+    <PosY>-26.83175</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="132">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:40:30 PM</TimeStamp>
+    <PosX>114.4762</PosX>
+    <PosY>-26.83175</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="133">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:40:30 PM</TimeStamp>
+    <PosX>114.4762</PosX>
+    <PosY>-26.83174</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="134">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:40:31 PM</TimeStamp>
+    <PosX>114.4762</PosX>
+    <PosY>-26.83174</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="135">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:40:31 PM</TimeStamp>
+    <PosX>114.4762</PosX>
+    <PosY>-26.83174</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="136">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:40:32 PM</TimeStamp>
+    <PosX>114.4762</PosX>
+    <PosY>-26.83174</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="137">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:40:32 PM</TimeStamp>
+    <PosX>114.4762</PosX>
+    <PosY>-26.83174</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="138">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:40:33 PM</TimeStamp>
+    <PosX>114.4762</PosX>
+    <PosY>-26.83174</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="139">
+    <FlightTime>285</FlightTime>
+    <TimeStamp>11/22/2020 3:40:33 PM</TimeStamp>
+    <PosX>114.4762</PosX>
+    <PosY>-26.83174</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+</WAYPOINTS>

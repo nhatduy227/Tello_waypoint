@@ -1,0 +1,65 @@
+<WAYPOINTS>
+  <POINT id="1">
+    <FlightTime>0</FlightTime>
+    <TimeStamp>11/22/2020 3:42:22 PM</TimeStamp>
+    <PosX>0</PosX>
+    <PosY>0</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="2">
+    <FlightTime>0</FlightTime>
+    <TimeStamp>11/22/2020 3:42:22 PM</TimeStamp>
+    <PosX>0</PosX>
+    <PosY>0</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="3">
+    <FlightTime>0</FlightTime>
+    <TimeStamp>11/22/2020 3:42:23 PM</TimeStamp>
+    <PosX>0</PosX>
+    <PosY>0</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="4">
+    <FlightTime>0</FlightTime>
+    <TimeStamp>11/22/2020 3:42:23 PM</TimeStamp>
+    <PosX>0</PosX>
+    <PosY>0</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="5">
+    <FlightTime>0</FlightTime>
+    <TimeStamp>11/22/2020 3:42:24 PM</TimeStamp>
+    <PosX>0</PosX>
+    <PosY>0</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="6">
+    <FlightTime>0</FlightTime>
+    <TimeStamp>11/22/2020 3:42:24 PM</TimeStamp>
+    <PosX>0</PosX>
+    <PosY>0</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="7">
+    <FlightTime>0</FlightTime>
+    <TimeStamp>11/22/2020 3:42:25 PM</TimeStamp>
+    <PosX>0</PosX>
+    <PosY>0</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="8">
+    <FlightTime>1001</FlightTime>
+    <TimeStamp>11/22/2020 3:42:25 PM</TimeStamp>
+    <PosX>0.001173858</PosX>
+    <PosY>-0.01996578</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+  <POINT id="9">
+    <FlightTime>1001</FlightTime>
+    <TimeStamp>11/22/2020 3:42:26 PM</TimeStamp>
+    <PosX>0.001173683</PosX>
+    <PosY>-0.01996653</PosY>
+    <PosZ>0</PosZ>
+  </POINT>
+</WAYPOINTS>

@@ -33,10 +33,8 @@ namespace Basic_GUI
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.Hover = new System.Windows.Forms.Button();
@@ -64,19 +62,19 @@ namespace Basic_GUI
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.markOrigin = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
             // timer1
             // 
-            this.timer1.Enabled = true;
             this.timer1.Interval = 500;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Hover
             // 
             this.Hover.BackColor = System.Drawing.Color.White;
-            this.Hover.Location = new System.Drawing.Point(416, 399);
+            this.Hover.Location = new System.Drawing.Point(345, 399);
             this.Hover.Name = "Hover";
             this.Hover.Size = new System.Drawing.Size(176, 44);
             this.Hover.TabIndex = 38;
@@ -87,7 +85,7 @@ namespace Basic_GUI
             // Clockwise
             // 
             this.Clockwise.BackColor = System.Drawing.Color.White;
-            this.Clockwise.Location = new System.Drawing.Point(858, 296);
+            this.Clockwise.Location = new System.Drawing.Point(733, 296);
             this.Clockwise.Name = "Clockwise";
             this.Clockwise.Size = new System.Drawing.Size(131, 44);
             this.Clockwise.TabIndex = 37;
@@ -98,7 +96,7 @@ namespace Basic_GUI
             // Counter
             // 
             this.Counter.BackColor = System.Drawing.Color.White;
-            this.Counter.Location = new System.Drawing.Point(593, 296);
+            this.Counter.Location = new System.Drawing.Point(468, 296);
             this.Counter.Name = "Counter";
             this.Counter.Size = new System.Drawing.Size(131, 44);
             this.Counter.TabIndex = 36;
@@ -109,7 +107,7 @@ namespace Basic_GUI
             // Downward
             // 
             this.Downward.BackColor = System.Drawing.Color.White;
-            this.Downward.Location = new System.Drawing.Point(728, 346);
+            this.Downward.Location = new System.Drawing.Point(603, 346);
             this.Downward.Name = "Downward";
             this.Downward.Size = new System.Drawing.Size(131, 44);
             this.Downward.TabIndex = 35;
@@ -120,7 +118,7 @@ namespace Basic_GUI
             // Upward
             // 
             this.Upward.BackColor = System.Drawing.Color.White;
-            this.Upward.Location = new System.Drawing.Point(728, 246);
+            this.Upward.Location = new System.Drawing.Point(603, 246);
             this.Upward.Name = "Upward";
             this.Upward.Size = new System.Drawing.Size(131, 44);
             this.Upward.TabIndex = 34;
@@ -241,7 +239,7 @@ namespace Basic_GUI
             // Land
             // 
             this.Land.BackColor = System.Drawing.Color.White;
-            this.Land.Location = new System.Drawing.Point(836, 36);
+            this.Land.Location = new System.Drawing.Point(702, 39);
             this.Land.Name = "Land";
             this.Land.Size = new System.Drawing.Size(174, 70);
             this.Land.TabIndex = 22;
@@ -252,7 +250,7 @@ namespace Basic_GUI
             // Takeoff
             // 
             this.Takeoff.BackColor = System.Drawing.Color.White;
-            this.Takeoff.Location = new System.Drawing.Point(593, 36);
+            this.Takeoff.Location = new System.Drawing.Point(459, 39);
             this.Takeoff.Name = "Takeoff";
             this.Takeoff.Size = new System.Drawing.Size(175, 70);
             this.Takeoff.TabIndex = 21;
@@ -262,31 +260,21 @@ namespace Basic_GUI
             // 
             // chart1
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(93, 488);
+            chartArea3.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.chart1.Legends.Add(legend3);
+            this.chart1.Location = new System.Drawing.Point(882, 18);
             this.chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series1.Legend = "Legend1";
-            series1.Name = "Position X";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series2.Legend = "Legend1";
-            series2.Name = "Position Y";
             series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
             series3.Legend = "Legend1";
-            series3.Name = "Position Z";
-            this.chart1.Series.Add(series1);
-            this.chart1.Series.Add(series2);
+            series3.Name = "Trajectory 2D";
             this.chart1.Series.Add(series3);
-            this.chart1.Size = new System.Drawing.Size(1133, 604);
+            this.chart1.Size = new System.Drawing.Size(873, 626);
             this.chart1.TabIndex = 39;
+            this.chart1.TabStop = false;
             this.chart1.Text = "chart1";
-            this.chart1.Visible = false;
             // 
             // Compare
             // 
@@ -340,23 +328,36 @@ namespace Basic_GUI
             // 
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(24, 114);
-            this.label9.Name = "Height";
-            this.label9.Size = new System.Drawing.Size(46, 17);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(49, 17);
             this.label9.TabIndex = 45;
             this.label9.Text = "Height";
+            // 
+            // markOrigin
+            // 
+            this.markOrigin.BackColor = System.Drawing.Color.White;
+            this.markOrigin.Location = new System.Drawing.Point(208, 42);
+            this.markOrigin.Name = "markOrigin";
+            this.markOrigin.Size = new System.Drawing.Size(175, 70);
+            this.markOrigin.TabIndex = 46;
+            this.markOrigin.TabStop = false;
+            this.markOrigin.Text = "Mark Origin";
+            this.markOrigin.UseVisualStyleBackColor = false;
+            this.markOrigin.Click += new System.EventHandler(this.markOrigin_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1465, 676);
+            this.ClientSize = new System.Drawing.Size(1767, 676);
+            this.Controls.Add(this.chart1);
+            this.Controls.Add(this.markOrigin);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.Back);
             this.Controls.Add(this.Compare);
-            this.Controls.Add(this.chart1);
             this.Controls.Add(this.Hover);
             this.Controls.Add(this.Clockwise);
             this.Controls.Add(this.Counter);
@@ -412,6 +413,7 @@ namespace Basic_GUI
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button markOrigin;
     }
 }
 

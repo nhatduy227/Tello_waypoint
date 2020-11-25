@@ -5,16 +5,27 @@ using System.Drawing;
 using System.Xml;
 using System.Windows.Forms;
 using TelloLib;
-
+using System.Diagnostics;
 
 namespace Basic_GUI
 {
     
     public partial class Form1 : Form
     {
+        // Saving data logic 
         Data Data = new Data();
         int run = Directory.GetFiles("C:/Users/nomie/Desktop/Tello_waypoint/XML-positioning/", "*", SearchOption.TopDirectoryOnly).Length + 1;
-        
+        // initial positions 
+        float initX = 0;
+        float initY= 0;
+        float initZ = 0;
+
+        // current waypoints
+        float curX = 0;
+        float curY = 0;
+        float curZ = 0;
+
+        int counter = 0;
         public Form1()
         {
             this.KeyPreview = true;
@@ -75,24 +86,32 @@ namespace Basic_GUI
         private void GetPos_Click(object sender, EventArgs e)
         {
             // Update positioning 
-            label4.Text = Tello.state.posX.ToString();
-            label5.Text = Tello.state.posY.ToString();
-            label6.Text = Tello.state.posZ.ToString();
-            label8.Text = Tello.state.height.ToString();
+            curX = Tello.state.posX - initX;
+            curY = Tello.state.posY - initY;
+            curZ = Tello.state.posZ - initZ;
+            label4.Text = curX.ToString();
+            label5.Text = curY.ToString();
+            label6.Text = curZ.ToString();
+            label8.Text = (Tello.state.height).ToString();
+
+            // PLotting Chart
+            chart1.Series["Trajectory 2D"].Points.AddXY(curX, curY);
+            //chart1.Series["Trajectory 2D"].Points[counter].Color = Color.Red;
+            //counter += 1;
 
             // Saving to XML
-            Data.PosX = Tello.state.posX.ToString();
-            Data.PosY = Tello.state.posY.ToString();
-            Data.PosZ = Tello.state.posZ.ToString();
-            Data.FlightTime = Tello.state.flyTime.ToString();
-            Data.TimeStamp = System.DateTime.Now.ToString();
-            Data.AddRecordToXML(Data.FlightTime,Data.TimeStamp,Data.PosX,Data.PosY,Data.PosZ, run);
+            //Data.PosX = ((Tello.state.posX - initX)).ToString();
+            //Data.PosY = ((Tello.state.posY - initY)).ToString();
+            //Data.PosZ = (Tello.state.height).ToString();
+            //Data.FlightTime = Tello.state.flyTime.ToString();
+            //Data.TimeStamp = System.DateTime.Now.ToString();
+            //Data.AddRecordToXML(Data.FlightTime,Data.TimeStamp,Data.PosX,Data.PosY,Data.PosZ, run);
 
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            //if (Tello.state.flying)
+            if (Tello.state.flying)
                 GetPos.PerformClick();
         }
 
@@ -105,7 +124,6 @@ namespace Basic_GUI
                 Takeoff.ForeColor = Color.White;
                 // Instrutions to the drone
                 Tello.takeOff();
-                Data.CreateXMLFile(run);
             }
 
             if (e.KeyCode == Keys.Y)
@@ -116,6 +134,12 @@ namespace Basic_GUI
                 Tello.land();
             }
 
+            if (e.KeyCode == Keys.R) 
+            {
+                markOrigin.PerformClick();
+                //Data.CreateXMLFile(run);
+            }
+            
             if (e.KeyCode == Keys.Space)
             {
                 Hover.BackColor = Color.Green;
@@ -235,10 +259,10 @@ namespace Basic_GUI
                 string s2 = "";
                 string s3 = "";
                 string s4 = "";
-                if (xtr.NodeType == XmlNodeType.Element && xtr.Name == "FlightTime")
-                {
-                    s1 = xtr.ReadElementString();
-                }
+                //if (xtr.NodeType == XmlNodeType.Element && xtr.Name == "FlightTime")
+                //{
+                //    s1 = xtr.ReadElementString();
+                //}
                 if (xtr.NodeType == XmlNodeType.Element && xtr.Name == "PosX")
                 {
                     s2 = xtr.ReadElementString();
@@ -247,24 +271,11 @@ namespace Basic_GUI
                 {
                     s3 = xtr.ReadElementString();
                 }
-                if (xtr.NodeType == XmlNodeType.Element && xtr.Name == "PosZ")
-                {
-                    s4 = xtr.ReadElementString();
-                }
-                if (s2 != "") {
-                    chart1.Series["Position X"].Points.AddXY(s1, s2);
-
-                }
-
-                if (s3 != "")
-                {
-                    chart1.Series["Position Y"].Points.AddXY(s1, s3);
-
-                }
-                if (s4 != "")
-                {
-                    chart1.Series["Position Z"].Points.AddXY(s1, s4);
-                }
+                //if (xtr.NodeType == XmlNodeType.Element && xtr.Name == "PosZ")
+                //{
+                //    s4 = xtr.ReadElementString();
+                //}
+                chart1.Series["Trajectory 2D"].Points.AddXY(s2, s3);
             }
             chart1.Visible = true;
         }
@@ -272,6 +283,16 @@ namespace Basic_GUI
         private void Back_Click(object sender, EventArgs e)
         {
             chart1.Visible = false;
+        }
+
+        private void markOrigin_Click(object sender, EventArgs e)
+        {
+            initX = Tello.state.posX;
+            initY = Tello.state.posY;
+            initZ = Tello.state.posZ;
+
+            // Start timer 
+            timer1.Start();
         }
     }
 }
