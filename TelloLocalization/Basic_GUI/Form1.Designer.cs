@@ -33,9 +33,9 @@ namespace Basic_GUI
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.Hover = new System.Windows.Forms.Button();
             this.Clockwise = new System.Windows.Forms.Button();
@@ -47,10 +47,8 @@ namespace Basic_GUI
             this.Backward = new System.Windows.Forms.Button();
             this.Forward = new System.Windows.Forms.Button();
             this.GetPos = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.Land = new System.Windows.Forms.Button();
@@ -74,9 +72,9 @@ namespace Basic_GUI
             // Hover
             // 
             this.Hover.BackColor = System.Drawing.Color.White;
-            this.Hover.Location = new System.Drawing.Point(345, 399);
+            this.Hover.Location = new System.Drawing.Point(257, 399);
             this.Hover.Name = "Hover";
-            this.Hover.Size = new System.Drawing.Size(176, 44);
+            this.Hover.Size = new System.Drawing.Size(342, 44);
             this.Hover.TabIndex = 38;
             this.Hover.TabStop = false;
             this.Hover.Text = "Hover";
@@ -129,7 +127,7 @@ namespace Basic_GUI
             // Left
             // 
             this.Left.BackColor = System.Drawing.Color.White;
-            this.Left.Location = new System.Drawing.Point(281, 293);
+            this.Left.Location = new System.Drawing.Point(257, 293);
             this.Left.Name = "Left";
             this.Left.Size = new System.Drawing.Size(128, 44);
             this.Left.TabIndex = 33;
@@ -140,7 +138,7 @@ namespace Basic_GUI
             // Right
             // 
             this.Right.BackColor = System.Drawing.Color.White;
-            this.Right.Location = new System.Drawing.Point(24, 293);
+            this.Right.Location = new System.Drawing.Point(3, 293);
             this.Right.Name = "Right";
             this.Right.Size = new System.Drawing.Size(131, 44);
             this.Right.TabIndex = 32;
@@ -151,7 +149,7 @@ namespace Basic_GUI
             // Backward
             // 
             this.Backward.BackColor = System.Drawing.Color.White;
-            this.Backward.Location = new System.Drawing.Point(152, 343);
+            this.Backward.Location = new System.Drawing.Point(131, 343);
             this.Backward.Name = "Backward";
             this.Backward.Size = new System.Drawing.Size(131, 44);
             this.Backward.TabIndex = 31;
@@ -162,7 +160,7 @@ namespace Basic_GUI
             // Forward
             // 
             this.Forward.BackColor = System.Drawing.Color.White;
-            this.Forward.Location = new System.Drawing.Point(152, 246);
+            this.Forward.Location = new System.Drawing.Point(131, 246);
             this.Forward.Name = "Forward";
             this.Forward.Size = new System.Drawing.Size(131, 44);
             this.Forward.TabIndex = 30;
@@ -173,7 +171,7 @@ namespace Basic_GUI
             // GetPos
             // 
             this.GetPos.BackColor = System.Drawing.Color.White;
-            this.GetPos.Location = new System.Drawing.Point(20, 144);
+            this.GetPos.Location = new System.Drawing.Point(20, 120);
             this.GetPos.Name = "GetPos";
             this.GetPos.Size = new System.Drawing.Size(116, 35);
             this.GetPos.TabIndex = 29;
@@ -181,15 +179,6 @@ namespace Basic_GUI
             this.GetPos.Text = "Get Positions";
             this.GetPos.UseVisualStyleBackColor = false;
             this.GetPos.Click += new System.EventHandler(this.GetPos_Click);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(90, 87);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(46, 17);
-            this.label6.TabIndex = 28;
-            this.label6.Text = "label6";
             // 
             // label5
             // 
@@ -208,15 +197,6 @@ namespace Basic_GUI
             this.label4.Size = new System.Drawing.Size(46, 17);
             this.label4.TabIndex = 26;
             this.label4.Text = "label4";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(21, 87);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(49, 17);
-            this.label3.TabIndex = 25;
-            this.label3.Text = "Poz_Z";
             // 
             // label2
             // 
@@ -260,17 +240,17 @@ namespace Basic_GUI
             // 
             // chart1
             // 
-            chartArea3.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.chart1.Legends.Add(legend3);
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
             this.chart1.Location = new System.Drawing.Point(882, 18);
             this.chart1.Name = "chart1";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
-            series3.Legend = "Legend1";
-            series3.Name = "Trajectory 2D";
-            this.chart1.Series.Add(series3);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            series1.Legend = "Legend1";
+            series1.Name = "Trajectory 2D";
+            this.chart1.Series.Add(series1);
             this.chart1.Size = new System.Drawing.Size(873, 626);
             this.chart1.TabIndex = 39;
             this.chart1.TabStop = false;
@@ -318,7 +298,7 @@ namespace Basic_GUI
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(90, 114);
+            this.label8.Location = new System.Drawing.Point(90, 87);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(46, 17);
             this.label8.TabIndex = 44;
@@ -327,7 +307,7 @@ namespace Basic_GUI
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(24, 114);
+            this.label9.Location = new System.Drawing.Point(24, 87);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(49, 17);
             this.label9.TabIndex = 45;
@@ -368,10 +348,8 @@ namespace Basic_GUI
             this.Controls.Add(this.Backward);
             this.Controls.Add(this.Forward);
             this.Controls.Add(this.GetPos);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Land);
@@ -398,10 +376,8 @@ namespace Basic_GUI
         private System.Windows.Forms.Button Backward;
         private System.Windows.Forms.Button Forward;
         private System.Windows.Forms.Button GetPos;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button Land;

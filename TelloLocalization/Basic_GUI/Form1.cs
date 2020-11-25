@@ -74,11 +74,9 @@ namespace Basic_GUI
 
             Tello.startConnecting();//Start trying to connect.
             while (Tello.connected) 
-            {   
-                // update positioning data on GUI 
-                label4.Text = Tello.state.posX.ToString();
-                label5.Text = Tello.state.posY.ToString();
-                label6.Text = Tello.state.posZ.ToString();
+            {
+                // send back connecting message
+                Console.WriteLine("Tello connected");
 
             }
         }
@@ -91,13 +89,20 @@ namespace Basic_GUI
             curZ = Tello.state.posZ - initZ;
             label4.Text = curX.ToString();
             label5.Text = curY.ToString();
-            label6.Text = curZ.ToString();
             label8.Text = (Tello.state.height).ToString();
 
             // PLotting Chart
             chart1.Series["Trajectory 2D"].Points.AddXY(curX, curY);
-            //chart1.Series["Trajectory 2D"].Points[counter].Color = Color.Red;
-            //counter += 1;
+            chart1.Series["Trajectory 2D"].Points[counter].MarkerSize = 10;
+            if (counter == 0) {
+                Console.WriteLine("nothing happened");
+            }
+            else {
+                chart1.Series["Trajectory 2D"].Points[counter - 1].Color = Color.Red;
+                chart1.Series["Trajectory 2D"].Points[counter - 1].MarkerSize = 3;
+            }
+            
+            counter += 1;
 
             // Saving to XML
             //Data.PosX = ((Tello.state.posX - initX)).ToString();
@@ -137,6 +142,8 @@ namespace Basic_GUI
             if (e.KeyCode == Keys.R) 
             {
                 markOrigin.PerformClick();
+                markOrigin.BackColor = Color.Green;
+                markOrigin.ForeColor = Color.White;
                 //Data.CreateXMLFile(run);
             }
             
@@ -246,6 +253,8 @@ namespace Basic_GUI
             Land.ForeColor = Color.Black;
             Hover.BackColor = Color.White;
             Hover.ForeColor = Color.Black;
+            markOrigin.BackColor = Color.White;
+            markOrigin.ForeColor = Color.Black;
         }
 
         private void Compare_Click(object sender, EventArgs e)
