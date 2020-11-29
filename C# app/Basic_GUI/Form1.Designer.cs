@@ -54,10 +54,6 @@ namespace Basic_GUI
             this.Land = new System.Windows.Forms.Button();
             this.Takeoff = new System.Windows.Forms.Button();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.Compare = new System.Windows.Forms.Button();
-            this.Back = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.markOrigin = new System.Windows.Forms.Button();
@@ -244,7 +240,7 @@ namespace Basic_GUI
             this.chart1.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(882, 18);
+            this.chart1.Location = new System.Drawing.Point(882, 28);
             this.chart1.Name = "chart1";
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
@@ -255,45 +251,6 @@ namespace Basic_GUI
             this.chart1.TabIndex = 39;
             this.chart1.TabStop = false;
             this.chart1.Text = "chart1";
-            // 
-            // Compare
-            // 
-            this.Compare.Location = new System.Drawing.Point(1143, 133);
-            this.Compare.Name = "Compare";
-            this.Compare.Size = new System.Drawing.Size(149, 46);
-            this.Compare.TabIndex = 40;
-            this.Compare.TabStop = false;
-            this.Compare.Text = "Show Graph";
-            this.Compare.UseVisualStyleBackColor = true;
-            this.Compare.Click += new System.EventHandler(this.Compare_Click);
-            // 
-            // Back
-            // 
-            this.Back.Location = new System.Drawing.Point(1143, 204);
-            this.Back.Name = "Back";
-            this.Back.Size = new System.Drawing.Size(149, 46);
-            this.Back.TabIndex = 41;
-            this.Back.TabStop = false;
-            this.Back.Text = "Back";
-            this.Back.UseVisualStyleBackColor = true;
-            this.Back.Click += new System.EventHandler(this.Back_Click);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(1140, 57);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(279, 17);
-            this.label7.TabIndex = 42;
-            this.label7.Text = "Input the # of run that you want to compare";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(1143, 87);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(165, 22);
-            this.textBox1.TabIndex = 43;
-            this.textBox1.TabStop = false;
             // 
             // label8
             // 
@@ -334,10 +291,6 @@ namespace Basic_GUI
             this.Controls.Add(this.markOrigin);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.Back);
-            this.Controls.Add(this.Compare);
             this.Controls.Add(this.Hover);
             this.Controls.Add(this.Clockwise);
             this.Controls.Add(this.Counter);
@@ -383,10 +336,6 @@ namespace Basic_GUI
         private System.Windows.Forms.Button Land;
         private System.Windows.Forms.Button Takeoff;
         private Chart chart1;
-        private System.Windows.Forms.Button Compare;
-        private System.Windows.Forms.Button Back;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button markOrigin;

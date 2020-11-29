@@ -12,9 +12,10 @@ namespace Basic_GUI
     
     public partial class Form1 : Form
     {
-        // Saving data logic 
+        // Saving positioning data 
         Data Data = new Data();
         int run = Directory.GetFiles("C:/Users/nomie/Desktop/Tello_waypoint/XML-positioning/", "*", SearchOption.TopDirectoryOnly).Length + 1;
+        
         // initial positions 
         float initX = 0;
         float initY= 0;
@@ -29,7 +30,6 @@ namespace Basic_GUI
         public Form1()
         {
             this.KeyPreview = true;
-            Data.CreateXMLFile(run);
             InitializeComponent();
             //subscribe to Tello connection events
             Tello.onConnection += (Tello.ConnectionState newState) =>
@@ -44,17 +44,14 @@ namespace Basic_GUI
                 }
             };
 
-
             //subscribe to Tello update events.
             Tello.onUpdate += (cmdId) =>
             {
                 if (cmdId == 86)//ac update
                 {
-                    
+                    Console.WriteLine("Tello updated");
                 }
             };
-
-            
 
             var videoClient = UdpUser.ConnectTo("127.0.0.1", 7038);
             //subscribe to Tello video data
@@ -71,13 +68,11 @@ namespace Basic_GUI
                 }
             };
 
-
             Tello.startConnecting();//Start trying to connect.
             while (Tello.connected) 
             {
                 // send back connecting message
                 Console.WriteLine("Tello connected");
-
             }
         }
         // Update positions 
@@ -257,43 +252,7 @@ namespace Basic_GUI
             markOrigin.ForeColor = Color.Black;
         }
 
-        private void Compare_Click(object sender, EventArgs e)
-        {
-            string inputRun = textBox1.Text;
-            // Plotting for comparation 
-            XmlTextReader xtr = new XmlTextReader(@"C:/Users/nomie/Desktop/Tello_waypoint/XML-positioning/" + inputRun.ToString() + ".xml");
-            while (xtr.Read())
-            {
-                string s1 = "";
-                string s2 = "";
-                string s3 = "";
-                string s4 = "";
-                //if (xtr.NodeType == XmlNodeType.Element && xtr.Name == "FlightTime")
-                //{
-                //    s1 = xtr.ReadElementString();
-                //}
-                if (xtr.NodeType == XmlNodeType.Element && xtr.Name == "PosX")
-                {
-                    s2 = xtr.ReadElementString();
-                }
-                if (xtr.NodeType == XmlNodeType.Element && xtr.Name == "PosY")
-                {
-                    s3 = xtr.ReadElementString();
-                }
-                //if (xtr.NodeType == XmlNodeType.Element && xtr.Name == "PosZ")
-                //{
-                //    s4 = xtr.ReadElementString();
-                //}
-                chart1.Series["Trajectory 2D"].Points.AddXY(s2, s3);
-            }
-            chart1.Visible = true;
-        }
-
-        private void Back_Click(object sender, EventArgs e)
-        {
-            chart1.Visible = false;
-        }
-
+        // Set Origins
         private void markOrigin_Click(object sender, EventArgs e)
         {
             initX = Tello.state.posX;
