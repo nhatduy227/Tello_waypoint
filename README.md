@@ -19,8 +19,7 @@ To archive drone swarming, we need to:
 - Step 2: Communicate with each tello EDU in the system to coordinate the swarm 
 - Step 3: Send Flight Mission to each tello EDU
 
-For detail execution, please visit [here](https://dl-cdn.ryzerobotics.com/downloads/Tello/Tello%20SDK%202.0%20User%20Guide.pdf)
-
+For detail execution, please visit [here](https://www.notion.so/Drone-Swarming-Guides-c62abe7cc702443e8855c52e6c4c27d4)
 # Tello SDK
 Learn more about Tello SDK [here](https://dl-cdn.ryzerobotics.com/downloads/Tello/Tello%20SDK%202.0%20User%20Guide.pdf)
 
