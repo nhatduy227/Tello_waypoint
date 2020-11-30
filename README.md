@@ -3,7 +3,7 @@ Goal: We aim to create an app that let user create waypoint missions for Tello d
 
 # Control Tello using C# App
 - C# app is a mininal control hub that let you control Tello using your keyboard and get real time 2D trajectory of the drone.
-- To use C# app navigate to the C# app folder and run aTello.sln on your Visual Studio, then run Basic_GUI.
+- To use C# app navigate to the C# app folder and run Tello_GUI.sln on your Visual Studio, then run Basic_GUI.
 
 # Indoor Waypoints
 Positioning data collected from tello is estimated using Multimotion Visual Odemetry (MVO) and parsed using a C# library called TelloLib. 
