@@ -31,6 +31,7 @@ namespace Basic_GUI
         {
             this.KeyPreview = true;
             InitializeComponent();
+
             //subscribe to Tello connection events
             Tello.onConnection += (Tello.ConnectionState newState) =>
             {

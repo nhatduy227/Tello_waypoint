@@ -75,11 +75,11 @@ send("command", 3)
 send("takeoff", 8)
 
 # Loop and create each leg of the box
-# for i in range(4):
-#   # Fly forward
-#   send("forward " + str(box_leg_distance), 4)
-#   # Yaw right
-#   send("cw " + str(yaw_angle), 3)
+for i in range(4):
+  # Fly forward
+  send("forward " + str(box_leg_distance), 4)
+  # Yaw right
+  send("cw " + str(yaw_angle), 3)
 
 # Land
 send("land", 5)
