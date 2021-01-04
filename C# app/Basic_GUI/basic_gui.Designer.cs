@@ -1,10 +1,9 @@
-﻿using TelloLib;
-using System.Windows.Forms.DataVisualization.Charting;
+﻿using System.Windows.Forms.DataVisualization.Charting;
 
 
 namespace Basic_GUI
 {
-    partial class Form1
+    partial class basic_gui
     {
         /// <summary>
         /// Required designer variable.
@@ -309,6 +308,7 @@ namespace Basic_GUI
             this.Controls.Add(this.Takeoff);
             this.Name = "Form1";
             this.Text = " ";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
             this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.Form1_PreviewKeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();

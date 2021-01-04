@@ -10,11 +10,11 @@ using System.Diagnostics;
 namespace Basic_GUI
 {
     
-    public partial class Form1 : Form
+    public partial class basic_gui : Form
     {
         // Saving positioning data 
-        Data Data = new Data();
-        int run = Directory.GetFiles("C:/Users/nomie/Desktop/Tello_waypoint/XML-positioning/", "*", SearchOption.TopDirectoryOnly).Length + 1;
+        //Data Data = new Data();
+        //int run = Directory.GetFiles("C:/Users/nomie/Desktop/Tello_waypoint/XML-positioning/", "*", SearchOption.TopDirectoryOnly).Length + 1;
         
         // initial positions 
         float initX = 0;
@@ -25,9 +25,11 @@ namespace Basic_GUI
         float curX = 0;
         float curY = 0;
         float curZ = 0;
-
         int counter = 0;
-        public Form1()
+
+        // IP info
+        string IP = "192.168.10.1";
+        public basic_gui()
         {
             this.KeyPreview = true;
             InitializeComponent();
@@ -69,7 +71,7 @@ namespace Basic_GUI
                 }
             };
 
-            Tello.startConnecting();//Start trying to connect.
+            Tello.startConnecting(IP);//Start trying to connect.
             while (Tello.connected) 
             {
                 // send back connecting message
@@ -100,13 +102,13 @@ namespace Basic_GUI
             
             counter += 1;
 
-            // Saving to XML
+            //Saving to XML
             //Data.PosX = ((Tello.state.posX - initX)).ToString();
             //Data.PosY = ((Tello.state.posY - initY)).ToString();
             //Data.PosZ = (Tello.state.height).ToString();
             //Data.FlightTime = Tello.state.flyTime.ToString();
             //Data.TimeStamp = System.DateTime.Now.ToString();
-            //Data.AddRecordToXML(Data.FlightTime,Data.TimeStamp,Data.PosX,Data.PosY,Data.PosZ, run);
+            //Data.AddRecordToXML(Data.FlightTime, Data.TimeStamp, Data.PosX, Data.PosY, Data.PosZ, run);
 
         }
 
@@ -262,6 +264,11 @@ namespace Basic_GUI
 
             // Start timer 
             timer1.Start();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            Console.WriteLine("Form1 loaded");
         }
     }
 }

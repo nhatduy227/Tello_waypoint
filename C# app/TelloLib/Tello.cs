@@ -33,6 +33,9 @@ namespace TelloLib
         public static int iFrameRate = 5;//How often to ask for iFrames in 50ms. Ie 2=10x 5=4x 10=2xSecond 5 = 4xSecond
 
         private static ushort sequence = 1;
+        //public Tello() {
+        
+        //}
 
         public enum ConnectionState
         {
@@ -97,15 +100,6 @@ namespace TelloLib
             client.Send(packet);
         }
 
-        public static void queryUnk(int cmd)
-        {
-            var packet = new byte[] { 0xcc, 0x58, 0x00, 0x7c, 0x48, 0xff, 0x00, 0x06, 0x00, 0xe9, 0xb3 };
-            packet[5] = (byte)cmd;
-            setPacketSequence(packet);
-            setPacketCRCs(packet);
-            client.Send(packet);
-        }
-
         public static void queryAttAngle()
         {
             var packet = new byte[] { 0xcc, 0x58, 0x00, 0x7c, 0x48, 0x59, 0x10, 0x06, 0x00, 0xe9, 0xb3 };
@@ -113,160 +107,7 @@ namespace TelloLib
             setPacketCRCs(packet);
             client.Send(packet);
         }
-        public static void queryMaxHeight()
-        {
-            var packet = new byte[] { 0xcc, 0x58, 0x00, 0x7c, 0x48, 0x56, 0x10, 0x06, 0x00, 0xe9, 0xb3 };
-            setPacketSequence(packet);
-            setPacketCRCs(packet);
-            client.Send(packet);
-        }
-        public static void setAttAngle(float angle)
-        {
-            //                                          crc    typ  cmdL  cmdH  seqL  seqH  ang1  ang2 ang3  ang4  crc   crc
-            var packet = new byte[] { 0xcc, 0x78, 0x00, 0x27, 0x68, 0x58, 0x10, 0x00, 0x00, 0x00, 0x00,0x00, 0x00, 0x5b, 0xc5 };
 
-            //payload
-            byte[] bytes = BitConverter.GetBytes(angle);
-            packet[9] = bytes[0];
-            packet[10] = bytes[1];
-            packet[11] = bytes[2];
-            packet[12] = bytes[3];
-
-            setPacketSequence(packet);
-            setPacketCRCs(packet);
-
-            client.Send(packet);
-
-            Tello.queryAttAngle();//refresh
-        }
-
-        public static void doFlip()
-        {
-            throw new NotImplementedException();
-        }
-
-        public static void setEis(int value)
-        {
-            //                                          crc    typ  cmdL  cmdH  seqL  seqH  valL  crc   crc
-            var packet = new byte[] { 0xcc, 0x60, 0x00, 0x27, 0x68, 0x24, 0x00, 0x09, 0x00, 0x00, 0x5b, 0xc5 };
-
-            //payload
-            packet[9] = (byte)(value & 0xff);
-
-            setPacketSequence(packet);
-            setPacketCRCs(packet);
-
-            client.Send(packet);
-        }
-        public static void doFlip(int dir)
-        {
-            //                                          crc    typ  cmdL  cmdH  seqL  seqH  dirL  crc   crc
-            var packet = new byte[] { 0xcc, 0x60, 0x00, 0x27, 0x70, 0x5c, 0x00, 0x09, 0x00, 0x00, 0x5b, 0xc5 };
-
-            //payload
-            packet[9] = (byte)(dir & 0xff);
-
-            setPacketSequence(packet);
-            setPacketCRCs(packet);
-
-            client.Send(packet);
-        }
-        public static void setJpgQuality(int quality)
-        {
-            //                                          crc    typ  cmdL  cmdH  seqL  seqH  quaL  crc   crc
-            var packet = new byte[] { 0xcc, 0x60, 0x00, 0x27, 0x68, 0x37, 0x00, 0x09, 0x00, 0x00, 0x5b, 0xc5 };
-
-            //payload
-            packet[9] = (byte)(quality & 0xff);
-
-            setPacketSequence(packet);
-            setPacketCRCs(packet);
-
-            client.Send(packet);
-        }
-        public static void setEV(int ev)
-        {
-            //                                          crc    typ  cmdL  cmdH  seqL  seqH  evL  crc   crc
-            var packet = new byte[] { 0xcc, 0x60, 0x00, 0x27, 0x68, 0x34, 0x00, 0x09, 0x00, 0x00, 0x5b, 0xc5 };
-
-            byte evb = (byte)(ev-9);//Exposure goes from -9 to +9
-            //payload
-            packet[9] = evb;
-
-            setPacketSequence(packet);
-            setPacketCRCs(packet);
-
-            client.Send(packet);
-        }
-        public static void setVideoBitRate(int rate)
-        {
-            //                                          crc    typ  cmdL  cmdH  seqL  seqH  rateL  crc   crc
-            var packet = new byte[] { 0xcc, 0x60, 0x00, 0x27, 0x68, 0x20, 0x00, 0x09, 0x00, 0x00, 0x5b, 0xc5 };
-
-            //payload
-            packet[9] = (byte)rate;
-
-            setPacketSequence(packet);
-            setPacketCRCs(packet);
-
-            client.Send(packet);
-        }
-        public static void setVideoDynRate(int rate)
-        {
-            //                                          crc    typ  cmdL  cmdH  seqL  seqH  rateL  crc   crc
-            var packet = new byte[] { 0xcc, 0x60, 0x00, 0x27, 0x68, 0x21, 0x00, 0x09, 0x00, 0x00, 0x5b, 0xc5 };
-
-            //payload
-            packet[9] = (byte)rate;
-
-            setPacketSequence(packet);
-            setPacketCRCs(packet);
-
-            client.Send(packet);
-        }
-        public static void setVideoRecord(int n)
-        {
-            //                                          crc    typ  cmdL  cmdH  seqL  seqH  nL  crc   crc
-            var packet = new byte[] { 0xcc, 0x60, 0x00, 0x27, 0x68, 0x32, 0x00, 0x09, 0x00, 0x00, 0x5b, 0xc5 };
-
-            //payload
-            packet[9] = (byte)n;
-
-            setPacketSequence(packet);
-            setPacketCRCs(packet);
-
-            client.Send(packet);
-        }
-        /*TELLO_CMD_SWITCH_PICTURE_VIDEO
-	    49 0x31
-	    0x68
-	    switching video stream mode
-        data: u8 (1=video, 0=photo)
-        */
-        public static void setPicVidMode(int mode)
-        {
-            //                                          crc    typ  cmdL  cmdH  seqL  seqH  modL  crc   crc
-            var packet = new byte[] { 0xcc, 0x60, 0x00, 0x27, 0x68, 0x31, 0x00, 0x00, 0x00, 0x00, 0x5b, 0xc5 };
-
-            picMode = mode;
-
-            //payload
-            packet[9] = (byte)(mode & 0xff);
-
-            setPacketSequence(packet);
-            setPacketCRCs(packet);
-
-            client.Send(packet);
-        }
-        public static void takePicture()
-        {
-            //                                          crc    typ  cmdL  cmdH  seqL  seqH  crc   crc
-            var packet = new byte[] { 0xcc, 0x58, 0x00, 0x7c, 0x68, 0x30, 0x00, 0x06, 0x00, 0xe9, 0xb3 };
-            setPacketSequence(packet);
-            setPacketCRCs(packet);
-            client.Send(packet);
-            Console.WriteLine("PIC START");
-        }
         public static void sendAckFilePiece(byte endFlag,UInt16 fileId, UInt32 pieceId)
         {
             //                                          crc    typ  cmdL  cmdH  seqL  seqH  byte  nL    nH    n2L                     crc   crc
@@ -288,21 +129,7 @@ namespace TelloLib
 
             client.Send(packet);
         }
-        //public void a(final byte b, final int n, final int n2)
-        //{
-        //    final c c = new c(18);
-        //    c.a(204);
-        //    c.a((short)144);
-        //    c.a(com.ryzerobotics.tello.gcs.core.b.c(c.b(), 4));
-        //    c.a(80);
-        //    c.a((short)99);
-        //    c.a(this.e.a());
-        //    c.a(b);
-        //    c.a((short)n);
-        //    c.b(n2);
-        //    com.ryzerobotics.tello.gcs.core.a.b(c.b(), 18);
-        //    com.ryzerobotics.tello.gcs.core.c.a.a().a(c);
-        //}
+       
         public static void sendAckFileSize()
         {
             //                                          crc    typ  cmdL  cmdH  seqL  seqH  modL  crc   crc
@@ -349,36 +176,6 @@ namespace TelloLib
             client.Send(packet);
         }
 
-        //this might not be working right 
-        public static void sendAckLogConfig(short cmd, ushort id,int n2)
-        {
-            //                                          crc    typ  cmdL  cmdH  seqL  seqH  unk   idL   idH  n2L   n2H  n2L   n2H   crc   crc
-            var packet = new byte[] { 0xcc, 0xd0, 0x00, 0x27, 0x88, 0x50, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00,0x00, 0x00,0x00, 0x00, 0x5b, 0xc5 };
-
-            var ba = BitConverter.GetBytes(cmd);
-            packet[5] = ba[0];
-            packet[6] = ba[1];
-
-            ba = BitConverter.GetBytes(id);
-            packet[10] = ba[0];
-            packet[11] = ba[1];
-
-            packet[12] = ((byte)(int)(0xFF & n2));
-            packet[13] = ((byte)(int)(n2 >> 8 & 0xFF));
-            packet[14] = ((byte)(int)(n2 >> 16 & 0xFF));
-            packet[15] = ((byte)(int)(n2 >> 24 & 0xFF));
-
-            //ba = BitConverter.GetBytes(n2);
-            //packet[12] = ba[0];
-            //packet[13] = ba[1];
-            //packet[14] = ba[2];
-            //packet[15] = ba[3];
-
-            setPacketSequence(packet);
-            setPacketCRCs(packet);
-
-            client.Send(packet);
-        }
 
         private static void setPacketSequence(byte[] packet)
         {
@@ -390,16 +187,6 @@ namespace TelloLib
         {
             CRC.calcUCRC(packet, 4);
             CRC.calcCrc(packet, packet.Length);
-        }
-        public static void setEIS(int eis)
-        {
-        }
-
-        public static void xsetAxis(float[] axis)
-        {
-//            joyAxis = axis.Take(5).ToArray(); ;
-            //joyAxis[4] = axis[7];
-            //joyAxis[3] = axis[11];
         }
 
         private static void disconnect()
@@ -418,10 +205,10 @@ namespace TelloLib
             connectionState = ConnectionState.Disconnected;
             
         }
-        private static void connect()
+        private static void connect(string IP)
         {
             //Console.WriteLine("Connecting to tello.");
-            client = UdpUser.ConnectTo("192.168.10.1", 8889);
+            client = UdpUser.ConnectTo(IP, 8889);
 
             connectionState = ConnectionState.Connecting;
             //send event
@@ -780,7 +567,7 @@ namespace TelloLib
             }, token);
 
         }
-        public static void startConnecting()
+        public static void startConnecting(string IP)
         {
             //Thread to handle connecting.
             Task.Factory.StartNew(async () =>
@@ -793,7 +580,7 @@ namespace TelloLib
                         switch (connectionState)
                         {
                             case ConnectionState.Disconnected:
-                                connect();
+                                connect(IP);
                                 lastMessageTime = DateTime.Now;
 
                                 startListeners();
