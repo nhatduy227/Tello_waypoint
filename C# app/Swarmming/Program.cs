@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Basic_GUI
+namespace Swarmming
 {
     static class Program
     {
@@ -16,7 +16,7 @@ namespace Basic_GUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new basic_gui());
+            Application.Run(new Swarming_gui());
         }
     }
 }
