@@ -39,6 +39,7 @@ namespace Basic_GUI
             {
                 if (newState != Tello.ConnectionState.Connected)
                 {
+                    Console.WriteLine("Tello Disconnected");
                 }
                 if (newState == Tello.ConnectionState.Connected)
                 {
@@ -53,21 +54,6 @@ namespace Basic_GUI
                 if (cmdId == 86)//ac update
                 {
                     Console.WriteLine("Tello updated");
-                }
-            };
-
-            var videoClient = UdpUser.ConnectTo("127.0.0.1", 7038);
-            //subscribe to Tello video data
-            Tello.onVideoData += (byte[] data) =>
-            {
-                try
-                {
-                    videoClient.Send(data.Skip(2).ToArray());//Skip 2 byte header and send to ffplay. 
-                    //Console.WriteLine("Video size:" + data.Length);
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("Error: ", ex);
                 }
             };
 
@@ -90,26 +76,32 @@ namespace Basic_GUI
             label8.Text = (Tello.state.height).ToString();
 
             // PLotting Chart
-            chart1.Series["Trajectory 2D"].Points.AddXY(curX, curY);
-            chart1.Series["Trajectory 2D"].Points[counter].MarkerSize = 10;
-            if (counter == 0) {
-                Console.WriteLine("nothing happened");
+            if (curX > 5 || curY > 5)
+            {
+                Console.WriteLine("Data Noise eliminated");
             }
             else {
-                chart1.Series["Trajectory 2D"].Points[counter - 1].Color = Color.Red;
-                chart1.Series["Trajectory 2D"].Points[counter - 1].MarkerSize = 3;
+                chart1.Series["Trajectory 2D"].Points.AddXY(curX, curY);
+                chart1.Series["Trajectory 2D"].Points[counter].MarkerSize = 10;
+                if (counter == 0)
+                {
+                    Console.WriteLine("nothing happened");
+                }
+                else
+                {
+                    chart1.Series["Trajectory 2D"].Points[counter - 1].Color = Color.Red;
+                    chart1.Series["Trajectory 2D"].Points[counter - 1].MarkerSize = 3;
+                }
+
+                counter += 1;
+                //Saving to XML
+                //Data.PosX = ((Tello.state.posX - initX)).ToString();
+                //Data.PosY = ((Tello.state.posY - initY)).ToString();
+                //Data.PosZ = (Tello.state.height).ToString();
+                //Data.FlightTime = Tello.state.flyTime.ToString();
+                //Data.TimeStamp = System.DateTime.Now.ToString();
+                //Data.AddRecordToXML(Data.FlightTime, Data.TimeStamp, Data.PosX, Data.PosY, Data.PosZ, run);
             }
-            
-            counter += 1;
-
-            //Saving to XML
-            //Data.PosX = ((Tello.state.posX - initX)).ToString();
-            //Data.PosY = ((Tello.state.posY - initY)).ToString();
-            //Data.PosZ = (Tello.state.height).ToString();
-            //Data.FlightTime = Tello.state.flyTime.ToString();
-            //Data.TimeStamp = System.DateTime.Now.ToString();
-            //Data.AddRecordToXML(Data.FlightTime, Data.TimeStamp, Data.PosX, Data.PosY, Data.PosZ, run);
-
         }
 
         private void timer1_Tick(object sender, EventArgs e)

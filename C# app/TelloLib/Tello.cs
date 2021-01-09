@@ -33,9 +33,6 @@ namespace TelloLib
         public static int iFrameRate = 5;//How often to ask for iFrames in 50ms. Ie 2=10x 5=4x 10=2xSecond 5 = 4xSecond
 
         private static ushort sequence = 1;
-        //public Tello() {
-        
-        //}
 
         public enum ConnectionState
         {
@@ -474,43 +471,44 @@ namespace TelloLib
                     }
                 }
             }, token);
-            //video server
-            var videoServer = new UdpListener(6038);
-            //var videoServer = new UdpListener(new IPEndPoint(IPAddress.Parse("192.168.10.2"), 6038));
 
-            Task.Factory.StartNew(async () => {
-                //Console.WriteLine("video:1");
-                var started = false;
+//            //video server
+//            var videoServer = new UdpListener(6038);
+//            //var videoServer = new UdpListener(new IPEndPoint(IPAddress.Parse("192.168.10.2"), 6038));
 
-                while (true)
-                {
-                    try
-                    {
-                        if (token.IsCancellationRequested)//handle canceling thread.
-                            break;
-                        var received = await videoServer.Receive();
-                        if (received.bytes[2] == 0 && received.bytes[3] == 0 && received.bytes[4] == 0 && received.bytes[5] == 1)//Wait for first NAL
-                        {
-                            var nal = (received.bytes[6] & 0x1f);
-                            //if (nal != 0x01 && nal!=0x07 && nal != 0x08 && nal != 0x05)
-                            //    Console.WriteLine("NAL type:" +nal);
-                            started = true;
-                        }
-                        if (started)
-                        {
-                            onVideoData(received.bytes);
-                        }
+//            Task.Factory.StartNew(async () => {
+//                //Console.WriteLine("video:1");
+//                var started = false;
 
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine("Video receive thread error:" + ex.Message);
+//                while (true)
+//                {
+//                    try
+//                    {
+//                        if (token.IsCancellationRequested)//handle canceling thread.
+//                            break;
+//                        var received = await videoServer.Receive();
+//                        if (received.bytes[2] == 0 && received.bytes[3] == 0 && received.bytes[4] == 0 && received.bytes[5] == 1)//Wait for first NAL
+//                        {
+//                            var nal = (received.bytes[6] & 0x1f);
+//                            //if (nal != 0x01 && nal!=0x07 && nal != 0x08 && nal != 0x05)
+//                            //    Console.WriteLine("NAL type:" +nal);
+//                            started = true;
+//                        }
+//                        if (started)
+//                        {
+//                            onVideoData(received.bytes);
+//                        }
+
+//                    }
+//                    catch (Exception ex)
+//                    {
+//                        Console.WriteLine("Video receive thread error:" + ex.Message);
                         
-                        //dont disconnect();
-//                        break;
-                    }
-                }
-            }, token);
+//                        //dont disconnect();
+////                        break;
+//                    }
+//                }
+//            }, token);
 
         }
 
