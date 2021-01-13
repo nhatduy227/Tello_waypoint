@@ -72,7 +72,7 @@ namespace Basic_GUI
             this.Hover.Size = new System.Drawing.Size(342, 44);
             this.Hover.TabIndex = 38;
             this.Hover.TabStop = false;
-            this.Hover.Text = "Hover";
+            this.Hover.Text = "Hover (Spacebar)";
             this.Hover.UseVisualStyleBackColor = false;
             // 
             // Clockwise
@@ -83,7 +83,7 @@ namespace Basic_GUI
             this.Clockwise.Size = new System.Drawing.Size(131, 44);
             this.Clockwise.TabIndex = 37;
             this.Clockwise.TabStop = false;
-            this.Clockwise.Text = "Clockwise";
+            this.Clockwise.Text = "Clockwise (L)";
             this.Clockwise.UseVisualStyleBackColor = false;
             // 
             // Counter
@@ -94,7 +94,7 @@ namespace Basic_GUI
             this.Counter.Size = new System.Drawing.Size(131, 44);
             this.Counter.TabIndex = 36;
             this.Counter.TabStop = false;
-            this.Counter.Text = "Counter";
+            this.Counter.Text = "Counter (J)";
             this.Counter.UseVisualStyleBackColor = false;
             // 
             // Downward
@@ -105,7 +105,7 @@ namespace Basic_GUI
             this.Downward.Size = new System.Drawing.Size(131, 44);
             this.Downward.TabIndex = 35;
             this.Downward.TabStop = false;
-            this.Downward.Text = "Downward";
+            this.Downward.Text = "Downward (K)";
             this.Downward.UseVisualStyleBackColor = false;
             // 
             // Upward
@@ -116,7 +116,7 @@ namespace Basic_GUI
             this.Upward.Size = new System.Drawing.Size(131, 44);
             this.Upward.TabIndex = 34;
             this.Upward.TabStop = false;
-            this.Upward.Text = "Upward";
+            this.Upward.Text = "Upward (I)";
             this.Upward.UseVisualStyleBackColor = false;
             // 
             // Left
@@ -127,7 +127,7 @@ namespace Basic_GUI
             this.Left.Size = new System.Drawing.Size(128, 44);
             this.Left.TabIndex = 33;
             this.Left.TabStop = false;
-            this.Left.Text = "Left";
+            this.Left.Text = "Left (D)";
             this.Left.UseVisualStyleBackColor = false;
             // 
             // Right
@@ -138,7 +138,7 @@ namespace Basic_GUI
             this.Right.Size = new System.Drawing.Size(131, 44);
             this.Right.TabIndex = 32;
             this.Right.TabStop = false;
-            this.Right.Text = "Right";
+            this.Right.Text = "Right (A)";
             this.Right.UseVisualStyleBackColor = false;
             // 
             // Backward
@@ -149,7 +149,7 @@ namespace Basic_GUI
             this.Backward.Size = new System.Drawing.Size(131, 44);
             this.Backward.TabIndex = 31;
             this.Backward.TabStop = false;
-            this.Backward.Text = "Backward";
+            this.Backward.Text = "Backward (S)";
             this.Backward.UseVisualStyleBackColor = false;
             // 
             // Forward
@@ -160,7 +160,7 @@ namespace Basic_GUI
             this.Forward.Size = new System.Drawing.Size(131, 44);
             this.Forward.TabIndex = 30;
             this.Forward.TabStop = false;
-            this.Forward.Text = "Forward";
+            this.Forward.Text = "Forward (W)";
             this.Forward.UseVisualStyleBackColor = false;
             // 
             // GetPos
@@ -219,7 +219,7 @@ namespace Basic_GUI
             this.Land.Size = new System.Drawing.Size(174, 70);
             this.Land.TabIndex = 22;
             this.Land.TabStop = false;
-            this.Land.Text = "Land";
+            this.Land.Text = "Land (Y)";
             this.Land.UseVisualStyleBackColor = false;
             // 
             // Takeoff
@@ -230,7 +230,7 @@ namespace Basic_GUI
             this.Takeoff.Size = new System.Drawing.Size(175, 70);
             this.Takeoff.TabIndex = 21;
             this.Takeoff.TabStop = false;
-            this.Takeoff.Text = "Take Off";
+            this.Takeoff.Text = "Take Off (T)";
             this.Takeoff.UseVisualStyleBackColor = false;
             // 
             // chart1
@@ -277,11 +277,11 @@ namespace Basic_GUI
             this.markOrigin.Size = new System.Drawing.Size(175, 70);
             this.markOrigin.TabIndex = 46;
             this.markOrigin.TabStop = false;
-            this.markOrigin.Text = "Mark Origin";
+            this.markOrigin.Text = "Mark Origin (R)";
             this.markOrigin.UseVisualStyleBackColor = false;
             this.markOrigin.Click += new System.EventHandler(this.markOrigin_Click);
             // 
-            // Form1
+            // basic_gui
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -306,7 +306,7 @@ namespace Basic_GUI
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Land);
             this.Controls.Add(this.Takeoff);
-            this.Name = "Form1";
+            this.Name = "basic_gui";
             this.Text = " ";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);

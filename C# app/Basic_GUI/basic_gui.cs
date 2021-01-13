@@ -67,28 +67,30 @@ namespace Basic_GUI
         // Update positions 
         private void GetPos_Click(object sender, EventArgs e)
         {
-            // Update positioning 
             curX = Tello.state.posX - initX;
             curY = Tello.state.posY - initY;
             curZ = Tello.state.posZ - initZ;
-            label4.Text = curX.ToString();
-            label5.Text = curY.ToString();
-            label8.Text = (Tello.state.height).ToString();
 
-            // PLotting Chart
-            if (curX > 5 || curY > 5)
+            if (curX > 5 || curX < -5 || curY > 5 || curY < -5)
             {
                 Console.WriteLine("Data Noise eliminated");
             }
             else {
+                // Update positioning 
+                label4.Text = curX.ToString();
+                label5.Text = curY.ToString();
+                label8.Text = (Tello.state.height).ToString();
+
+                // PLotting Chart
                 chart1.Series["Trajectory 2D"].Points.AddXY(curX, curY);
                 chart1.Series["Trajectory 2D"].Points[counter].MarkerSize = 10;
                 if (counter == 0)
                 {
-                    Console.WriteLine("nothing happened");
+                    Console.WriteLine("First data point recorded");
                 }
                 else
                 {
+                    // Past waypoints
                     chart1.Series["Trajectory 2D"].Points[counter - 1].Color = Color.Red;
                     chart1.Series["Trajectory 2D"].Points[counter - 1].MarkerSize = 3;
                 }
