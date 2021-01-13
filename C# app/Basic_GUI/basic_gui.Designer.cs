@@ -35,6 +35,7 @@ namespace Basic_GUI
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.Hover = new System.Windows.Forms.Button();
             this.Clockwise = new System.Windows.Forms.Button();
@@ -56,6 +57,8 @@ namespace Basic_GUI
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.markOrigin = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -166,7 +169,7 @@ namespace Basic_GUI
             // GetPos
             // 
             this.GetPos.BackColor = System.Drawing.Color.White;
-            this.GetPos.Location = new System.Drawing.Point(20, 120);
+            this.GetPos.Location = new System.Drawing.Point(18, 149);
             this.GetPos.Name = "GetPos";
             this.GetPos.Size = new System.Drawing.Size(116, 35);
             this.GetPos.TabIndex = 29;
@@ -235,6 +238,8 @@ namespace Basic_GUI
             // 
             // chart1
             // 
+            chartArea1.AxisX.Title = "Position X";
+            chartArea1.AxisY.Title = "Position Y";
             chartArea1.Name = "ChartArea1";
             this.chart1.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
@@ -245,7 +250,12 @@ namespace Basic_GUI
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
             series1.Legend = "Legend1";
             series1.Name = "Trajectory 2D";
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            series2.Legend = "Legend1";
+            series2.Name = "Origin";
             this.chart1.Series.Add(series1);
+            this.chart1.Series.Add(series2);
             this.chart1.Size = new System.Drawing.Size(873, 626);
             this.chart1.TabIndex = 39;
             this.chart1.TabStop = false;
@@ -281,11 +291,31 @@ namespace Basic_GUI
             this.markOrigin.UseVisualStyleBackColor = false;
             this.markOrigin.Click += new System.EventHandler(this.markOrigin_Click);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(90, 117);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(46, 17);
+            this.label3.TabIndex = 47;
+            this.label3.Text = "label3";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(15, 117);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(73, 17);
+            this.label6.TabIndex = 48;
+            this.label6.Text = "Yaw angle";
+            // 
             // basic_gui
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1767, 676);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.chart1);
             this.Controls.Add(this.markOrigin);
             this.Controls.Add(this.label9);
@@ -339,6 +369,8 @@ namespace Basic_GUI
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button markOrigin;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label6;
     }
 }
 

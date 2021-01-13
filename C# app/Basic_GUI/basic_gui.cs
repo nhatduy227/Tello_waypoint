@@ -27,8 +27,14 @@ namespace Basic_GUI
         float curZ = 0;
         int counter = 0;
 
+        // Roll Pitch Yaw data
+        double Yaw = 0;
+
+
         // IP info
         string IP = "192.168.10.1";
+
+        // Constructor
         public basic_gui()
         {
             this.KeyPreview = true;
@@ -64,13 +70,57 @@ namespace Basic_GUI
                 Console.WriteLine("Tello connected");
             }
         }
+
+        // Yaw angle calculation 
+        public double[] toEuler(float qX, float qY, float qZ, float qW)
+        {
+
+            double sqW = qW * qW;
+            double sqX = qX * qX;
+            double sqY = qY * qY;
+            double sqZ = qZ * qZ;
+            double yaw = 0.0;
+            double roll = 0.0;
+            double pitch = 0.0;
+            double[] retv = new double[3];
+            double unit = sqX + sqY + sqZ + sqW; // if normalised is one, otherwise
+                                                 // is correction factor
+            double test = qW * qX + qY * qZ;
+            if (test > 0.499 * unit)
+            { // singularity at north pole
+                yaw = 2 * Math.Atan2(qY, qW);
+                pitch = Math.PI / 2;
+                roll = 0;
+            }
+            else if (test < -0.499 * unit)
+            { // singularity at south pole
+                yaw = -2 * Math.Atan2(qY, qW);
+                pitch = -Math.PI / 2;
+                roll = 0;
+            }
+            else
+            {
+                yaw = Math.Atan2(2.0 * (qW * qZ - qX * qY),
+                        1.0 - 2.0 * (sqZ + sqX));
+                roll = Math.Asin(2.0 * test / unit);
+                pitch = Math.Atan2(2.0 * (qW * qY - qX * qZ),
+                        1.0 - 2.0 * (sqY + sqX));
+            }
+            retv[0] = pitch;
+            retv[1] = roll;
+            retv[2] = yaw;
+            return retv;
+        }
+
         // Update positions 
         private void GetPos_Click(object sender, EventArgs e)
         {
             curX = Tello.state.posX - initX;
             curY = Tello.state.posY - initY;
             curZ = Tello.state.posZ - initZ;
-
+            var eular = toEuler(Tello.state.quatX, Tello.state.quatY, Tello.state.quatZ, Tello.state.quatW);
+            Yaw = Math.Round(eular[2] * (180 / 3.141592),4);
+            
             if (curX > 5 || curX < -5 || curY > 5 || curY < -5)
             {
                 Console.WriteLine("Data Noise eliminated");
@@ -80,22 +130,21 @@ namespace Basic_GUI
                 label4.Text = curX.ToString();
                 label5.Text = curY.ToString();
                 label8.Text = (Tello.state.height).ToString();
+                label3.Text = Yaw.ToString();
 
                 // PLotting Chart
-                chart1.Series["Trajectory 2D"].Points.AddXY(curX, curY);
+                // Plot current position
+                chart1.Series["Trajectory 2D"].Points.AddXY(Math.Round(curX, 5), Math.Round(curY,5));
                 chart1.Series["Trajectory 2D"].Points[counter].MarkerSize = 10;
-                if (counter == 0)
-                {
-                    Console.WriteLine("First data point recorded");
-                }
-                else
-                {
-                    // Past waypoints
-                    chart1.Series["Trajectory 2D"].Points[counter - 1].Color = Color.Red;
-                    chart1.Series["Trajectory 2D"].Points[counter - 1].MarkerSize = 3;
-                }
 
+                // Past positions
+                if (counter != 0)
+                {
+                    chart1.Series["Trajectory 2D"].Points[counter - 1].Color = Color.Red;
+                    chart1.Series["Trajectory 2D"].Points[counter - 1].MarkerSize = 3;           
+                }
                 counter += 1;
+
                 //Saving to XML
                 //Data.PosX = ((Tello.state.posX - initX)).ToString();
                 //Data.PosY = ((Tello.state.posY - initY)).ToString();
@@ -255,6 +304,10 @@ namespace Basic_GUI
             initX = Tello.state.posX;
             initY = Tello.state.posY;
             initZ = Tello.state.posZ;
+
+            // Mark Origin 
+            chart1.Series["Origin"].Points.AddXY(0, 0);
+            chart1.Series["Origin"].Points[0].MarkerSize = 10;
 
             // Start timer 
             timer1.Start();
