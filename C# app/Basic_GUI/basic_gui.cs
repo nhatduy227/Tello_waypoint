@@ -94,9 +94,9 @@ namespace Basic_GUI
             else
             {
                 // Update data
-                PosX.Text = "Position X: " + curX.ToString();
-                PosY.Text = "Position Y: " + curY.ToString();
-                Height.Text = "Height: " + (Tello.state.height).ToString();
+                PosX.Text = "Position X: " + curX.ToString() + " m";
+                PosY.Text = "Position Y: " + curY.ToString() + " m";
+                Height.Text = "Height: " + (Tello.state.height/10).ToString() + " m";
                 YawAngel.Text = "Yaw Angle: " + Yaw.ToString();
                 Battery.Text = "Battery: " + Tello.state.batteryPercentage.ToString() + "%";
 

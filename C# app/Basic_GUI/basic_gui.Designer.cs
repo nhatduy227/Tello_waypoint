@@ -217,8 +217,8 @@ namespace Basic_GUI
             // 
             // chart1
             // 
-            chartArea3.AxisX.Title = "Position X";
-            chartArea3.AxisY.Title = "Position Y";
+            chartArea3.AxisX.Title = "Position X in meters";
+            chartArea3.AxisY.Title = "Position Y in meters";
             chartArea3.Name = "ChartArea1";
             this.chart1.ChartAreas.Add(chartArea3);
             legend3.Name = "Legend1";
