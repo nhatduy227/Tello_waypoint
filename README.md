@@ -14,14 +14,18 @@ Positioning data of past runs is saved under the XML-positioning directory.
 
 # Key Points about MVO data collected from TelloLib
 Mvo data is recorded in meters and the drone's mvo data will shoot to random number after it taking off
-- Fly forward: PosX increase(become more positive)
-- Fly backward: PosX decrease (become more negative)
-- Fly left: 
-- Fly right: 
+When Yaw angle is O: 
+- Fly forward: PosX increase
+- Fly backward: PosX decrease
+- Fly left: PosY increase
+- Fly right: PosY decrease
 - Fly upward: Height increase
-- Fly downward: Height Decrease 
-- Clockwise: Yaw angle increase toward 90 
-- Counter Clockwise: Yaw angle decrease toward -90
+- Fly downward: Height decrease 
+- Clockwise: Yaw angle increase toward 360 (Yaw angle will reset to 0 if go pass 360)
+- Counter Clockwise: Yaw angle decrease toward 0 (Yaw angle will reset to 360 if go below 360)
+Position Data won't reset on changing Yaw angle 
+When booting up the drone, it will reset the yaw angle to 0 with respect to its front facing camera
+
 # Drone Swarm
 For Drone Swarming, we need to have Tello EDUs. Tello EDU has different mode, which are IP mode and Wifi mode.
 To archive drone swarming, we need to:  

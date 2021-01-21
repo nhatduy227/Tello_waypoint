@@ -63,6 +63,7 @@
     <Compile Include="basic_gui.Designer.cs">
       <DependentUpon>basic_gui.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utils.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="basic_gui.resx">

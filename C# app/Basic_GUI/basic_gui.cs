@@ -1,24 +1,22 @@
 ﻿using System;
-using System.Linq;
-using System.IO;
 using System.Drawing;
-using System.Xml;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Windows.Forms;
 using TelloLib;
-using System.Diagnostics;
 
 namespace Basic_GUI
 {
-    
+
     public partial class basic_gui : Form
     {
         // Saving positioning data 
         //Data Data = new Data();
-        //int run = Directory.GetFiles("C:/Users/nomie/Desktop/Tello_waypoint/XML-positioning/", "*", SearchOption.TopDirectoryOnly).Length + 1;
-        
+        //int run = Directory.GetFiles("C:/Users/nomie/Desktop/Tello_waypoint/assets/", "*", SearchOption.TopDirectoryOnly).Length;
+
         // initial positions 
         float initX = 0;
-        float initY= 0;
+        float initY = 0;
         float initZ = 0;
 
         // current waypoints
@@ -29,7 +27,7 @@ namespace Basic_GUI
 
         // Roll Pitch Yaw data
         double Yaw = 0;
-
+        Utils utils = new Utils();
 
         // IP info
         string IP = "192.168.10.1";
@@ -64,84 +62,54 @@ namespace Basic_GUI
             };
 
             Tello.startConnecting(IP);//Start trying to connect.
-            while (Tello.connected) 
+            while (Tello.connected)
             {
                 // send back connecting message
                 Console.WriteLine("Tello connected");
             }
         }
 
-        // Yaw angle calculation 
-        public double[] toEuler(float qX, float qY, float qZ, float qW)
-        {
-
-            double sqW = qW * qW;
-            double sqX = qX * qX;
-            double sqY = qY * qY;
-            double sqZ = qZ * qZ;
-            double yaw = 0.0;
-            double roll = 0.0;
-            double pitch = 0.0;
-            double[] retv = new double[3];
-            double unit = sqX + sqY + sqZ + sqW; // if normalised is one, otherwise
-                                                 // is correction factor
-            double test = qW * qX + qY * qZ;
-            if (test > 0.499 * unit)
-            { // singularity at north pole
-                yaw = 2 * Math.Atan2(qY, qW);
-                pitch = Math.PI / 2;
-                roll = 0;
-            }
-            else if (test < -0.499 * unit)
-            { // singularity at south pole
-                yaw = -2 * Math.Atan2(qY, qW);
-                pitch = -Math.PI / 2;
-                roll = 0;
-            }
-            else
-            {
-                yaw = Math.Atan2(2.0 * (qW * qZ - qX * qY),
-                        1.0 - 2.0 * (sqZ + sqX));
-                roll = Math.Asin(2.0 * test / unit);
-                pitch = Math.Atan2(2.0 * (qW * qY - qX * qZ),
-                        1.0 - 2.0 * (sqY + sqX));
-            }
-            retv[0] = pitch;
-            retv[1] = roll;
-            retv[2] = yaw;
-            return retv;
-        }
-
         // Update positions 
         private void GetPos_Click(object sender, EventArgs e)
         {
+            // Positioning data
             curX = Tello.state.posX - initX;
             curY = Tello.state.posY - initY;
             curZ = Tello.state.posZ - initZ;
-            var eular = toEuler(Tello.state.quatX, Tello.state.quatY, Tello.state.quatZ, Tello.state.quatW);
-            Yaw = Math.Round(eular[2] * (180 / 3.141592),4);
-            
+
+            // Rotation data
+            var eular = utils.toEuler(Tello.state.quatX, Tello.state.quatY, Tello.state.quatZ, Tello.state.quatW);
+            Yaw = Math.Round(eular[2] * (180 / 3.141592), 4);
+            if (Yaw < 0)
+            {
+                Yaw += 360;
+            }
+
+            chart1.Series["Trajectory 2D"].CustomProperties = "IsXAxisQuantitative=True"; // Prevent X to be 1 on initialization 
+
             if (curX > 5 || curX < -5 || curY > 5 || curY < -5)
             {
                 Console.WriteLine("Data Noise eliminated");
             }
-            else {
-                // Update positioning 
-                label4.Text = curX.ToString();
-                label5.Text = curY.ToString();
-                label8.Text = (Tello.state.height).ToString();
-                label3.Text = Yaw.ToString();
+            else
+            {
+                // Update data
+                PosX.Text = "Position X: " + curX.ToString();
+                PosY.Text = "Position Y: " + curY.ToString();
+                Height.Text = "Height: " + (Tello.state.height).ToString();
+                YawAngel.Text = "Yaw Angle: " + Yaw.ToString();
+                Battery.Text = "Battery: " + Tello.state.batteryPercentage.ToString() + "%";
 
                 // PLotting Chart
                 // Plot current position
-                chart1.Series["Trajectory 2D"].Points.AddXY(Math.Round(curX, 5), Math.Round(curY,5));
+                chart1.Series["Trajectory 2D"].Points.AddXY(Math.Round(curX, 5), Math.Round(curY, 5));
                 chart1.Series["Trajectory 2D"].Points[counter].MarkerSize = 10;
 
                 // Past positions
                 if (counter != 0)
                 {
                     chart1.Series["Trajectory 2D"].Points[counter - 1].Color = Color.Red;
-                    chart1.Series["Trajectory 2D"].Points[counter - 1].MarkerSize = 3;           
+                    chart1.Series["Trajectory 2D"].Points[counter - 1].MarkerSize = 3;
                 }
                 counter += 1;
 
@@ -180,14 +148,14 @@ namespace Basic_GUI
                 Tello.land();
             }
 
-            if (e.KeyCode == Keys.R) 
+            if (e.KeyCode == Keys.R)
             {
                 markOrigin.PerformClick();
                 markOrigin.BackColor = Color.Green;
                 markOrigin.ForeColor = Color.White;
                 //Data.CreateXMLFile(run);
             }
-            
+
             if (e.KeyCode == Keys.Space)
             {
                 Hover.BackColor = Color.Green;
@@ -270,7 +238,7 @@ namespace Basic_GUI
         }
 
         private void Form1_KeyUp(object sender, KeyEventArgs e)
-        {   
+        {
             // Change buttons color to default settings
             Forward.BackColor = Color.White;
             Forward.ForeColor = Color.Black;
@@ -306,6 +274,7 @@ namespace Basic_GUI
             initZ = Tello.state.posZ;
 
             // Mark Origin 
+            chart1.Series["Origin"].CustomProperties = "IsXAxisQuantitative=True"; // Prevent X to be 1 on initialization 
             chart1.Series["Origin"].Points.AddXY(0, 0);
             chart1.Series["Origin"].Points[0].MarkerSize = 10;
 
