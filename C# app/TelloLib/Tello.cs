@@ -33,9 +33,6 @@ namespace TelloLib
         public static int iFrameRate = 5;//How often to ask for iFrames in 50ms. Ie 2=10x 5=4x 10=2xSecond 5 = 4xSecond
 
         private static ushort sequence = 1;
-        //public Tello() {
-        
-        //}
 
         public enum ConnectionState
         {
@@ -474,43 +471,44 @@ namespace TelloLib
                     }
                 }
             }, token);
-            //video server
-            var videoServer = new UdpListener(6038);
-            //var videoServer = new UdpListener(new IPEndPoint(IPAddress.Parse("192.168.10.2"), 6038));
 
-            Task.Factory.StartNew(async () => {
-                //Console.WriteLine("video:1");
-                var started = false;
+//            //video server
+//            var videoServer = new UdpListener(6038);
+//            //var videoServer = new UdpListener(new IPEndPoint(IPAddress.Parse("192.168.10.2"), 6038));
 
-                while (true)
-                {
-                    try
-                    {
-                        if (token.IsCancellationRequested)//handle canceling thread.
-                            break;
-                        var received = await videoServer.Receive();
-                        if (received.bytes[2] == 0 && received.bytes[3] == 0 && received.bytes[4] == 0 && received.bytes[5] == 1)//Wait for first NAL
-                        {
-                            var nal = (received.bytes[6] & 0x1f);
-                            //if (nal != 0x01 && nal!=0x07 && nal != 0x08 && nal != 0x05)
-                            //    Console.WriteLine("NAL type:" +nal);
-                            started = true;
-                        }
-                        if (started)
-                        {
-                            onVideoData(received.bytes);
-                        }
+//            Task.Factory.StartNew(async () => {
+//                //Console.WriteLine("video:1");
+//                var started = false;
 
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine("Video receive thread error:" + ex.Message);
+//                while (true)
+//                {
+//                    try
+//                    {
+//                        if (token.IsCancellationRequested)//handle canceling thread.
+//                            break;
+//                        var received = await videoServer.Receive();
+//                        if (received.bytes[2] == 0 && received.bytes[3] == 0 && received.bytes[4] == 0 && received.bytes[5] == 1)//Wait for first NAL
+//                        {
+//                            var nal = (received.bytes[6] & 0x1f);
+//                            //if (nal != 0x01 && nal!=0x07 && nal != 0x08 && nal != 0x05)
+//                            //    Console.WriteLine("NAL type:" +nal);
+//                            started = true;
+//                        }
+//                        if (started)
+//                        {
+//                            onVideoData(received.bytes);
+//                        }
+
+//                    }
+//                    catch (Exception ex)
+//                    {
+//                        Console.WriteLine("Video receive thread error:" + ex.Message);
                         
-                        //dont disconnect();
-//                        break;
-                    }
-                }
-            }, token);
+//                        //dont disconnect();
+////                        break;
+//                    }
+//                }
+//            }, token);
 
         }
 
@@ -909,49 +907,7 @@ namespace TelloLib
                     pos += len;
                 }
             }
-            public double[] toEuler()
-            {
-                float qX = quatX;
-                float qY = quatY;
-                float qZ = quatZ;
-                float qW = quatW;
-
-                double sqW = qW * qW;
-                double sqX = qX * qX;
-                double sqY = qY * qY;
-                double sqZ = qZ * qZ;
-                double yaw = 0.0;
-                double roll = 0.0;
-                double pitch = 0.0;
-                double[] retv = new double[3];
-                double unit = sqX + sqY + sqZ + sqW; // if normalised is one, otherwise
-                                                     // is correction factor
-                double test = qW * qX + qY * qZ;
-                if (test > 0.499 * unit)
-                { // singularity at north pole
-                    yaw = 2 * Math.Atan2(qY, qW);
-                    pitch = Math.PI / 2;
-                    roll = 0;
-                }
-                else if (test < -0.499 * unit)
-                { // singularity at south pole
-                    yaw = -2 * Math.Atan2(qY, qW);
-                    pitch = -Math.PI / 2;
-                    roll = 0;
-                }
-                else
-                {
-                    yaw = Math.Atan2(2.0 * (qW * qZ - qX * qY),
-                            1.0 - 2.0 * (sqZ + sqX));
-                    roll = Math.Asin(2.0 * test / unit);
-                    pitch = Math.Atan2(2.0 * (qW * qY - qX * qZ),
-                            1.0 - 2.0 * (sqY + sqX));
-                }
-                retv[0] = pitch;
-                retv[1] = roll;
-                retv[2] = yaw;
-                return retv;
-            }
+            
 
             //For saving out state info.
             public string getLogHeader()

@@ -1,5 +1,5 @@
 # Tellow Waypoint
-Goal: We aim to create an app that let user create waypoint missions for Tello drone 
+Goal: We aim to create an app that let users manually control and create flightplans for Tello drone 
 
 # Control Tello using C# App
 - C# app is a mininal control hub that let you control Tello using your keyboard and get real time 2D trajectory of the drone.
@@ -11,6 +11,20 @@ Positioning data collected from tello is estimated using Multimotion Visual Odem
 - Learn more about [TelloLib](https://github.com/Kragrathea/TelloLib)
 
 Positioning data of past runs is saved under the XML-positioning directory.
+
+# Key Points about MVO data collected from TelloLib
+Mvo data is recorded in meters and the drone's mvo data will shoot to random number after it taking off
+When Yaw angle is O: 
+- Fly forward: PosX increase
+- Fly backward: PosX decrease
+- Fly left: PosY increase
+- Fly right: PosY decrease
+- Fly upward: Height increase
+- Fly downward: Height decrease 
+- Clockwise: Yaw angle increase toward 360 (Yaw angle will reset to 0 if go pass 360)
+- Counter Clockwise: Yaw angle decrease toward 0 (Yaw angle will reset to 360 if go below 360)
+Position Data won't reset on changing Yaw angle 
+When booting up the drone, it will reset the yaw angle to 0 with respect to its front facing camera
 
 # Drone Swarm
 For Drone Swarming, we need to have Tello EDUs. Tello EDU has different mode, which are IP mode and Wifi mode.

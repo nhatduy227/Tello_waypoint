@@ -1,24 +1,22 @@
 ﻿using System;
-using System.Linq;
-using System.IO;
 using System.Drawing;
-using System.Xml;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Windows.Forms;
 using TelloLib;
-using System.Diagnostics;
 
 namespace Basic_GUI
 {
-    
+
     public partial class basic_gui : Form
     {
         // Saving positioning data 
         //Data Data = new Data();
-        //int run = Directory.GetFiles("C:/Users/nomie/Desktop/Tello_waypoint/XML-positioning/", "*", SearchOption.TopDirectoryOnly).Length + 1;
-        
+        //int run = Directory.GetFiles("C:/Users/nomie/Desktop/Tello_waypoint/assets/", "*", SearchOption.TopDirectoryOnly).Length;
+
         // initial positions 
         float initX = 0;
-        float initY= 0;
+        float initY = 0;
         float initZ = 0;
 
         // current waypoints
@@ -27,8 +25,14 @@ namespace Basic_GUI
         float curZ = 0;
         int counter = 0;
 
+        // Roll Pitch Yaw data
+        double Yaw = 0;
+        Utils utils = new Utils();
+
         // IP info
         string IP = "192.168.10.1";
+
+        // Constructor
         public basic_gui()
         {
             this.KeyPreview = true;
@@ -39,6 +43,7 @@ namespace Basic_GUI
             {
                 if (newState != Tello.ConnectionState.Connected)
                 {
+                    Console.WriteLine("Tello Disconnected");
                 }
                 if (newState == Tello.ConnectionState.Connected)
                 {
@@ -56,60 +61,66 @@ namespace Basic_GUI
                 }
             };
 
-            var videoClient = UdpUser.ConnectTo("127.0.0.1", 7038);
-            //subscribe to Tello video data
-            Tello.onVideoData += (byte[] data) =>
-            {
-                try
-                {
-                    videoClient.Send(data.Skip(2).ToArray());//Skip 2 byte header and send to ffplay. 
-                    //Console.WriteLine("Video size:" + data.Length);
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("Error: ", ex);
-                }
-            };
-
             Tello.startConnecting(IP);//Start trying to connect.
-            while (Tello.connected) 
+            while (Tello.connected)
             {
                 // send back connecting message
                 Console.WriteLine("Tello connected");
             }
         }
+
         // Update positions 
         private void GetPos_Click(object sender, EventArgs e)
         {
-            // Update positioning 
+            // Positioning data
             curX = Tello.state.posX - initX;
             curY = Tello.state.posY - initY;
             curZ = Tello.state.posZ - initZ;
-            label4.Text = curX.ToString();
-            label5.Text = curY.ToString();
-            label8.Text = (Tello.state.height).ToString();
 
-            // PLotting Chart
-            chart1.Series["Trajectory 2D"].Points.AddXY(curX, curY);
-            chart1.Series["Trajectory 2D"].Points[counter].MarkerSize = 10;
-            if (counter == 0) {
-                Console.WriteLine("nothing happened");
+            // Rotation data
+            var eular = utils.toEuler(Tello.state.quatX, Tello.state.quatY, Tello.state.quatZ, Tello.state.quatW);
+            Yaw = Math.Round(eular[2] * (180 / 3.141592), 4);
+            if (Yaw < 0)
+            {
+                Yaw += 360;
             }
-            else {
-                chart1.Series["Trajectory 2D"].Points[counter - 1].Color = Color.Red;
-                chart1.Series["Trajectory 2D"].Points[counter - 1].MarkerSize = 3;
+
+            chart1.Series["Trajectory 2D"].CustomProperties = "IsXAxisQuantitative=True"; // Prevent X to be 1 on initialization 
+
+            if (curX > 5 || curX < -5 || curY > 5 || curY < -5)
+            {
+                Console.WriteLine("Data Noise eliminated");
             }
-            
-            counter += 1;
+            else
+            {
+                // Update data
+                PosX.Text = "Position X: " + curX.ToString();
+                PosY.Text = "Position Y: " + curY.ToString();
+                Height.Text = "Height: " + (Tello.state.height).ToString();
+                YawAngel.Text = "Yaw Angle: " + Yaw.ToString();
+                Battery.Text = "Battery: " + Tello.state.batteryPercentage.ToString() + "%";
 
-            //Saving to XML
-            //Data.PosX = ((Tello.state.posX - initX)).ToString();
-            //Data.PosY = ((Tello.state.posY - initY)).ToString();
-            //Data.PosZ = (Tello.state.height).ToString();
-            //Data.FlightTime = Tello.state.flyTime.ToString();
-            //Data.TimeStamp = System.DateTime.Now.ToString();
-            //Data.AddRecordToXML(Data.FlightTime, Data.TimeStamp, Data.PosX, Data.PosY, Data.PosZ, run);
+                // PLotting Chart
+                // Plot current position
+                chart1.Series["Trajectory 2D"].Points.AddXY(Math.Round(curX, 5), Math.Round(curY, 5));
+                chart1.Series["Trajectory 2D"].Points[counter].MarkerSize = 10;
 
+                // Past positions
+                if (counter != 0)
+                {
+                    chart1.Series["Trajectory 2D"].Points[counter - 1].Color = Color.Red;
+                    chart1.Series["Trajectory 2D"].Points[counter - 1].MarkerSize = 3;
+                }
+                counter += 1;
+
+                //Saving to XML
+                //Data.PosX = ((Tello.state.posX - initX)).ToString();
+                //Data.PosY = ((Tello.state.posY - initY)).ToString();
+                //Data.PosZ = (Tello.state.height).ToString();
+                //Data.FlightTime = Tello.state.flyTime.ToString();
+                //Data.TimeStamp = System.DateTime.Now.ToString();
+                //Data.AddRecordToXML(Data.FlightTime, Data.TimeStamp, Data.PosX, Data.PosY, Data.PosZ, run);
+            }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -137,14 +148,14 @@ namespace Basic_GUI
                 Tello.land();
             }
 
-            if (e.KeyCode == Keys.R) 
+            if (e.KeyCode == Keys.R)
             {
                 markOrigin.PerformClick();
                 markOrigin.BackColor = Color.Green;
                 markOrigin.ForeColor = Color.White;
                 //Data.CreateXMLFile(run);
             }
-            
+
             if (e.KeyCode == Keys.Space)
             {
                 Hover.BackColor = Color.Green;
@@ -227,7 +238,7 @@ namespace Basic_GUI
         }
 
         private void Form1_KeyUp(object sender, KeyEventArgs e)
-        {   
+        {
             // Change buttons color to default settings
             Forward.BackColor = Color.White;
             Forward.ForeColor = Color.Black;
@@ -261,6 +272,11 @@ namespace Basic_GUI
             initX = Tello.state.posX;
             initY = Tello.state.posY;
             initZ = Tello.state.posZ;
+
+            // Mark Origin 
+            chart1.Series["Origin"].CustomProperties = "IsXAxisQuantitative=True"; // Prevent X to be 1 on initialization 
+            chart1.Series["Origin"].Points.AddXY(0, 0);
+            chart1.Series["Origin"].Points[0].MarkerSize = 10;
 
             // Start timer 
             timer1.Start();
