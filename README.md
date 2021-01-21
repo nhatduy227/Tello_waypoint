@@ -15,7 +15,7 @@ Positioning data of past runs is saved under the XML-positioning directory.
 # Key Points about MVO data collected from TelloLib
 **Mvo data is recorded in meters and the drone's mvo data will shoot to random number after it taking off.**  <br />
 **When booting up the drone, it will reset the yaw angle to 0 with respect to its front facing camera.** <br />
-![alt text](https://github.com/nhatduy227/Tello_waypoint/blob/feat/update-readme/assets/tellodrone.jpg) <br />
+![alt text](https://github.com/nhatduy227/Tello_waypoint/blob/master/assets/tellodrone.jpg) <br />
 **When Yaw angle is 0:** 
 - Fly forward: PosX increase
 - Fly backward: PosX decrease
