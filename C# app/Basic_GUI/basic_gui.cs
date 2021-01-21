@@ -7,7 +7,6 @@ using TelloLib;
 
 namespace Basic_GUI
 {
-
     public partial class basic_gui : Form
     {
         // Saving positioning data 
@@ -72,6 +71,7 @@ namespace Basic_GUI
         // Update positions 
         private void GetPos_Click(object sender, EventArgs e)
         {
+            this.ActiveControl = null;
             // Positioning data
             curX = Tello.state.posX - initX;
             curY = Tello.state.posY - initY;
@@ -96,7 +96,7 @@ namespace Basic_GUI
                 // Update data
                 PosX.Text = "Position X: " + curX.ToString() + " m";
                 PosY.Text = "Position Y: " + curY.ToString() + " m";
-                Height.Text = "Height: " + (Tello.state.height/10).ToString() + " m";
+                Height.Text = "Height: " + Tello.state.height.ToString() + " dm";
                 YawAngel.Text = "Yaw Angle: " + Yaw.ToString();
                 Battery.Text = "Battery: " + Tello.state.batteryPercentage.ToString() + "%";
 
@@ -285,6 +285,13 @@ namespace Basic_GUI
         private void Form1_Load(object sender, EventArgs e)
         {
             Console.WriteLine("Form1 loaded");
+        }
+        void control_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+            if (e.KeyCode == Keys.Up || e.KeyCode == Keys.Down || e.KeyCode == Keys.Left || e.KeyCode == Keys.Right)
+            {
+                e.IsInputKey = true;
+            }
         }
     }
 }
