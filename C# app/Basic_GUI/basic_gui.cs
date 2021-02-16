@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Drawing;
-using System.Drawing.Imaging;
 using System.IO;
 using System.Windows.Forms;
 using TelloLib;
+using OpenTK.Graphics.OpenGL;
+using OpenTK;
+using PixelFormat = OpenTK.Graphics.OpenGL.PixelFormat;
 
 namespace Basic_GUI
 {
@@ -31,9 +33,16 @@ namespace Basic_GUI
         // IP info
         string IP = "192.168.10.1";
 
-        // Constructor
+        static float angle = 0.0f;
+
         public basic_gui()
         {
+            //Log file setup.
+            var logPath = "dronelogs/";
+            System.IO.Directory.CreateDirectory(Path.Combine("../", logPath));
+            var logStartTime = DateTime.Now;
+            var logFilePath = Path.Combine("../", logPath + logStartTime.ToString("yyyy-dd-M--HH-mm-ss") + ".csv");
+
             this.KeyPreview = true;
             InitializeComponent();
 
@@ -56,7 +65,13 @@ namespace Basic_GUI
             {
                 if (cmdId == 86)//ac update
                 {
-                    Console.WriteLine("Tello updated");
+                    //write update to log.
+                    var elapsed = DateTime.Now - logStartTime;
+                    File.AppendAllText(logFilePath, elapsed.ToString(@"mm\:ss\:ff\,") + Tello.state.getLogLine());
+
+                    //display state in console.
+                    var outStr = Tello.state.ToString();//ToString() = Formated state
+                    Console.WriteLine(outStr);
                 }
             };
 
@@ -292,6 +307,148 @@ namespace Basic_GUI
             {
                 e.IsInputKey = true;
             }
+        }
+
+        private void glControl_Load(object sender, EventArgs e)
+        {
+            base.OnLoad(e);
+
+            glControl.KeyDown += new KeyEventHandler(glControl_KeyDown);
+            glControl.KeyUp += new KeyEventHandler(glControl_KeyUp);
+            glControl.Resize += new EventHandler(glControl_Resize);
+            glControl.Paint += new PaintEventHandler(glControl_Paint);
+
+            Text =
+                GL.GetString(StringName.Vendor) + " " +
+                GL.GetString(StringName.Renderer) + " " +
+                GL.GetString(StringName.Version);
+
+            GL.ClearColor(Color.MidnightBlue);
+            GL.Enable(EnableCap.DepthTest);
+
+            Application.Idle += Application_Idle;
+
+            // Ensure that the viewport and projection matrix are set correctly.
+            glControl_Resize(glControl, EventArgs.Empty);
+        }
+
+        void glControl_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyData)
+            {
+                case Keys.Escape:
+                    this.Close();
+                    break;
+            }
+        }
+
+        void glControl_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F12)
+            {
+                GrabScreenshot().Save("screenshot.png");
+            }
+        }
+
+        void glControl_Resize(object sender, EventArgs e)
+        {
+            OpenTK.GLControl c = sender as OpenTK.GLControl;
+
+            if (c.ClientSize.Height == 0)
+                c.ClientSize = new System.Drawing.Size(c.ClientSize.Width, 1);
+
+            GL.Viewport(0, 0, c.ClientSize.Width, c.ClientSize.Height);
+
+            float aspect_ratio = this.Width / (float)this.Height;
+            Matrix4 perpective = Matrix4.CreatePerspectiveFieldOfView(MathHelper.PiOver4, aspect_ratio, 1, 64);
+            GL.MatrixMode(MatrixMode.Projection);
+            GL.LoadMatrix(ref perpective);
+        }
+
+        void glControl_Paint(object sender, PaintEventArgs e)
+        {
+            Render();
+        }
+
+        void Application_Idle(object sender, EventArgs e)
+        {
+            while (glControl.IsIdle)
+            {
+                Render();
+            }
+        }
+
+
+        private void Render()
+        {
+            Matrix4 lookat = Matrix4.LookAt(0, 5, 5, 0, 0, 0, 0, 1, 0);
+            GL.MatrixMode(MatrixMode.Modelview);
+            GL.LoadMatrix(ref lookat);
+
+            GL.Rotate(angle, 0.0f, 1.0f, 0.0f);
+            angle += 0.5f;
+
+            GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
+
+            DrawCube();
+
+            glControl.SwapBuffers();
+        }
+        private void DrawCube()
+        {
+            GL.Begin(BeginMode.Quads);
+
+            GL.Color3(Color.Silver);
+            GL.Vertex3(-1.0f, -1.0f, -1.0f);
+            GL.Vertex3(-1.0f, 1.0f, -1.0f);
+            GL.Vertex3(1.0f, 1.0f, -1.0f);
+            GL.Vertex3(1.0f, -1.0f, -1.0f);
+
+            GL.Color3(Color.Honeydew);
+            GL.Vertex3(-1.0f, -1.0f, -1.0f);
+            GL.Vertex3(1.0f, -1.0f, -1.0f);
+            GL.Vertex3(1.0f, -1.0f, 1.0f);
+            GL.Vertex3(-1.0f, -1.0f, 1.0f);
+
+            GL.Color3(Color.Moccasin);
+
+            GL.Vertex3(-1.0f, -1.0f, -1.0f);
+            GL.Vertex3(-1.0f, -1.0f, 1.0f);
+            GL.Vertex3(-1.0f, 1.0f, 1.0f);
+            GL.Vertex3(-1.0f, 1.0f, -1.0f);
+
+            GL.Color3(Color.IndianRed);
+            GL.Vertex3(-1.0f, -1.0f, 1.0f);
+            GL.Vertex3(1.0f, -1.0f, 1.0f);
+            GL.Vertex3(1.0f, 1.0f, 1.0f);
+            GL.Vertex3(-1.0f, 1.0f, 1.0f);
+
+            GL.Color3(Color.PaleVioletRed);
+            GL.Vertex3(-1.0f, 1.0f, -1.0f);
+            GL.Vertex3(-1.0f, 1.0f, 1.0f);
+            GL.Vertex3(1.0f, 1.0f, 1.0f);
+            GL.Vertex3(1.0f, 1.0f, -1.0f);
+
+            GL.Color3(Color.ForestGreen);
+            GL.Vertex3(1.0f, -1.0f, -1.0f);
+            GL.Vertex3(1.0f, 1.0f, -1.0f);
+            GL.Vertex3(1.0f, 1.0f, 1.0f);
+            GL.Vertex3(1.0f, -1.0f, 1.0f);
+
+            GL.End();
+        }
+
+        Bitmap GrabScreenshot()
+        {
+            Bitmap bmp = new Bitmap(this.ClientSize.Width, this.ClientSize.Height);
+            System.Drawing.Imaging.BitmapData data =
+            bmp.LockBits(this.ClientRectangle, System.Drawing.Imaging.ImageLockMode.WriteOnly,
+                System.Drawing.Imaging.PixelFormat.Format24bppRgb);
+            GL.ReadPixels(0, 0, this.ClientSize.Width, this.ClientSize.Height, PixelFormat.Bgr, PixelType.UnsignedByte,
+                data.Scan0);
+            bmp.UnlockBits(data);
+            bmp.RotateFlip(RotateFlipType.RotateNoneFlipY);
+            return bmp;
         }
     }
 }

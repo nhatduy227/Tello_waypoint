@@ -8,8 +8,13 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelloLogParser", "TelloLogParser\TelloLogParser.csproj", "{107DB5E3-F4F9-4C28-A16B-0DDEC8CCF801}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Basic_GUI", "Basic_GUI\Basic_GUI.csproj", "{9AB67D3D-A11B-468A-828F-D95D8403C9BD}"
+	ProjectSection(ProjectDependencies) = postProject
+		{77CBDF69-DF3F-4FB3-83CE-AE7A230B6B2B} = {77CBDF69-DF3F-4FB3-83CE-AE7A230B6B2B}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Swarmming", "Swarmming\Swarmming.csproj", "{3063BFDD-0174-44BC-BA2C-4F691E9E8050}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GLTrackControl", "GL-Robot-Track-Control\GLTrackControl.csproj", "{77CBDF69-DF3F-4FB3-83CE-AE7A230B6B2B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +38,10 @@ Global
 		{3063BFDD-0174-44BC-BA2C-4F691E9E8050}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3063BFDD-0174-44BC-BA2C-4F691E9E8050}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3063BFDD-0174-44BC-BA2C-4F691E9E8050}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77CBDF69-DF3F-4FB3-83CE-AE7A230B6B2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77CBDF69-DF3F-4FB3-83CE-AE7A230B6B2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77CBDF69-DF3F-4FB3-83CE-AE7A230B6B2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77CBDF69-DF3F-4FB3-83CE-AE7A230B6B2B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

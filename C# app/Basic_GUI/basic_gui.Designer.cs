@@ -56,6 +56,7 @@ namespace Basic_GUI
             this.markOrigin = new System.Windows.Forms.Button();
             this.YawAngel = new System.Windows.Forms.Label();
             this.Battery = new System.Windows.Forms.Label();
+            this.glControl = new OpenTK.GLControl();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -67,7 +68,7 @@ namespace Basic_GUI
             // Hover
             // 
             this.Hover.BackColor = System.Drawing.Color.White;
-            this.Hover.Location = new System.Drawing.Point(257, 455);
+            this.Hover.Location = new System.Drawing.Point(263, 613);
             this.Hover.Name = "Hover";
             this.Hover.Size = new System.Drawing.Size(342, 44);
             this.Hover.TabIndex = 38;
@@ -78,7 +79,7 @@ namespace Basic_GUI
             // Clockwise
             // 
             this.Clockwise.BackColor = System.Drawing.Color.White;
-            this.Clockwise.Location = new System.Drawing.Point(733, 352);
+            this.Clockwise.Location = new System.Drawing.Point(739, 510);
             this.Clockwise.Name = "Clockwise";
             this.Clockwise.Size = new System.Drawing.Size(131, 44);
             this.Clockwise.TabIndex = 37;
@@ -89,7 +90,7 @@ namespace Basic_GUI
             // Counter
             // 
             this.Counter.BackColor = System.Drawing.Color.White;
-            this.Counter.Location = new System.Drawing.Point(468, 352);
+            this.Counter.Location = new System.Drawing.Point(474, 510);
             this.Counter.Name = "Counter";
             this.Counter.Size = new System.Drawing.Size(131, 44);
             this.Counter.TabIndex = 36;
@@ -100,7 +101,7 @@ namespace Basic_GUI
             // Downward
             // 
             this.Downward.BackColor = System.Drawing.Color.White;
-            this.Downward.Location = new System.Drawing.Point(603, 402);
+            this.Downward.Location = new System.Drawing.Point(609, 560);
             this.Downward.Name = "Downward";
             this.Downward.Size = new System.Drawing.Size(131, 44);
             this.Downward.TabIndex = 35;
@@ -111,7 +112,7 @@ namespace Basic_GUI
             // Upward
             // 
             this.Upward.BackColor = System.Drawing.Color.White;
-            this.Upward.Location = new System.Drawing.Point(603, 302);
+            this.Upward.Location = new System.Drawing.Point(609, 460);
             this.Upward.Name = "Upward";
             this.Upward.Size = new System.Drawing.Size(131, 44);
             this.Upward.TabIndex = 34;
@@ -122,7 +123,7 @@ namespace Basic_GUI
             // Left
             // 
             this.Left.BackColor = System.Drawing.Color.White;
-            this.Left.Location = new System.Drawing.Point(257, 349);
+            this.Left.Location = new System.Drawing.Point(263, 507);
             this.Left.Name = "Left";
             this.Left.Size = new System.Drawing.Size(128, 44);
             this.Left.TabIndex = 33;
@@ -133,7 +134,7 @@ namespace Basic_GUI
             // Right
             // 
             this.Right.BackColor = System.Drawing.Color.White;
-            this.Right.Location = new System.Drawing.Point(3, 349);
+            this.Right.Location = new System.Drawing.Point(9, 507);
             this.Right.Name = "Right";
             this.Right.Size = new System.Drawing.Size(131, 44);
             this.Right.TabIndex = 32;
@@ -144,7 +145,7 @@ namespace Basic_GUI
             // Backward
             // 
             this.Backward.BackColor = System.Drawing.Color.White;
-            this.Backward.Location = new System.Drawing.Point(131, 399);
+            this.Backward.Location = new System.Drawing.Point(137, 557);
             this.Backward.Name = "Backward";
             this.Backward.Size = new System.Drawing.Size(131, 44);
             this.Backward.TabIndex = 31;
@@ -155,7 +156,7 @@ namespace Basic_GUI
             // Forward
             // 
             this.Forward.BackColor = System.Drawing.Color.White;
-            this.Forward.Location = new System.Drawing.Point(131, 302);
+            this.Forward.Location = new System.Drawing.Point(137, 460);
             this.Forward.Name = "Forward";
             this.Forward.Size = new System.Drawing.Size(131, 44);
             this.Forward.TabIndex = 30;
@@ -166,7 +167,7 @@ namespace Basic_GUI
             // GetPos
             // 
             this.GetPos.BackColor = System.Drawing.Color.White;
-            this.GetPos.Location = new System.Drawing.Point(12, 166);
+            this.GetPos.Location = new System.Drawing.Point(10, 164);
             this.GetPos.Name = "GetPos";
             this.GetPos.Size = new System.Drawing.Size(116, 35);
             this.GetPos.TabIndex = 29;
@@ -178,7 +179,7 @@ namespace Basic_GUI
             // PosY
             // 
             this.PosY.AutoSize = true;
-            this.PosY.Location = new System.Drawing.Point(15, 47);
+            this.PosY.Location = new System.Drawing.Point(13, 45);
             this.PosY.Name = "PosY";
             this.PosY.Size = new System.Drawing.Size(75, 17);
             this.PosY.TabIndex = 27;
@@ -187,7 +188,7 @@ namespace Basic_GUI
             // PosX
             // 
             this.PosX.AutoSize = true;
-            this.PosX.Location = new System.Drawing.Point(15, 18);
+            this.PosX.Location = new System.Drawing.Point(13, 16);
             this.PosX.Name = "PosX";
             this.PosX.Size = new System.Drawing.Size(75, 17);
             this.PosX.TabIndex = 26;
@@ -196,7 +197,7 @@ namespace Basic_GUI
             // Land
             // 
             this.Land.BackColor = System.Drawing.Color.White;
-            this.Land.Location = new System.Drawing.Point(702, 39);
+            this.Land.Location = new System.Drawing.Point(700, 37);
             this.Land.Name = "Land";
             this.Land.Size = new System.Drawing.Size(174, 70);
             this.Land.TabIndex = 22;
@@ -207,7 +208,7 @@ namespace Basic_GUI
             // Takeoff
             // 
             this.Takeoff.BackColor = System.Drawing.Color.White;
-            this.Takeoff.Location = new System.Drawing.Point(459, 39);
+            this.Takeoff.Location = new System.Drawing.Point(457, 37);
             this.Takeoff.Name = "Takeoff";
             this.Takeoff.Size = new System.Drawing.Size(175, 70);
             this.Takeoff.TabIndex = 21;
@@ -235,7 +236,7 @@ namespace Basic_GUI
             series2.Name = "Origin";
             this.chart1.Series.Add(series1);
             this.chart1.Series.Add(series2);
-            this.chart1.Size = new System.Drawing.Size(873, 626);
+            this.chart1.Size = new System.Drawing.Size(873, 336);
             this.chart1.TabIndex = 39;
             this.chart1.TabStop = false;
             this.chart1.Text = "chart1";
@@ -243,7 +244,7 @@ namespace Basic_GUI
             // Height
             // 
             this.Height.AutoSize = true;
-            this.Height.Location = new System.Drawing.Point(15, 77);
+            this.Height.Location = new System.Drawing.Point(13, 75);
             this.Height.Name = "Height";
             this.Height.Size = new System.Drawing.Size(49, 17);
             this.Height.TabIndex = 44;
@@ -252,7 +253,7 @@ namespace Basic_GUI
             // markOrigin
             // 
             this.markOrigin.BackColor = System.Drawing.Color.White;
-            this.markOrigin.Location = new System.Drawing.Point(208, 42);
+            this.markOrigin.Location = new System.Drawing.Point(206, 40);
             this.markOrigin.Name = "markOrigin";
             this.markOrigin.Size = new System.Drawing.Size(175, 70);
             this.markOrigin.TabIndex = 46;
@@ -264,7 +265,7 @@ namespace Basic_GUI
             // YawAngel
             // 
             this.YawAngel.AutoSize = true;
-            this.YawAngel.Location = new System.Drawing.Point(15, 107);
+            this.YawAngel.Location = new System.Drawing.Point(13, 105);
             this.YawAngel.Name = "YawAngel";
             this.YawAngel.Size = new System.Drawing.Size(82, 17);
             this.YawAngel.TabIndex = 47;
@@ -273,17 +274,29 @@ namespace Basic_GUI
             // Battery
             // 
             this.Battery.AutoSize = true;
-            this.Battery.Location = new System.Drawing.Point(15, 136);
+            this.Battery.Location = new System.Drawing.Point(13, 134);
             this.Battery.Name = "Battery";
             this.Battery.Size = new System.Drawing.Size(53, 17);
             this.Battery.TabIndex = 49;
             this.Battery.Text = "Battery";
+            // 
+            // glControl
+            // 
+            this.glControl.BackColor = System.Drawing.Color.Black;
+            this.glControl.Location = new System.Drawing.Point(882, 366);
+            this.glControl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.glControl.Name = "glControl";
+            this.glControl.Size = new System.Drawing.Size(873, 291);
+            this.glControl.TabIndex = 50;
+            this.glControl.VSync = false;
+            this.glControl.Load += new System.EventHandler(this.glControl_Load);
             // 
             // basic_gui
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1767, 676);
+            this.Controls.Add(this.glControl);
             this.Controls.Add(this.Battery);
             this.Controls.Add(this.YawAngel);
             this.Controls.Add(this.chart1);
@@ -307,7 +320,6 @@ namespace Basic_GUI
             this.Text = " ";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
-            this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.Form1_PreviewKeyDown);
             this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.control_PreviewKeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
@@ -336,6 +348,7 @@ namespace Basic_GUI
         private System.Windows.Forms.Button markOrigin;
         private System.Windows.Forms.Label YawAngel;
         private System.Windows.Forms.Label Battery;
+        private OpenTK.GLControl glControl;
     }
 }
 
