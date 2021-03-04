@@ -99,10 +99,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GL-Robot-Track-Control\GLTrackControl.csproj">
-      <Project>{77cbdf69-df3f-4fb3-83ce-ae7a230b6b2b}</Project>
-      <Name>GLTrackControl</Name>
-    </ProjectReference>
     <ProjectReference Include="..\TelloLib\TelloLib.csproj">
       <Project>{fc69241f-8c76-45de-a2d4-b2a5cd984014}</Project>
       <Name>TelloLib</Name>

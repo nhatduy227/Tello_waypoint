@@ -274,9 +274,13 @@ namespace Basic_GUI
             timer1.Start();
         }
 
+        // Disable arrow keys
         private void Form1_Load(object sender, EventArgs e)
         {
-            Console.WriteLine("Form1 loaded");
+            foreach (Control control in this.Controls)
+            {
+                control.PreviewKeyDown += new PreviewKeyDownEventHandler(control_PreviewKeyDown);
+            }
         }
         void control_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
@@ -356,7 +360,6 @@ namespace Basic_GUI
             }
         }
 
-
         private void Render()
         {
             Matrix4 lookat = Matrix4.LookAt(0, 5, 5, 0, 0, 0, 0, 1, 0);
@@ -368,7 +371,7 @@ namespace Basic_GUI
 
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
 
-            DrawCube();
+            //DrawCube();
 
             glControl.SwapBuffers();
         }

@@ -316,11 +316,12 @@ namespace Basic_GUI
             this.Controls.Add(this.PosX);
             this.Controls.Add(this.Land);
             this.Controls.Add(this.Takeoff);
+            this.KeyPreview = true;
             this.Name = "basic_gui";
             this.Text = " ";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
-            this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.control_PreviewKeyDown);
+            this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.Form1_PreviewKeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
