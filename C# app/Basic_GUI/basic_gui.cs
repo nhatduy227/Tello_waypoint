@@ -11,10 +11,6 @@ namespace Basic_GUI
 {
     public partial class basic_gui : Form
     {
-        // Saving positioning data 
-        //Data Data = new Data();
-        //int run = Directory.GetFiles("C:/Users/nomie/Desktop/Tello_waypoint/assets/", "*", SearchOption.TopDirectoryOnly).Length;
-
         // initial positions 
         float initX = 0;
         float initY = 0;
@@ -37,12 +33,7 @@ namespace Basic_GUI
 
         public basic_gui()
         {
-            //Log file setup.
-            var logPath = "dronelogs/";
-            System.IO.Directory.CreateDirectory(Path.Combine("../", logPath));
-            var logStartTime = DateTime.Now;
-            var logFilePath = Path.Combine("../", logPath + logStartTime.ToString("yyyy-dd-M--HH-mm-ss") + ".csv");
-
+            
             this.KeyPreview = true;
             InitializeComponent();
 
@@ -65,13 +56,7 @@ namespace Basic_GUI
             {
                 if (cmdId == 86)//ac update
                 {
-                    //write update to log.
-                    var elapsed = DateTime.Now - logStartTime;
-                    File.AppendAllText(logFilePath, elapsed.ToString(@"mm\:ss\:ff\,") + Tello.state.getLogLine());
-
-                    //display state in console.
-                    var outStr = Tello.state.ToString();//ToString() = Formated state
-                    Console.WriteLine(outStr);
+                    Console.WriteLine("Tello updated");
                 }
             };
 
@@ -127,14 +112,6 @@ namespace Basic_GUI
                     chart1.Series["Trajectory 2D"].Points[counter - 1].MarkerSize = 3;
                 }
                 counter += 1;
-
-                //Saving to XML
-                //Data.PosX = ((Tello.state.posX - initX)).ToString();
-                //Data.PosY = ((Tello.state.posY - initY)).ToString();
-                //Data.PosZ = (Tello.state.height).ToString();
-                //Data.FlightTime = Tello.state.flyTime.ToString();
-                //Data.TimeStamp = System.DateTime.Now.ToString();
-                //Data.AddRecordToXML(Data.FlightTime, Data.TimeStamp, Data.PosX, Data.PosY, Data.PosZ, run);
             }
         }
 
