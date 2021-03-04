@@ -359,7 +359,8 @@ namespace Basic_GUI
 
             GL.Viewport(0, 0, c.ClientSize.Width, c.ClientSize.Height);
 
-            float aspect_ratio = this.Width / (float)this.Height;
+            //float aspect_ratio = this.Width / float.Parse(this.Height.ToString());
+            float aspect_ratio = 16 / 9;
             Matrix4 perpective = Matrix4.CreatePerspectiveFieldOfView(MathHelper.PiOver4, aspect_ratio, 1, 64);
             GL.MatrixMode(MatrixMode.Projection);
             GL.LoadMatrix(ref perpective);
