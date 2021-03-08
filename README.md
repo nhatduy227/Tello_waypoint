@@ -1,16 +1,18 @@
 # Tellow Waypoint
-Goal: We aim to create an app that let users manually control and create flightplans for Tello drone 
+**A desktop app that let users manually control and create flightplans for Tello drone with intuitive control UI and live positioning tracking in 3D view.** <br />
+Built with: 
+- C# .NET framework
+- OpenGL
+- OpenTK
 
 # Control Tello using C# App
-- C# app is a mininal control hub that let you control Tello using your keyboard and get real time 2D trajectory of the drone.
+- C# app is a mininal control hub that let you control Tello using your keyboard and get real time 3D trajectory of the drone.
 - To use C# app navigate to the C# app folder and run Tello_GUI.sln on your Visual Studio, then run Basic_GUI.
 
 # Indoor Waypoints
 Positioning data collected from tello is estimated using Multimotion Visual Odemetry (MVO) and parsed using a C# library called TelloLib. 
 - Learn more about [MVO](http://www.robots.ox.ac.uk/~mobile/Papers/2018IROS_judd.pdf)
 - Learn more about [TelloLib](https://github.com/Kragrathea/TelloLib)
-
-Positioning data of past runs is saved under the XML-positioning directory.
 
 # Key Points about MVO data collected from TelloLib
 **Mvo data is recorded in meters and the drone's mvo data will shoot to random number after it taking off.**  <br />
@@ -27,6 +29,10 @@ Positioning data of past runs is saved under the XML-positioning directory.
 - Counter Clockwise: Yaw angle decrease toward 0 (Yaw angle will reset to 360 if go below 360)
 Position Data won't reset on changing Yaw angle 
 
+# Vision Positioning System (VPS)
+**Tello positioning data and fly behavior is recorded and monitor using the built-in VPS. Therefore, to minimize drifting and noise data during flights, please advice precaution instructions below.** <br/>
+![alt text](https://github.com/nhatduy227/Tello_waypoint/blob/master/assets/VPS.PNG)
+
 # Drone Swarm
 For Drone Swarming, we need to have Tello EDUs. Tello EDU has different mode, which are IP mode and Wifi mode.
 To archive drone swarming, we need to:  
@@ -36,5 +42,6 @@ To archive drone swarming, we need to:
 
 For detail execution, please visit [here](https://www.notion.so/Drone-Swarming-Guides-c62abe7cc702443e8855c52e6c4c27d4)
 # Tello SDK
-Learn more about Tello SDK [here](https://dl-cdn.ryzerobotics.com/downloads/Tello/Tello%20SDK%202.0%20User%20Guide.pdf)
+Learn more about Tello SDK [here](https://dl-cdn.ryzerobotics.com/downloads/Tello/Tello%20User%20Manual%20v1.4.pdf)
+and Tello SDK 2.0 [here](https://dl-cdn.ryzerobotics.com/downloads/Tello/Tello%20SDK%202.0%20User%20Guide.pdf)
 
