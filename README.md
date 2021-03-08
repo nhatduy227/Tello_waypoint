@@ -1,5 +1,9 @@
 # Tellow Waypoint
-Goal: We aim to create an app that let users manually control and create flightplans for Tello drone 
+**A desktop app that let users manually control and create flightplans for Tello drone with intuitive control UI and live positioning tracking in 3D view.** <br />
+Built with: 
+- C# .NET framework
+- OpenGL
+- OpenTK
 
 # Control Tello using C# App
 - C# app is a mininal control hub that let you control Tello using your keyboard and get real time 3D trajectory of the drone.
