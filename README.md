@@ -27,7 +27,7 @@ Position Data won't reset on changing Yaw angle
 
 # Vision Positioning System (VPS)
 **Tello positioning data and fly behavior is recorded and monitor using the built-in VPS. Therefore, to minimize drifting and noise data during flights, please advice precaution instructions below.**
-![alt text](https://github.com/nhatduy227/Tello_waypoint/blob/master/assets/tellodrone.jpg) <br />
+![alt text](https://github.com/nhatduy227/Tello_waypoint/blob/master/assets/tellodrone.jpg)
 
 # Drone Swarm
 For Drone Swarming, we need to have Tello EDUs. Tello EDU has different mode, which are IP mode and Wifi mode.
