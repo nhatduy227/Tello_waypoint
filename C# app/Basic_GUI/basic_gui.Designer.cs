@@ -262,7 +262,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1767, 676);
-            this.Controls.Add(this.glControl);
             this.Controls.Add(this.Battery);
             this.Controls.Add(this.YawAngel);
             this.Controls.Add(this.markOrigin);
@@ -281,12 +280,11 @@
             this.Controls.Add(this.PosX);
             this.Controls.Add(this.Land);
             this.Controls.Add(this.Takeoff);
-            this.KeyPreview = true;
+            this.Controls.Add(this.glControl);
             this.Name = "basic_gui";
             this.Text = " ";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
-            this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.Form1_PreviewKeyDown);
+            this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.control_PreviewKeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

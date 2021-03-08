@@ -2,6 +2,6 @@
 {
     public class Drone : Sphere
     {
-        public Drone(int x, int y, int z) : base(x, y, z) { }
+        public Drone(float x, float y, float z) : base(x, y, z) { }
     }
 }

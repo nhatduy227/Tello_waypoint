@@ -16,10 +16,11 @@ namespace Basic_GUI
         float initZ = 0;
 
         // current waypoints
-        float curX = 0;
-        float curY = 0;
-        float curZ = 0;
+        float curX = 100;
+        float curY = 100;
+        float curZ = 100;
         int counter = 0;
+        bool rotatingState = true;
 
         // Roll Pitch Yaw data
         double Yaw = 0;
@@ -96,14 +97,11 @@ namespace Basic_GUI
                 YawAngel.Text = "Yaw Angle: " + Yaw.ToString();
                 Battery.Text = "Battery: " + Tello.state.batteryPercentage.ToString() + "%";
 
-                // PLotting Chart
-                // Plot current position
-
                 // Past positions
-                if (counter != 0)
-                {
-                    Console.WriteLine("Plot Past Positions");
-                }
+                //if (counter != 0)
+                //{
+                //    Console.WriteLine("Plot Past Positions");
+                //}
                 counter += 1;
             }
         }
@@ -114,8 +112,63 @@ namespace Basic_GUI
                 GetPos.PerformClick();
         }
 
-        // Keyboard Controls
-        private void Form1_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        // Set Origins
+        private void markOrigin_Click(object sender, EventArgs e)
+        {
+            initX = Tello.state.posX;
+            initY = Tello.state.posY;
+            initZ = Tello.state.posZ;
+
+            // Mark Origin 
+            curX = 0f;
+            curY = 0f;
+            curZ = 0f;
+
+            // Start timer 
+            timer1.Start();
+        }
+
+        // Disable arrow keys
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            foreach (Control control in this.Controls)
+            {
+                control.PreviewKeyDown += new PreviewKeyDownEventHandler(control_PreviewKeyDown);
+            }
+        }
+
+        void control_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+            if (e.KeyCode == Keys.Up || e.KeyCode == Keys.Down || e.KeyCode == Keys.Left || e.KeyCode == Keys.Right)
+            {
+                e.IsInputKey = true;
+            }
+        }
+
+        private void glControl_Load(object sender, EventArgs e)
+        {
+            base.OnLoad(e);
+
+            glControl.KeyDown += new KeyEventHandler(glControl_KeyDown);
+            glControl.KeyUp += new KeyEventHandler(glControl_KeyUp);
+            glControl.Resize += new EventHandler(glControl_Resize);
+            glControl.MouseDown += new MouseEventHandler(glControl_MouseDown);
+
+            Text =
+                GL.GetString(StringName.Vendor) + " " +
+                GL.GetString(StringName.Renderer) + " " +
+                GL.GetString(StringName.Version);
+
+            GL.ClearColor(Color.MidnightBlue);
+            GL.Enable(EnableCap.DepthTest);
+
+            Application.Idle += Application_Idle;
+
+            // Ensure that the viewport and projection matrix are set correctly.
+            glControl_Resize(glControl, EventArgs.Empty);
+        }
+
+        void glControl_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.T)
             {
@@ -222,7 +275,7 @@ namespace Basic_GUI
             Tello.controllerState.setAxis(lx, ly, rx, ry);
         }
 
-        private void Form1_KeyUp(object sender, KeyEventArgs e)
+        void glControl_KeyUp(object sender, KeyEventArgs e)
         {
             // Change buttons color to default settings
             Forward.BackColor = Color.White;
@@ -251,76 +304,6 @@ namespace Basic_GUI
             markOrigin.ForeColor = Color.Black;
         }
 
-        // Set Origins
-        private void markOrigin_Click(object sender, EventArgs e)
-        {
-            initX = Tello.state.posX;
-            initY = Tello.state.posY;
-            initZ = Tello.state.posZ;
-
-            // Mark Origin 
-
-            // Start timer 
-            timer1.Start();
-        }
-
-        // Disable arrow keys
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            foreach (Control control in this.Controls)
-            {
-                control.PreviewKeyDown += new PreviewKeyDownEventHandler(control_PreviewKeyDown);
-            }
-        }
-        void control_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
-        {
-            if (e.KeyCode == Keys.Up || e.KeyCode == Keys.Down || e.KeyCode == Keys.Left || e.KeyCode == Keys.Right)
-            {
-                e.IsInputKey = true;
-            }
-        }
-
-        private void glControl_Load(object sender, EventArgs e)
-        {
-            base.OnLoad(e);
-
-            glControl.KeyDown += new KeyEventHandler(glControl_KeyDown);
-            glControl.KeyUp += new KeyEventHandler(glControl_KeyUp);
-            glControl.Resize += new EventHandler(glControl_Resize);
-            glControl.Paint += new PaintEventHandler(glControl_Paint);
-
-            Text =
-                GL.GetString(StringName.Vendor) + " " +
-                GL.GetString(StringName.Renderer) + " " +
-                GL.GetString(StringName.Version);
-
-            GL.ClearColor(Color.MidnightBlue);
-            GL.Enable(EnableCap.DepthTest);
-
-            Application.Idle += Application_Idle;
-
-            // Ensure that the viewport and projection matrix are set correctly.
-            glControl_Resize(glControl, EventArgs.Empty);
-        }
-
-        void glControl_KeyDown(object sender, KeyEventArgs e)
-        {
-            switch (e.KeyData)
-            {
-                case Keys.Escape:
-                    this.Close();
-                    break;
-            }
-        }
-
-        void glControl_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.F12)
-            {
-                GrabScreenshot().Save("screenshot.png");
-            }
-        }
-
         void glControl_Resize(object sender, EventArgs e)
         {
             OpenTK.GLControl c = sender as OpenTK.GLControl;
@@ -337,9 +320,9 @@ namespace Basic_GUI
             GL.LoadMatrix(ref perpective);
         }
 
-        void glControl_Paint(object sender, PaintEventArgs e)
+        void glControl_MouseDown(object sender, MouseEventArgs e)
         {
-            Render();
+            angle += 5;
         }
 
         void Application_Idle(object sender, EventArgs e)
@@ -350,7 +333,7 @@ namespace Basic_GUI
             }
         }
 
-        private void Render()
+        private void Render(double radius = 0.2, int lats = 50, int longs = 50)
         {
             Matrix4 lookat = Matrix4.LookAt(0, 5, 5, 0, 0, 0, 0, 1, 0);
             GL.MatrixMode(MatrixMode.Modelview);
@@ -368,11 +351,11 @@ namespace Basic_GUI
             GL.Translate(0.0, 0.0, -35.0);
             GL.Rotate(-45.0, 1.0, 0.0, 0.0);
             GL.Rotate(225.0, 0.0, 0.0, 1.0);
-            //GL.Rotate(angle, 1.0, 0.0, 1.0);
-            DisplayCoordinatesAxes();
-            DisplayDrone(0.5, 50, 50, -2, -2, 0);
+            GL.Rotate(angle, 0.0, 0.0, 1.0);
 
-            angle += 0.1; 
+            DisplayCoordinatesAxes();
+            DisplayDrone(radius, lats, longs, curX, curY, curZ);
+
             glControl.SwapBuffers();
         }
         void DisplayCoordinatesAxes()
@@ -429,24 +412,24 @@ namespace Basic_GUI
             }
         }
 
-        void DisplayDrone(double r, int lats, int longs, int X, int Y, int Z)
+        void DisplayDrone(double r, int lats, int longs, float X, float Y, float Z)
         {
             var s = new Drone(X, Y, Z);
             s.Color(1.0, 0.0, 0.0);
             s.Display(r, lats, longs);
         }
-        Bitmap GrabScreenshot()
-        {
-            Bitmap bmp = new Bitmap(this.ClientSize.Width, this.ClientSize.Height);
-            System.Drawing.Imaging.BitmapData data =
-            bmp.LockBits(this.ClientRectangle, System.Drawing.Imaging.ImageLockMode.WriteOnly,
-                System.Drawing.Imaging.PixelFormat.Format24bppRgb);
-            GL.ReadPixels(0, 0, this.ClientSize.Width, this.ClientSize.Height, PixelFormat.Bgr, PixelType.UnsignedByte,
-                data.Scan0);
-            bmp.UnlockBits(data);
-            bmp.RotateFlip(RotateFlipType.RotateNoneFlipY);
-            return bmp;
-        }
+        //Bitmap GrabScreenshot()
+        //{
+        //    Bitmap bmp = new Bitmap(this.ClientSize.Width, this.ClientSize.Height);
+        //    System.Drawing.Imaging.BitmapData data =
+        //    bmp.LockBits(this.ClientRectangle, System.Drawing.Imaging.ImageLockMode.WriteOnly,
+        //        System.Drawing.Imaging.PixelFormat.Format24bppRgb);
+        //    GL.ReadPixels(0, 0, this.ClientSize.Width, this.ClientSize.Height, PixelFormat.Bgr, PixelType.UnsignedByte,
+        //        data.Scan0);
+        //    bmp.UnlockBits(data);
+        //    bmp.RotateFlip(RotateFlipType.RotateNoneFlipY);
+        //    return bmp;
+        //}
     }
 }
 

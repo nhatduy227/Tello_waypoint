@@ -5,7 +5,7 @@ namespace Basic_GUI
 {
     public class Sphere : GraphicsObject
     {
-        public Sphere(int x, int y, int z) : base(x, y, z)
+        public Sphere(float x, float y, float z) : base(x, y, z)
         { }
 
         public void Display(double r, int lats, int longs)

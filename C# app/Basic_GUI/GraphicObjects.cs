@@ -8,11 +8,11 @@ namespace Basic_GUI
         protected Vector3 position; // location
         protected Colors color;
 
-        public GraphicsObject(int x, int y, int z)
+        public GraphicsObject(float x, float y, float z)
         {
             SetPosition(x, y, z);
         }
-        public void SetPosition(int x, int y, int z)
+        public void SetPosition(float x, float y, float z)
         {
             position = new Vector3(x, y, z);
         }
