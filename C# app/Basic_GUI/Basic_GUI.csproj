@@ -50,6 +50,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -68,6 +69,10 @@
     <Compile Include="basic_gui.Designer.cs">
       <DependentUpon>basic_gui.cs</DependentUpon>
     </Compile>
+    <Compile Include="Colors.cs" />
+    <Compile Include="Drone.cs" />
+    <Compile Include="GraphicObjects.cs" />
+    <Compile Include="Sphere.cs" />
     <Compile Include="Utils.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

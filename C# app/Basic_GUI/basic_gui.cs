@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Drawing;
-using System.IO;
 using System.Windows.Forms;
 using TelloLib;
 using OpenTK.Graphics.OpenGL;
@@ -28,8 +27,7 @@ namespace Basic_GUI
 
         // IP info
         string IP = "192.168.10.1";
-
-        static float angle = 0.0f;
+        static double angle = 0.0;
 
         public basic_gui()
         {
@@ -85,8 +83,6 @@ namespace Basic_GUI
                 Yaw += 360;
             }
 
-            chart1.Series["Trajectory 2D"].CustomProperties = "IsXAxisQuantitative=True"; // Prevent X to be 1 on initialization 
-
             if (curX > 5 || curX < -5 || curY > 5 || curY < -5)
             {
                 Console.WriteLine("Data Noise eliminated");
@@ -102,14 +98,11 @@ namespace Basic_GUI
 
                 // PLotting Chart
                 // Plot current position
-                chart1.Series["Trajectory 2D"].Points.AddXY(Math.Round(curX, 5), Math.Round(curY, 5));
-                chart1.Series["Trajectory 2D"].Points[counter].MarkerSize = 10;
 
                 // Past positions
                 if (counter != 0)
                 {
-                    chart1.Series["Trajectory 2D"].Points[counter - 1].Color = Color.Red;
-                    chart1.Series["Trajectory 2D"].Points[counter - 1].MarkerSize = 3;
+                    Console.WriteLine("Plot Past Positions");
                 }
                 counter += 1;
             }
@@ -266,9 +259,6 @@ namespace Basic_GUI
             initZ = Tello.state.posZ;
 
             // Mark Origin 
-            chart1.Series["Origin"].CustomProperties = "IsXAxisQuantitative=True"; // Prevent X to be 1 on initialization 
-            chart1.Series["Origin"].Points.AddXY(0, 0);
-            chart1.Series["Origin"].Points[0].MarkerSize = 10;
 
             // Start timer 
             timer1.Start();
@@ -366,59 +356,85 @@ namespace Basic_GUI
             GL.MatrixMode(MatrixMode.Modelview);
             GL.LoadMatrix(ref lookat);
 
-            GL.Rotate(angle, 0.0f, 1.0f, 0.0f);
-            angle += 0.5f;
+            GL.ClearColor(0.1f, 0.1f, 0.1f, 1.0f); // black background
+            GL.Clear(ClearBufferMask.ColorBufferBit);
+            GL.Enable(EnableCap.DepthTest);
 
+            GL.LoadIdentity();
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
 
-            //DrawCube();
+            GL.PushMatrix();
 
+            GL.Translate(0.0, 0.0, -35.0);
+            GL.Rotate(-45.0, 1.0, 0.0, 0.0);
+            GL.Rotate(225.0, 0.0, 0.0, 1.0);
+            //GL.Rotate(angle, 1.0, 0.0, 1.0);
+            DisplayCoordinatesAxes();
+            DisplayDrone(0.5, 50, 50, -2, -2, 0);
+
+            angle += 0.1; 
             glControl.SwapBuffers();
         }
-        private void DrawCube()
+        void DisplayCoordinatesAxes()
         {
-            GL.Begin(BeginMode.Quads);
-
-            GL.Color3(Color.Silver);
-            GL.Vertex3(-1.0f, -1.0f, -1.0f);
-            GL.Vertex3(-1.0f, 1.0f, -1.0f);
-            GL.Vertex3(1.0f, 1.0f, -1.0f);
-            GL.Vertex3(1.0f, -1.0f, -1.0f);
-
-            GL.Color3(Color.Honeydew);
-            GL.Vertex3(-1.0f, -1.0f, -1.0f);
-            GL.Vertex3(1.0f, -1.0f, -1.0f);
-            GL.Vertex3(1.0f, -1.0f, 1.0f);
-            GL.Vertex3(-1.0f, -1.0f, 1.0f);
-
-            GL.Color3(Color.Moccasin);
-
-            GL.Vertex3(-1.0f, -1.0f, -1.0f);
-            GL.Vertex3(-1.0f, -1.0f, 1.0f);
-            GL.Vertex3(-1.0f, 1.0f, 1.0f);
-            GL.Vertex3(-1.0f, 1.0f, -1.0f);
-
-            GL.Color3(Color.IndianRed);
-            GL.Vertex3(-1.0f, -1.0f, 1.0f);
-            GL.Vertex3(1.0f, -1.0f, 1.0f);
-            GL.Vertex3(1.0f, 1.0f, 1.0f);
-            GL.Vertex3(-1.0f, 1.0f, 1.0f);
-
-            GL.Color3(Color.PaleVioletRed);
-            GL.Vertex3(-1.0f, 1.0f, -1.0f);
-            GL.Vertex3(-1.0f, 1.0f, 1.0f);
-            GL.Vertex3(1.0f, 1.0f, 1.0f);
-            GL.Vertex3(1.0f, 1.0f, -1.0f);
-
-            GL.Color3(Color.ForestGreen);
-            GL.Vertex3(1.0f, -1.0f, -1.0f);
-            GL.Vertex3(1.0f, 1.0f, -1.0f);
-            GL.Vertex3(1.0f, 1.0f, 1.0f);
-            GL.Vertex3(1.0f, -1.0f, 1.0f);
-
+            // X axis: red
+            GL.Begin(PrimitiveType.Lines);
+            Colors.Red();
+            GL.Vertex3(-10.0, 0, 0.0f); // origin of the line
+            GL.Vertex3(10.0, 0.0, 0.0f); // ending point of the line
             GL.End();
+
+            // Y axis: green
+            GL.Begin(PrimitiveType.Lines);
+            Colors.Green();
+            GL.Vertex3(0.0, -10.0, 0.0); // origin of the line
+            GL.Vertex3(0.0, 10.0, 0.0); // ending point of the line
+            GL.End();
+
+            // Z axis: blue
+            GL.Begin(PrimitiveType.Lines);
+            Colors.Blue();
+            GL.Vertex3(0.0, 0.0, -10.0); // origin of the line
+            GL.Vertex3(0.0, 0.0, 10.0); // ending point of the line
+            GL.End();
+
+            DisplayXYGrid(10, 10, 10, 2);
         }
 
+        void DisplayXYGrid(double x, double y, double z, double gridSpace)
+        {
+
+            // draw Y grid
+            int t1 = Convert.ToInt32(x / gridSpace); // iteration
+            for (int i = -t1; i <= t1; i++)
+            {
+                GL.Begin(PrimitiveType.Lines);
+                GL.Color3(0.5, 0.5, 0.5);
+                GL.LineWidth(5);
+                GL.Vertex3(i * gridSpace, -y, 0.0);
+                GL.Vertex3(i * gridSpace, y, 0.0);
+                GL.End();
+            }
+
+            // draw X grid
+            int t2 = Convert.ToInt32(y / gridSpace); // iteration
+            for (int i = -t2; i <= t2; i++)
+            {
+                GL.Begin(PrimitiveType.Lines);
+                GL.Color3(0.5, 0.5, 0.5);
+                GL.LineWidth(5);
+                GL.Vertex3(-x, i * gridSpace, 0.0);
+                GL.Vertex3(x, i * gridSpace, 0.0);
+                GL.End();
+            }
+        }
+
+        void DisplayDrone(double r, int lats, int longs, int X, int Y, int Z)
+        {
+            var s = new Drone(X, Y, Z);
+            s.Color(1.0, 0.0, 0.0);
+            s.Display(r, lats, longs);
+        }
         Bitmap GrabScreenshot()
         {
             Bitmap bmp = new Bitmap(this.ClientSize.Width, this.ClientSize.Height);

@@ -1,7 +1,4 @@
-﻿using System.Windows.Forms.DataVisualization.Charting;
-
-
-namespace Basic_GUI
+﻿namespace Basic_GUI
 {
     partial class basic_gui
     {
@@ -32,10 +29,6 @@ namespace Basic_GUI
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.Hover = new System.Windows.Forms.Button();
             this.Clockwise = new System.Windows.Forms.Button();
@@ -51,13 +44,11 @@ namespace Basic_GUI
             this.PosX = new System.Windows.Forms.Label();
             this.Land = new System.Windows.Forms.Button();
             this.Takeoff = new System.Windows.Forms.Button();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.Height = new System.Windows.Forms.Label();
             this.markOrigin = new System.Windows.Forms.Button();
             this.YawAngel = new System.Windows.Forms.Label();
             this.Battery = new System.Windows.Forms.Label();
             this.glControl = new OpenTK.GLControl();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
             // timer1
@@ -216,31 +207,6 @@ namespace Basic_GUI
             this.Takeoff.Text = "Take Off (T)";
             this.Takeoff.UseVisualStyleBackColor = false;
             // 
-            // chart1
-            // 
-            chartArea1.AxisX.Title = "Position X in meters";
-            chartArea1.AxisY.Title = "Position Y in meters";
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(882, 28);
-            this.chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
-            series1.Legend = "Legend1";
-            series1.Name = "Trajectory 2D";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
-            series2.Legend = "Legend1";
-            series2.Name = "Origin";
-            this.chart1.Series.Add(series1);
-            this.chart1.Series.Add(series2);
-            this.chart1.Size = new System.Drawing.Size(873, 336);
-            this.chart1.TabIndex = 39;
-            this.chart1.TabStop = false;
-            this.chart1.Text = "chart1";
-            // 
             // Height
             // 
             this.Height.AutoSize = true;
@@ -283,10 +249,10 @@ namespace Basic_GUI
             // glControl
             // 
             this.glControl.BackColor = System.Drawing.Color.Black;
-            this.glControl.Location = new System.Drawing.Point(882, 366);
+            this.glControl.Location = new System.Drawing.Point(881, 16);
             this.glControl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.glControl.Name = "glControl";
-            this.glControl.Size = new System.Drawing.Size(873, 291);
+            this.glControl.Size = new System.Drawing.Size(874, 641);
             this.glControl.TabIndex = 50;
             this.glControl.VSync = false;
             this.glControl.Load += new System.EventHandler(this.glControl_Load);
@@ -299,7 +265,6 @@ namespace Basic_GUI
             this.Controls.Add(this.glControl);
             this.Controls.Add(this.Battery);
             this.Controls.Add(this.YawAngel);
-            this.Controls.Add(this.chart1);
             this.Controls.Add(this.markOrigin);
             this.Controls.Add(this.Height);
             this.Controls.Add(this.Hover);
@@ -322,7 +287,6 @@ namespace Basic_GUI
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
             this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.Form1_PreviewKeyDown);
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -344,7 +308,6 @@ namespace Basic_GUI
         private System.Windows.Forms.Label PosX;
         private System.Windows.Forms.Button Land;
         private System.Windows.Forms.Button Takeoff;
-        private Chart chart1;
         private System.Windows.Forms.Label Height;
         private System.Windows.Forms.Button markOrigin;
         private System.Windows.Forms.Label YawAngel;
