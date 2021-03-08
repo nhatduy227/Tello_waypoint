@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Drawing;
-using System.Drawing.Drawing2D;
 
 namespace Basic_GUI
 {   
@@ -46,6 +44,6 @@ namespace Basic_GUI
             retv[1] = roll;
             retv[2] = yaw;
             return retv;
-        }
+        }        
     }
 }
