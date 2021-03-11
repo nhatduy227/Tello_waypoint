@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Swarmming
@@ -16,7 +13,7 @@ namespace Swarmming
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Swarming_gui());
+            Application.Run(new FlightPlan_gui());
         }
     }
 }

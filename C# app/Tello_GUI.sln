@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelloLogParser", "TelloLogP
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Basic_GUI", "Basic_GUI\Basic_GUI.csproj", "{9AB67D3D-A11B-468A-828F-D95D8403C9BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Swarmming", "Swarmming\Swarmming.csproj", "{3063BFDD-0174-44BC-BA2C-4F691E9E8050}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlightPlan", "Swarmming\FlightPlan.csproj", "{3063BFDD-0174-44BC-BA2C-4F691E9E8050}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
