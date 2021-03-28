@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using System.Drawing;
+using System.Threading;
 using TelloLib;
 
 namespace Swarmming
@@ -64,6 +66,7 @@ namespace Swarmming
             if ((input.Text == "") || (input.Text == null))
             {
                 insList.Text = "Instruction cannot be plank";
+                insList.Visible = true;
             }
             else {
                 instructionList.Add(input.Text);
@@ -81,12 +84,17 @@ namespace Swarmming
             {
                 instructionList.Clear();
                 insList.Text = "No instruction yet";
+                insList.ForeColor = Color.Red;
                 Run.Enabled = false;
             }
             else {
                 insList.Text = "No instruction to delete";
-            } 
-           
+                insList.ForeColor = Color.Red;
+            }
+            runningText.Visible = false;
+            currentStage.Visible = false;
+            progressBar.Visible = false;
+
         }
 
         private string displayIntructions(List<String> instructions)
@@ -109,6 +117,13 @@ namespace Swarmming
                 instructionList.Add("land");
             }
             insList.Text = displayIntructions(instructionList);
+            runningText.Visible = true;
+            currentStage.Visible = true;
+            progressBar.Visible = true;
+            for (int i = 0; i < instructionList.Count; i++) {
+                currentStage.Text = "Current Stage: " + instructionList[i].ToString();
+                progressBar.Increment(100/instructionList.Count);
+            }
         }
     }
 }

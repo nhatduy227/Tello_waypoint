@@ -35,6 +35,9 @@ namespace Swarmming
             this.insList = new System.Windows.Forms.Label();
             this.delInstrutions = new System.Windows.Forms.Button();
             this.Run = new System.Windows.Forms.Button();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
+            this.runningText = new System.Windows.Forms.Label();
+            this.currentStage = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // input
@@ -49,9 +52,10 @@ namespace Swarmming
             this.input.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.input.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.input.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.input.Location = new System.Drawing.Point(15, 72);
+            this.input.Location = new System.Drawing.Point(15, 71);
+            this.input.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.input.Name = "input";
-            this.input.Size = new System.Drawing.Size(286, 22);
+            this.input.Size = new System.Drawing.Size(287, 22);
             this.input.TabIndex = 0;
             // 
             // Instruction
@@ -66,8 +70,9 @@ namespace Swarmming
             // addInstructions
             // 
             this.addInstructions.Location = new System.Drawing.Point(325, 66);
+            this.addInstructions.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.addInstructions.Name = "addInstructions";
-            this.addInstructions.Size = new System.Drawing.Size(134, 35);
+            this.addInstructions.Size = new System.Drawing.Size(133, 34);
             this.addInstructions.TabIndex = 7;
             this.addInstructions.Text = "Add Instructions";
             this.addInstructions.UseVisualStyleBackColor = true;
@@ -85,8 +90,9 @@ namespace Swarmming
             // delInstrutions
             // 
             this.delInstrutions.Location = new System.Drawing.Point(475, 66);
+            this.delInstrutions.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.delInstrutions.Name = "delInstrutions";
-            this.delInstrutions.Size = new System.Drawing.Size(134, 35);
+            this.delInstrutions.Size = new System.Drawing.Size(133, 34);
             this.delInstrutions.TabIndex = 9;
             this.delInstrutions.Text = "Delete All";
             this.delInstrutions.UseVisualStyleBackColor = true;
@@ -96,24 +102,58 @@ namespace Swarmming
             // 
             this.Run.Enabled = false;
             this.Run.Location = new System.Drawing.Point(627, 66);
+            this.Run.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Run.Name = "Run";
-            this.Run.Size = new System.Drawing.Size(133, 35);
+            this.Run.Size = new System.Drawing.Size(133, 34);
             this.Run.TabIndex = 10;
             this.Run.Text = "Run Flight Plan";
             this.Run.UseVisualStyleBackColor = true;
             this.Run.Click += new System.EventHandler(this.Run_Click);
+            // 
+            // progressBar
+            // 
+            this.progressBar.Location = new System.Drawing.Point(450, 196);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(185, 23);
+            this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.progressBar.TabIndex = 11;
+            this.progressBar.Visible = false;
+            // 
+            // runningText
+            // 
+            this.runningText.AutoSize = true;
+            this.runningText.Location = new System.Drawing.Point(474, 167);
+            this.runningText.Name = "runningText";
+            this.runningText.Size = new System.Drawing.Size(131, 17);
+            this.runningText.TabIndex = 12;
+            this.runningText.Text = "Running Flight Plan";
+            this.runningText.Visible = false;
+            // 
+            // currentStage
+            // 
+            this.currentStage.AutoSize = true;
+            this.currentStage.Location = new System.Drawing.Point(475, 235);
+            this.currentStage.Name = "currentStage";
+            this.currentStage.Size = new System.Drawing.Size(100, 17);
+            this.currentStage.TabIndex = 13;
+            this.currentStage.Text = "Current Stage:";
+            this.currentStage.Visible = false;
             // 
             // FlightPlan_gui
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.currentStage);
+            this.Controls.Add(this.runningText);
+            this.Controls.Add(this.progressBar);
             this.Controls.Add(this.Run);
             this.Controls.Add(this.delInstrutions);
             this.Controls.Add(this.insList);
             this.Controls.Add(this.addInstructions);
             this.Controls.Add(this.Instruction);
             this.Controls.Add(this.input);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FlightPlan_gui";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -130,6 +170,9 @@ namespace Swarmming
         private System.Windows.Forms.Label insList;
         private System.Windows.Forms.Button delInstrutions;
         private System.Windows.Forms.Button Run;
+        private System.Windows.Forms.ProgressBar progressBar;
+        private System.Windows.Forms.Label runningText;
+        private System.Windows.Forms.Label currentStage;
     }
 }
 
