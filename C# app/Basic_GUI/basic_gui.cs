@@ -4,7 +4,6 @@ using System.Windows.Forms;
 using TelloLib;
 using OpenTK.Graphics.OpenGL;
 using OpenTK;
-using PixelFormat = OpenTK.Graphics.OpenGL.PixelFormat;
 
 namespace Basic_GUI
 {
@@ -13,14 +12,11 @@ namespace Basic_GUI
         // initial positions 
         float initX = 0;
         float initY = 0;
-        float initZ = 0;
+        float height = 0;
 
         // current waypoints
         float curX = 100;
         float curY = 100;
-        float curZ = 100;
-        int counter = 0;
-        bool rotatingState = true;
 
         // Roll Pitch Yaw data
         double Yaw = 0;
@@ -70,11 +66,10 @@ namespace Basic_GUI
         // Update positions 
         private void GetPos_Click(object sender, EventArgs e)
         {
-            this.ActiveControl = null;
             // Positioning data
             curX = Tello.state.posX - initX;
             curY = Tello.state.posY - initY;
-            curZ = Tello.state.posZ - initZ;
+            height = Tello.state.height;
 
             // Rotation data
             var eular = utils.toEuler(Tello.state.quatX, Tello.state.quatY, Tello.state.quatZ, Tello.state.quatW);
@@ -93,22 +88,16 @@ namespace Basic_GUI
                 // Update data
                 PosX.Text = "Position X: " + curX.ToString() + " m";
                 PosY.Text = "Position Y: " + curY.ToString() + " m";
-                Height.Text = "Height: " + Tello.state.height.ToString() + " dm";
+                Height.Text = "Height: " + height.ToString() + " dm";
                 YawAngel.Text = "Yaw Angle: " + Yaw.ToString();
                 Battery.Text = "Battery: " + Tello.state.batteryPercentage.ToString() + "%";
 
-                // Past positions
-                //if (counter != 0)
-                //{
-                //    Console.WriteLine("Plot Past Positions");
-                //}
-                counter += 1;
             }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (Tello.state.flying)
+            //if (Tello.state.flying)
                 GetPos.PerformClick();
         }
 
@@ -117,12 +106,10 @@ namespace Basic_GUI
         {
             initX = Tello.state.posX;
             initY = Tello.state.posY;
-            initZ = Tello.state.posZ;
 
             // Mark Origin 
             curX = 0f;
             curY = 0f;
-            curZ = 0f;
 
             // Start timer 
             timer1.Start();
@@ -329,11 +316,11 @@ namespace Basic_GUI
         {
             while (glControl.IsIdle)
             {
-                Render();
+                Render(0.2,50,50,curX,curY, Tello.state.height);
             }
         }
 
-        private void Render(double radius = 0.2, int lats = 50, int longs = 50)
+        private void Render(double radius, int lats, int longs, float x, float y, float z)
         {
             Matrix4 lookat = Matrix4.LookAt(0, 5, 5, 0, 0, 0, 0, 1, 0);
             GL.MatrixMode(MatrixMode.Modelview);
@@ -354,7 +341,7 @@ namespace Basic_GUI
             GL.Rotate(angle, 0.0, 0.0, 1.0);
 
             DisplayCoordinatesAxes();
-            DisplayDrone(radius, lats, longs, curX, curY, curZ);
+            DisplayDrone(radius, lats, longs, x, y, z);
 
             glControl.SwapBuffers();
         }
@@ -418,18 +405,6 @@ namespace Basic_GUI
             s.Color(1.0, 0.0, 0.0);
             s.Display(r, lats, longs);
         }
-        //Bitmap GrabScreenshot()
-        //{
-        //    Bitmap bmp = new Bitmap(this.ClientSize.Width, this.ClientSize.Height);
-        //    System.Drawing.Imaging.BitmapData data =
-        //    bmp.LockBits(this.ClientRectangle, System.Drawing.Imaging.ImageLockMode.WriteOnly,
-        //        System.Drawing.Imaging.PixelFormat.Format24bppRgb);
-        //    GL.ReadPixels(0, 0, this.ClientSize.Width, this.ClientSize.Height, PixelFormat.Bgr, PixelType.UnsignedByte,
-        //        data.Scan0);
-        //    bmp.UnlockBits(data);
-        //    bmp.RotateFlip(RotateFlipType.RotateNoneFlipY);
-        //    return bmp;
-        //}
     }
 }
 
