@@ -29,15 +29,16 @@ namespace Swarmming
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.input = new System.Windows.Forms.TextBox();
             this.Instruction = new System.Windows.Forms.Label();
             this.addInstructions = new System.Windows.Forms.Button();
             this.insList = new System.Windows.Forms.Label();
             this.delInstrutions = new System.Windows.Forms.Button();
             this.Run = new System.Windows.Forms.Button();
-            this.progressBar = new System.Windows.Forms.ProgressBar();
             this.runningText = new System.Windows.Forms.Label();
             this.currentStage = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // input
@@ -110,19 +111,10 @@ namespace Swarmming
             this.Run.UseVisualStyleBackColor = true;
             this.Run.Click += new System.EventHandler(this.Run_Click);
             // 
-            // progressBar
-            // 
-            this.progressBar.Location = new System.Drawing.Point(450, 196);
-            this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(185, 23);
-            this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-            this.progressBar.TabIndex = 11;
-            this.progressBar.Visible = false;
-            // 
             // runningText
             // 
             this.runningText.AutoSize = true;
-            this.runningText.Location = new System.Drawing.Point(474, 167);
+            this.runningText.Location = new System.Drawing.Point(472, 132);
             this.runningText.Name = "runningText";
             this.runningText.Size = new System.Drawing.Size(131, 17);
             this.runningText.TabIndex = 12;
@@ -132,12 +124,17 @@ namespace Swarmming
             // currentStage
             // 
             this.currentStage.AutoSize = true;
-            this.currentStage.Location = new System.Drawing.Point(475, 235);
+            this.currentStage.Location = new System.Drawing.Point(472, 165);
             this.currentStage.Name = "currentStage";
             this.currentStage.Size = new System.Drawing.Size(100, 17);
             this.currentStage.TabIndex = 13;
             this.currentStage.Text = "Current Stage:";
             this.currentStage.Visible = false;
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 5000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // FlightPlan_gui
             // 
@@ -146,7 +143,6 @@ namespace Swarmming
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.currentStage);
             this.Controls.Add(this.runningText);
-            this.Controls.Add(this.progressBar);
             this.Controls.Add(this.Run);
             this.Controls.Add(this.delInstrutions);
             this.Controls.Add(this.insList);
@@ -170,9 +166,9 @@ namespace Swarmming
         private System.Windows.Forms.Label insList;
         private System.Windows.Forms.Button delInstrutions;
         private System.Windows.Forms.Button Run;
-        private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.Label runningText;
         private System.Windows.Forms.Label currentStage;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 
