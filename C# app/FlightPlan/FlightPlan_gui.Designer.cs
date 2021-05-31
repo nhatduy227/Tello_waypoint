@@ -133,7 +133,7 @@ namespace Swarmming
             // 
             // timer1
             // 
-            this.timer1.Interval = 5000;
+            this.timer1.Interval = 10000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // FlightPlan_gui
@@ -149,10 +149,12 @@ namespace Swarmming
             this.Controls.Add(this.addInstructions);
             this.Controls.Add(this.Instruction);
             this.Controls.Add(this.input);
+            this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FlightPlan_gui";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.stage_Changed);
             this.ResumeLayout(false);
             this.PerformLayout();
 

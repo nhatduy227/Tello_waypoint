@@ -125,8 +125,6 @@ namespace Swarmming
             Run.Enabled = false;
             instructionLength = instructionList.Count;
             timer1.Start();
-            //string currentInstruction = instructionList[0].ToString();
-            //Tello.sendInstruction(currentInstruction);
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -135,7 +133,17 @@ namespace Swarmming
             {
                 string currentInstruction = instructionList[counter].ToString();
                 currentStage.Text = "Current Stage: " + currentInstruction;
-                //Tello.sendInstruction(currentInstruction);
+                if (currentInstruction == "takeoff") {
+                    SendKeys.Send("{J}");
+                }
+                if (currentInstruction == "land")
+                {
+                    SendKeys.Send("{L}");
+                }
+                if (currentInstruction == "cw 90")
+                {
+                    SendKeys.Send("{O}");
+                }
                 counter += 1;
             }
             else {
@@ -144,6 +152,22 @@ namespace Swarmming
                 Run.Enabled = true;
             }
 
+        }
+
+        private void stage_Changed(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.J)
+            {
+                Tello.takeOff();
+            }
+            if (e.KeyCode == Keys.L)
+            {
+                Tello.land();
+            }
+            if (e.KeyCode == Keys.O)
+            {
+                Tello.sendInstruction("cw 90");
+            }
         }
     }
 }
