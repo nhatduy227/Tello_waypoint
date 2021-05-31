@@ -54,6 +54,11 @@ namespace TelloLib
             client.Send(packet);
         }
 
+        public static void sendInstruction(string instruction) {
+            string message = instruction;
+            client.Send(message);
+        }
+
         public static void hover()
         {
             string message = "stop";

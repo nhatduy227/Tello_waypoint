@@ -178,7 +178,6 @@ namespace Basic_GUI
                 markOrigin.PerformClick();
                 markOrigin.BackColor = Color.Green;
                 markOrigin.ForeColor = Color.White;
-                //Data.CreateXMLFile(run);
             }
 
             if (e.KeyCode == Keys.Space)
