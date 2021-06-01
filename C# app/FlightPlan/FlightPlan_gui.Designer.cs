@@ -1,5 +1,5 @@
 ﻿
-namespace Swarmming
+namespace FlightPlan_gui
 {
     partial class FlightPlan_gui
     {
@@ -133,7 +133,7 @@ namespace Swarmming
             // 
             // timer1
             // 
-            this.timer1.Interval = 10000;
+            this.timer1.Interval = 100;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // FlightPlan_gui

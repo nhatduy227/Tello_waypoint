@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace Swarmming
+namespace FlightPlan_gui
 {
     static class Program
     {

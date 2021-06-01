@@ -5,11 +5,12 @@ using System.Drawing;
 using System.Threading;
 using TelloLib;
 
-namespace Swarmming
+namespace FlightPlan_gui
 {
     public partial class FlightPlan_gui : Form
     {
         string IP = "192.168.10.1";
+        string currentInstruction;
         int counter = 0;
         int instructionLength = 0;
         List<string> instructionList = new List<string>();
@@ -129,21 +130,16 @@ namespace Swarmming
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            // reset timer after 1st tick
+            if (timer1.Interval != 10000)
+                timer1.Interval = 10000;
+
+            // iterate through list of instruction
             if (counter < instructionLength)
             {
-                string currentInstruction = instructionList[counter].ToString();
+                currentInstruction = instructionList[counter].ToString();
                 currentStage.Text = "Current Stage: " + currentInstruction;
-                if (currentInstruction == "takeoff") {
-                    SendKeys.Send("{J}");
-                }
-                if (currentInstruction == "land")
-                {
-                    SendKeys.Send("{L}");
-                }
-                if (currentInstruction == "cw 90")
-                {
-                    SendKeys.Send("{O}");
-                }
+                SendKeys.Send("{J}");
                 counter += 1;
             }
             else {
@@ -157,17 +153,12 @@ namespace Swarmming
         private void stage_Changed(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.J)
-            {
-                Tello.takeOff();
-            }
-            if (e.KeyCode == Keys.L)
-            {
-                Tello.land();
-            }
-            if (e.KeyCode == Keys.O)
-            {
-                Tello.sendInstruction("cw 90");
-            }
+                sendInstruction(currentInstruction);
         }
+
+        void sendInstruction(string instruction) {
+            Tello.sendInstruction(instruction);
+            Console.WriteLine(instruction);
+        } 
     }
 }
