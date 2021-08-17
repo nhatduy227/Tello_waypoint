@@ -39,6 +39,7 @@ namespace FlightPlan_gui
             this.runningText = new System.Windows.Forms.Label();
             this.currentStage = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.emergency = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // input
@@ -70,10 +71,10 @@ namespace FlightPlan_gui
             // 
             // addInstructions
             // 
-            this.addInstructions.Location = new System.Drawing.Point(325, 66);
+            this.addInstructions.Location = new System.Drawing.Point(318, 66);
             this.addInstructions.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.addInstructions.Name = "addInstructions";
-            this.addInstructions.Size = new System.Drawing.Size(133, 34);
+            this.addInstructions.Size = new System.Drawing.Size(157, 34);
             this.addInstructions.TabIndex = 7;
             this.addInstructions.Text = "Add Instructions";
             this.addInstructions.UseVisualStyleBackColor = true;
@@ -90,10 +91,10 @@ namespace FlightPlan_gui
             // 
             // delInstrutions
             // 
-            this.delInstrutions.Location = new System.Drawing.Point(475, 66);
+            this.delInstrutions.Location = new System.Drawing.Point(496, 65);
             this.delInstrutions.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.delInstrutions.Name = "delInstrutions";
-            this.delInstrutions.Size = new System.Drawing.Size(133, 34);
+            this.delInstrutions.Size = new System.Drawing.Size(157, 35);
             this.delInstrutions.TabIndex = 9;
             this.delInstrutions.Text = "Delete All";
             this.delInstrutions.UseVisualStyleBackColor = true;
@@ -102,10 +103,10 @@ namespace FlightPlan_gui
             // Run
             // 
             this.Run.Enabled = false;
-            this.Run.Location = new System.Drawing.Point(627, 66);
+            this.Run.Location = new System.Drawing.Point(318, 126);
             this.Run.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Run.Name = "Run";
-            this.Run.Size = new System.Drawing.Size(133, 34);
+            this.Run.Size = new System.Drawing.Size(157, 34);
             this.Run.TabIndex = 10;
             this.Run.Text = "Run Flight Plan";
             this.Run.UseVisualStyleBackColor = true;
@@ -114,7 +115,7 @@ namespace FlightPlan_gui
             // runningText
             // 
             this.runningText.AutoSize = true;
-            this.runningText.Location = new System.Drawing.Point(472, 132);
+            this.runningText.Location = new System.Drawing.Point(428, 204);
             this.runningText.Name = "runningText";
             this.runningText.Size = new System.Drawing.Size(131, 17);
             this.runningText.TabIndex = 12;
@@ -124,7 +125,7 @@ namespace FlightPlan_gui
             // currentStage
             // 
             this.currentStage.AutoSize = true;
-            this.currentStage.Location = new System.Drawing.Point(472, 165);
+            this.currentStage.Location = new System.Drawing.Point(428, 237);
             this.currentStage.Name = "currentStage";
             this.currentStage.Size = new System.Drawing.Size(100, 17);
             this.currentStage.TabIndex = 13;
@@ -133,14 +134,25 @@ namespace FlightPlan_gui
             // 
             // timer1
             // 
-            this.timer1.Interval = 100;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // emergency
+            // 
+            this.emergency.Location = new System.Drawing.Point(496, 125);
+            this.emergency.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.emergency.Name = "emergency";
+            this.emergency.Size = new System.Drawing.Size(157, 35);
+            this.emergency.TabIndex = 14;
+            this.emergency.Text = "Emergency Landing";
+            this.emergency.UseVisualStyleBackColor = true;
+            this.emergency.Click += new System.EventHandler(this.emergency_Click_1);
             // 
             // FlightPlan_gui
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(773, 426);
+            this.Controls.Add(this.emergency);
             this.Controls.Add(this.currentStage);
             this.Controls.Add(this.runningText);
             this.Controls.Add(this.Run);
@@ -171,6 +183,7 @@ namespace FlightPlan_gui
         private System.Windows.Forms.Label runningText;
         private System.Windows.Forms.Label currentStage;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Button emergency;
     }
 }
 

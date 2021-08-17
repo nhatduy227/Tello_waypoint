@@ -56,6 +56,7 @@ namespace TelloLib
 
         public static void sendInstruction(string instruction) {
             string message = instruction;
+            Console.WriteLine(message);
             client.Send(message);
         }
 
@@ -288,7 +289,7 @@ namespace TelloLib
 
                         if(cmdId>=74 && cmdId<80)
                         {
-                            //Console.WriteLine("XXXXXXXXCMD:" + cmdId);
+                            Console.WriteLine("XXXXXXXXCMD:" + cmdId);
                         }
                         if (cmdId == 86)//state command
                         {
@@ -330,7 +331,7 @@ namespace TelloLib
                         {
                             var array = received.bytes.Skip(10).Take(4).ToArray();
                             float f = BitConverter.ToSingle(array, 0);
-                            Console.WriteLine(f);
+                            //Console.WriteLine(f);
                         }
                         if (cmdId == 4182)//max hei response
                         {
@@ -594,7 +595,7 @@ namespace TelloLib
                                 var elapsed = DateTime.Now - lastMessageTime;
                                 if (elapsed.Seconds > 2)//1 second timeout.
                                 {
-                                    Console.WriteLine("Connection timeout :");
+                                    //Console.WriteLine("Connection timeout :");
                                     disconnect();
                                 }
                                 break;
